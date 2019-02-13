@@ -3,13 +3,13 @@
         <h4>Menu Commande</h4>
     </div>
     <div class="Connexion_Menu_Accueil_Commande">
-        <a href="#">Connexion</a>
+        <a href="">Connexion</a>
     </div>
     <div class="Catalogue_Menu_Accueil_Commande">
         <a href="#">Catalogue</a>
     </div>
     <div class="Commande_Menu_Accueil_Commande">
-        <a href="#">Commande</a>
+        <a href="index.php?page=31">Commande</a>
     </div>
     <div class="Livraison_Menu_Accueil_Commande">
         <a href="#">Livraison</a>

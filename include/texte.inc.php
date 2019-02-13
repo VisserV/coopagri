@@ -16,10 +16,15 @@ case 0:
 	break;
 
 case 1:
-    // inclure ici la page accueil photo
+
     include_once('pages/CommandeMenu.inc.php');
     break;
-	// page insertion nouveau client
+
+case 31:
+    // inclure ici la page ConsulterCommande
+    include_once('pages/ConsulterCommande.inc.php');
+    break;
+// page insertion nouveau client
 
 default : 	include_once('pages/accueil.inc.php');
 }
