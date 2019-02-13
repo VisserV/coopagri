@@ -14,6 +14,11 @@ case 0:
 	// inclure ici la page accueil photo
 	include_once('pages/accueil.inc.php');
 	break;
+
+case 1:
+    // inclure ici la page accueil photo
+    include_once('pages/Commande.inc.php');
+    break;
 	// page insertion nouveau client
 	
 default : 	include_once('pages/accueil.inc.php');
