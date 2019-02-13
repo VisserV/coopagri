@@ -1,5 +1,5 @@
 <?php
 function __autoload($className){
-	$repClasses='classes/';
+	$repClasses='class/';
 	require $repClasses.$className.'.class.php';
 }
