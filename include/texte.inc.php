@@ -15,7 +15,8 @@ case 0:
 	include_once('pages/accueil.inc.php');
 	break;
 	// page insertion nouveau client
-	
+    case 3:
+        include_once('pages/facture.inc.php');
 default : 	include_once('pages/accueil.inc.php');
 }
 
