@@ -3,15 +3,16 @@
 <html lang="fr">
 
 <head>
+     <title>Coopagri</title>
 
-  <meta charset="utf-8">
+     <meta charset="utf-8">
 
-  <title>Coopagri</title>
-
-<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/reset.css">
 </head>
+
+<body>
+
      <nav class="navbar navbar-inverse">
        <div class="container-fluid">
          <div class="navbar-header">
@@ -19,14 +20,11 @@
          </div>
          <ul class="nav navbar-nav">
            <li class="active"><a href="#">Acceuil</a></li>
-           <li><a href="#">Facturation</a></li>
-           <li><a href="#">Livraison</a></li>
            <li><a href="#">Planification</a></li>
+           <li><a href="#">Commande</a></li>
+           <li><a href="#">Facturation</a></li>
          </ul>
        </div>
      </nav>
 
-	<body>
           <div class="container-fluid">
-
-     
