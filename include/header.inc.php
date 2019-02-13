@@ -9,6 +9,7 @@
 
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
      <link rel="stylesheet" href="css/reset.css">
+     <link rel="stylesheet" href="css/styleCommande.css">
 </head>
 
 <body>

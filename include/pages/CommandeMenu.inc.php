@@ -1,6 +1,7 @@
-<p>Commande</p>
-
 <div class="Menu_Accueil_Commande">
+    <div class="Title_Menu_Accueil_Commande">
+        <h4>Menu Commande</h4>
+    </div>
     <div class="Connexion_Menu_Accueil_Commande">
         <a href="#">Connexion</a>
     </div>

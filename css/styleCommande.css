@@ -1,0 +1,18 @@
+/*css*/
+
+.Menu_Accueil_Commande {
+    width: 200px;
+    border: solid black 1px;
+    border-radius: 10px;
+    text-align: center;
+}
+.Menu_Accueil_Commande div {
+    margin: 15px 0;
+}
+.Title_Menu_Accueil_Commande {
+    background-color: black;
+    color: white;
+    margin: 0 !important;
+    padding: 15px 0;
+    border-radius: 10px 10px 0 0;
+}
