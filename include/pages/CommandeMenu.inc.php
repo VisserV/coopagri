@@ -1,0 +1,25 @@
+<p>Commande</p>
+
+<div class="Menu_Accueil_Commande">
+    <div class="Connexion_Menu_Accueil_Commande">
+        <a href="#">Connexion</a>
+    </div>
+    <div class="Catalogue_Menu_Accueil_Commande">
+        <a href="#">Catalogue</a>
+    </div>
+    <div class="Commande_Menu_Accueil_Commande">
+        <a href="#">Commande</a>
+    </div>
+    <div class="Livraison_Menu_Accueil_Commande">
+        <a href="#">Livraison</a>
+    </div>
+    <div class="Facture_Menu_Accueil_Commande">
+        <a href="#">Facture</a>
+    </div>
+    <div class="Pénalités_Menu_Accueil_Commande">
+        <a href="#">Pénalités</a>
+    </div>
+    <div class="Historique_Menu_Accueil_Commande">
+        <a href="#">Historique</a>
+    </div>
+</div>
