@@ -19,7 +19,7 @@
            <a class="navbar-brand" href="index.php?page=0">Coopagri</a>
          </div>
          <ul class="nav navbar-nav">
-           <li class="active"><a href="index.php?page=0">Accueuil</a></li>
+           <li class="active"><a href="index.php?page=0">Accueil</a></li>
            <li><a href="#">Planification</a></li>
            <li><a href="index.php?page=1">Commande</a></li>
            <li><a href="#">Facturation</a></li>
