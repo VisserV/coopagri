@@ -6,7 +6,7 @@
         <a href="#">Connexion</a>
     </div>
     <div class="Catalogue_Menu_Accueil_Commande">
-        <a href="#">Catalogue</a>
+        <a href="index.php?page=32">Catalogue</a>
     </div>
     <div class="Commande_Menu_Accueil_Commande">
         <a href="#">Commande</a>
