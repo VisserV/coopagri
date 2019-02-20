@@ -15,7 +15,9 @@ case 0:
 	include_once('pages/accueil.inc.php');
 	break;
 	// page insertion nouveau client
-	
+case 11:
+	include_once('pages/calendrier.inc.php');
+	break;
 default : 	include_once('pages/accueil.inc.php');
 }
 
