@@ -1,5 +1,6 @@
-<h1>Commande</h1>
-<table class="table table-striped">
+
+<div id="container">
+
 <!--    <thead><tr><th scope="col">first</th><th scope="col">last</th><th scope="col">handle</th></tr></thead>-->
 <!--    <tbody>-->
 <!--    <tr>-->
@@ -19,4 +20,5 @@
 <!--        <td>the bird</td>-->
 <!--    </tr>-->
 <!--    </tbody>-->
-</table>
+
+</div>
