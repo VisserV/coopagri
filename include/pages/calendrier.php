@@ -7,7 +7,7 @@
 <script src='../../js/lib/moment.min.js'></script>
 <script src='../../js/lib/jquery.min.js'></script>
 <script src='../../js/lib/jquery-ui.min.js'></script>
-<script src='../../js/fullcalendar.min.js'></script>
+<script src='../../js/fullcalendar.js'></script>
 <script src='../../js/locale/fr.js'></script>
 <script>
 
