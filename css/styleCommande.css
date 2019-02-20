@@ -16,3 +16,34 @@
     padding: 15px 0;
     border-radius: 10px 10px 0 0;
 }
+
+.MenuLivraison{
+    margin-top: 15px;
+    margin-left: 50px;
+    width: 100%;
+}
+
+.MenuLivraison th{
+    background-color: #488ca1;
+    color: white;
+    text-align: center;
+    width: 200px;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 7px;
+}
+
+.tableauLivraison {
+    margin-top: 15px;
+    margin-left: 50px;
+    width: 75%;
+}
+
+.tableauLivraison th {
+    background-color: lightgrey;
+    text-align: left;
+    border: solid black thin;
+    width: 200px;
+    margin: 15px;
+    padding: 7px;
+}

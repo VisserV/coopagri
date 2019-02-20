@@ -12,7 +12,7 @@
         <a href="#">Commande</a>
     </div>
     <div class="Livraison_Menu_Accueil_Commande">
-        <a href="#">Livraison</a>
+        <a href="index.php?page=30">Livraison</a>
     </div>
     <div class="Facture_Menu_Accueil_Commande">
         <a href="#">Facture</a>
