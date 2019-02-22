@@ -1,6 +1,7 @@
 
 <div id="container">
 
+    <script src="js/CommandeConsulterCommande.js"></script>
 <!--    <thead><tr><th scope="col">first</th><th scope="col">last</th><th scope="col">handle</th></tr></thead>-->
 <!--    <tbody>-->
 <!--    <tr>-->
