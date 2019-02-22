@@ -17,6 +17,7 @@ case 0:
 	// page insertion nouveau client
     case 50:
         include_once('pages/factureMenu.inc.php');
+       break;
 default : 	include_once('pages/accueil.inc.php');
 }
 
