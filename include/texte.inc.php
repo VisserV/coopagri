@@ -26,6 +26,20 @@ case 31:
     break;
 // page insertion nouveau client
 
+
+
+//
+// Commandes Livraison
+//
+
+case 30:
+    // inclure ici la page accueil photo
+    include_once('pages/CommandeConsulterLivraison.inc.php');
+    break;  
+
+case 32:
+    include_once('pages/CommandeConsulterCatalogue.inc.php');
+    break;
 default : 	include_once('pages/accueil.inc.php');
 }
 

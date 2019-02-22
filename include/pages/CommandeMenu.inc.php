@@ -6,13 +6,13 @@
         <a href="">Connexion</a>
     </div>
     <div class="Catalogue_Menu_Accueil_Commande">
-        <a href="#">Catalogue</a>
+        <a href="index.php?page=32">Catalogue</a>
     </div>
     <div class="Commande_Menu_Accueil_Commande">
         <a href="index.php?page=31">Commande</a>
     </div>
     <div class="Livraison_Menu_Accueil_Commande">
-        <a href="#">Livraison</a>
+        <a href="index.php?page=30">Livraison</a>
     </div>
     <div class="Facture_Menu_Accueil_Commande">
         <a href="#">Facture</a>
