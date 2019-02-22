@@ -19,11 +19,9 @@
            <a class="navbar-brand" href="#">Coopagri</a>
          </div>
          <ul class="nav navbar-nav">
-<<<<<<< HEAD
-           <li class="active"><a href="#">Accueil</a></li>
-=======
+
            <li class="active"><a href="#">Acceuil</a></li>
->>>>>>> ac80279f3c50a3fee5e8a0014ee02c9609d1045f
+
            <li><a href="./include/pages/calendrier.html">Planification</a></li>
            <li><a href="#">Commande</a></li>
            <li><a href="#">Facturation</a></li>

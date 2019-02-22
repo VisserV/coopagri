@@ -11,14 +11,33 @@
 <script src='../../js/locale/fr.js'></script>
 <script>
 
-  $(document).ready(function() {
+function afficheCmd(){
+     let externalevt = document.getElementById('external-events');
+     console.log(externalevt);
+     $.ajax({
+         url:'../../ressources/json/livraisons.json',
+         dataType:'json',
+         async : false,
+         success : function(data){
+              console.log(data);
+              $.each(data, function(i, elt){
+                    //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
+                    let div = $('<div>');
+                    div.attr('class', "fc-event");
+                    div.text('Commande n° '+ elt.id);
+                    $(externalevt).append(div)
+              });
+         },
+     });
 
+ };
+
+  $(document).ready(function() {
+       afficheCmd();
 
     /* initialize the external events
     -----------------------------------------------------------------*/
-
     $('#external-events .fc-event').each(function() {
-
       // store data so the calendar knows to render an event upon drop
       $(this).data('event', {
         title: $.trim($(this).text()), // use the element's text as the event title
@@ -35,6 +54,8 @@
     });
 
 
+
+
     /* initialize the calendar
     -----------------------------------------------------------------*/
 
@@ -48,12 +69,14 @@
       droppable: true, // this allows things to be dropped onto the calendar
       drop: function() {
         // is the "remove after drop" checkbox checked?
-        if ($('#drop-remove').is(':checked')) {
+        if ($('#drop-remove')) {
           // if so, remove the element from the "Draggable Events" list
           $(this).remove();
         }
       }
     });
+
+
 
 
   });
@@ -116,13 +139,9 @@
 
     <div id='external-events'>
       <h4>Draggable Events</h4>
-      <div class='fc-event'>My Event 1</div>
-      <div class='fc-event'>My Event 2</div>
-      <div class='fc-event'>My Event 3</div>
-      <div class='fc-event'>My Event 4</div>
-      <div class='fc-event'>My Event 5</div>
-      <p>
-        <input type='checkbox' id='drop-remove' />
+
+      <p id='drop-remove'>
+        <!--<input type='checkbox' id='drop-remove' />-->
         <label for='drop-remove'>remove after drop</label>
       </p>
     </div>

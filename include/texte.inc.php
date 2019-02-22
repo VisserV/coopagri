@@ -15,8 +15,8 @@ case 0:
 	include_once('pages/accueil.inc.php');
 	break;
 	// page insertion nouveau client
-	
-default : 	include_once('pages/accueil.inc.php');
+
+default :include_once('pages/accueil.inc.php');
 }
 
 ?>
