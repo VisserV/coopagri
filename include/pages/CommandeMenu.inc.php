@@ -8,8 +8,12 @@
     <div class="Catalogue_Menu_Accueil_Commande">
         <a href="index.php?page=32">Catalogue</a>
     </div>
-    <div class="Commande_Menu_Accueil_Commande">
-        <a href="index.php?page=31">Commande</a>
+    <div class="dropdown Commande_Menu_Accueil_Commande">
+        <a>Commande</a>
+        <div class="dropdown-content">
+            <a href="index.php?page=31">Lister commande</a>
+            <a href="#">Passer commande</a>
+        </div>
     </div>
     <div class="Livraison_Menu_Accueil_Commande">
         <a href="index.php?page=30">Livraison</a>
