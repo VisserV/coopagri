@@ -1,5 +1,27 @@
+function afficheCmd(){
+     let externalevt = document.getElementById('external-events');
+     console.log(externalevt);
+     $.ajax({
+         url:'./ressources/json/livraisons.json',
+         dataType:'json',
+         async : false,
+         success : function(data){
+              console.log(data);
+              $.each(data, function(i, elt){
+                    //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
+                    let div = $('<div>');
+                    div.attr('class', "fc-event");
+                    div.text('Commande n° '+ elt.id);
+                    $(externalevt).append(div)
+              });
+         },
+     });
+
+ };
+
 $(function() { // document ready
 
+  afficheCmd();
 
   /* initialize the external events
   -----------------------------------------------------------------*/
@@ -32,12 +54,17 @@ $(function() { // document ready
     aspectRatio: 1.8,
     scrollTime: '00:00', // undo default 6am scrollTime
     header: {
-      left: 'prev,next',
+      left: 'today prev,next',
       center: 'title',
-      right: 'timelineDay'
+      right: 'timelineDay,timelineThreeDays,agendaWeek,month'
     },
     defaultView: 'timelineDay',
-
+    views: {
+      timelineThreeDays: {
+        type: 'timeline',
+        duration: { days: 3 }
+      }
+    },
     resourceLabelText: 'Rooms',
     resources: [
       { id: 'a', title: 'Auditorium A' },
@@ -69,13 +96,6 @@ $(function() { // document ready
       { id: 'x', title: 'Auditorium X' },
       { id: 'y', title: 'Auditorium Y' },
       { id: 'z', title: 'Auditorium Z' }
-    ],
-    events: [
-      { id: '1', resourceId: 'b', start: '2018-04-07T02:00:00', end: '2018-04-07T07:00:00', title: 'event 1' },
-      { id: '2', resourceId: 'c', start: '2018-04-07T05:00:00', end: '2018-04-07T22:00:00', title: 'event 2' },
-      { id: '3', resourceId: 'd', start: '2018-04-06', end: '2018-04-08', title: 'event 3' },
-      { id: '4', resourceId: 'e', start: '2018-04-07T03:00:00', end: '2018-04-07T08:00:00', title: 'event 4' },
-      { id: '5', resourceId: 'f', start: '2018-04-07T00:30:00', end: '2018-04-07T02:30:00', title: 'event 5' }
     ],
     drop: function(date, jsEvent, ui, resourceId) {
       console.log('drop', date.format(), resourceId);
