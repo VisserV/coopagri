@@ -1,27 +1,47 @@
 function afficheCmd(){
-     let externalevt = document.getElementById('external-events');
-     console.log(externalevt);
-     $.ajax({
-         url:'./ressources/json/livraisons.json',
-         dataType:'json',
-         async : false,
-         success : function(data){
-              console.log(data);
-              $.each(data, function(i, elt){
-                    //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
-                    let div = $('<div>');
-                    div.attr('class', "fc-event");
-                    div.text('Commande n° '+ elt.id);
-                    $(externalevt).append(div)
-              });
-         },
-     });
+   let externalevt = document.getElementsByClassName('commande');
+   console.log(externalevt);
+   $.ajax({
+       url:'./ressources/json/commandes.json',
+       dataType:'json',
+       async : false,
+       success : function(data){
+            console.log(data);
+            $.each(data, function(i, elt){
+                  //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
+                  let div = $('<div>');
+                  div.attr('class', "fc-event");
+                  div.text('Commande n° '+ elt.id);
+                  $(externalevt).append(div);
+            });
+       },
+   });
+};
 
- };
+function afficheLvr(){
+   let externalevt = document.getElementsByClassName('livreur');
+   console.log(externalevt);
+   $.ajax({
+       url:'./ressources/json/livraisons.json',
+       dataType:'json',
+       async : false,
+       success : function(data){
+            console.log(data);
+            $.each(data, function(i, elt){
+                  //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
+                  let div = $('<div>');
+                  div.attr('class', "fc-event");
+                  div.text('Livreur n° '+ elt.id);
+                  $(externalevt).append(div);
+            });
+       },
+   });
+};
 
 $(document).ready(function() {
 
   afficheCmd();
+  afficheLvr();
 
 
   /* initialize the external events
@@ -58,7 +78,7 @@ $(document).ready(function() {
     droppable: true, // this allows things to be dropped onto the calendar
     drop: function() {
       // is the "remove after drop" checkbox checked?
-      if ($('#drop-remove')) {
+      if ($('#drop-remove').is(':checked')) {
         // if so, remove the element from the "Draggable Events" list
         $(this).remove();
       }
