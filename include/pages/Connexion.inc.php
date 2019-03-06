@@ -12,12 +12,12 @@ if(empty($_POST["login"]) || empty($_POST["password"])) {
   </form>
   <?php
 } if(!empty($_POST["login"]) && !empty($_POST["password"])) {
-  $clientManager = new clientManager($pdo);
+  $compteManager = new CompteManager($pdo);
 
-  $client = $clientManager->getClient_from_login($_POST["login"]);
-  if(!is_null($personne->getPer_num())) {
+  $compte = $compteManager->getCompte_from_login($_POST["login"]);
+  if(!is_null($compte->getCompte_id())) {
 
-    if($client->getPer_pwd() == sha1(sha1($_POST["password"]).SALT)) {
+    if($client->getCompte_pass() == sha1(sha1($_POST["password"]).SALT)) {
 
       $_SESSION["login"] = $_POST["login"];
       echo "Connecté.";
