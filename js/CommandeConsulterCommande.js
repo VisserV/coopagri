@@ -1,13 +1,14 @@
 $(function(){
     init();
     chargerNumeroCommande();
-    chargerDetailCommande();
+    chargerDetailCommande(1);
 })
 
 
 function init(){
 
     let select = $("<select>");
+    select.attr('onchange',"chargerDetailCommande(this.value)");
     let divTab = $("<div>");
     divTab.attr('id','idDivTab');
     select.attr('id',"lstCommande");
@@ -31,7 +32,7 @@ function chargerNumeroCommande(){
         success : function(data){
             $.each(data,function(i,idCommande){
                 let option = $("<option>" +"Commande n° "+idCommande.id+"</option>");
-                option.attr("id", idCommande.id);
+                option.attr("value", idCommande.id);
                 $('#lstCommande').append(option);
             }
             );
@@ -40,21 +41,25 @@ function chargerNumeroCommande(){
 
 }
 
-function chargerDetailCommande(){
+function chargerDetailCommande(id){
+    $('#lstPdt').empty();
+    $('#lstPdt').append("<thead><tr><th scope='col'>Libelle</th><th scope='col'>Référence</th><th scope='col'>Prix de Vente</th><th scope='col'>Quantité</th></tr></thead>");
     $.ajax({
         url:"ressources/json/commandes.json",
         dataType:"json",
         success : function(data){
             $.each(data,function(i,cmd){
-                $.each(cmd.lignes,function(y,lgn) {
+                if(id == cmd.id) {
+                    $.each(cmd.lignes, function (y, lgn) {
 
-                    $("#lstPdt").append("<tr scope='row'>"
-                        + "<td >" + lgn.produit.libelle + "</td>"
-                        + "<td >" + lgn.produit.reference + "</td>"
-                        + "<td >" + lgn.produit.prixVente + "</td>"
-                        + "<td >" + lgn.quantite + "</td>"
-                        + "</tr>");
-                })
+                        $("#lstPdt").append("<tr scope='row'>"
+                            + "<td >" + lgn.produit.libelle + "</td>"
+                            + "<td >" + lgn.produit.reference + "</td>"
+                            + "<td >" + lgn.produit.prixVente + "</td>"
+                            + "<td >" + lgn.quantite + "</td>"
+                            + "</tr>");
+                    })
+                }
             });
         }
     });
