@@ -1,62 +1,79 @@
-$( document ).ready(function() {
+$(document).ready(function () {
     init();
     chargerCategorie();
     chargerProd(1);
 });
 
 
-function init (){
+function init() {
+
+
+    let rechercherSelect = $('<select>');
+    rechercherSelect.attr('id',"rechercher");
+
+    let categorie = $('<p>');
+    categorie.text("Catégorie : ");
+
     let ligne = $('<select>');
-    ligne.attr('id',"LSTCATEG");
-    ligne.attr('onchange',"chargerProd(this.value)");
+    ligne.attr('id', "LSTCATEG");
+    ligne.attr('onchange', "chargerProd(this.value)");
+
+    categorie.append(ligne);
+    //var text = document.createTextNode("  Rechercher par : ");
+    //categorie.append(text);
+
 
     let tableau = $('<table>');
-    tableau.attr('id',"LSTPDT");
-    tableau.attr('style','border:1px solid black;');
-    tableau.append('<tr><th>ID</th><th>NOM</th><th>PU</th></tr>');
+    tableau.attr('id', "liste");
+    tableau.addClass("table");
+    tableau.addClass("table-striped");
+    tableau.append("<tr><th scope='col'>ID</th><th scope='col'>Image</th><th scope='col'> NOM</th><th scope='col'>PU</th></tr>");
 
 
-    $('body').append(ligne);
+    //$('body').append(ligne);
+    $('body').append(categorie);
     $('body').append(tableau);
 
 };
 
-function chargerCategorie(){
+function chargerCategorie() {
     $.ajax({
-        url:"ressources/json/categorieProduit.json",
-        dataType :"json",
-        success:function(data){
-            data.forEach(function(element){
-                $('select').append("<option value="+element.id+" >"+element.libelle+"</option>")
+        url: "ressources/json/categorieProduit.json",
+        dataType: "json",
+        success: function (data) {
+            data.forEach(function (element) {
+                $('#LSTCATEG').append("<option value="+ element.id +" >" + element.libelle + "</option>")
             })
         }
     });
 
 };
 
-function chargerProd(id){
-    $('table').empty();
+function chargerProd(id) {
+    $("#liste").empty();
 
     //let tableau = $('<table>');
-    $('table').append('<tr><th>ID</th><th>NOM</th><th>PU</th></tr>');
+    $("#liste").append("<thead><tr><th scope='col'>ID</th><th scope='col'>Image</th><th scope='col'> NOM</th><th scope='col'>PU</th></tr></thead>");
     $.ajax({
-        url:"ressources/json/produits.json",
-        dataType :"json",
-        success:function(data){
-            data.forEach(function(element){
-                if (id == element.categorie.id){
-                    $('table').append('<tr><th>'+element.id+'</th><th>'+element.libelle+'</th><th>'+element.prixVente+'</th></tr>')
+        url: "ressources/json/produits.json",
+        dataType: "json",
+        success: function (data) {
+            data.forEach(function (element) {
+                if (id == element.categorie.id) {
+                    if (element.image == null || element.image == "") {
+                        var url = "ressources/img/no_image.png";
+                    }else{
+                        var url = element.image;
+                    }
+                    $("#liste").append("<tr scope='row'>" +
+                        '<td>' + element.id + '</td>' +
+                        '<td><img width="auto" height="50px" src='+url+'></td>' +
+                        '<td>' + element.libelle + '</td>' +
+                        '<td>' + element.prixVente + '</td></tr>')
                 }
             })
         }
     });
 }
 
-function getEltById (idRechercher, idProduit, element){
-
-
-    if (idRechercher == idProduit){
-        $('table').append('<tr><th>'+idRechercher+'</th><th>'+element.libelle+'</th><th>'+element.prixVente+'</th></tr>')
-    }
-}
 
