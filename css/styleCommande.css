@@ -1,19 +1,30 @@
 /*css*/
 .Menu_Accueil_Commande {
-    width: 200px;
     border: solid black 1px;
     border-radius: 10px;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    margin: 5px 5px 25px 5px;
+    background: gray;
 }
 .Menu_Accueil_Commande > div {
-    margin: 15px 0;
+    margin: 22px 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.Menu_Accueil_Commande > div a, .Menu_Accueil_Commande > div a:visited, .Menu_Accueil_Commande > div a:link {
+    color: white;
+    text-decoration: none;
 }
 .Title_Menu_Accueil_Commande {
     background-color: black;
     color: white;
     margin: 0 !important;
     padding: 15px 0;
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px 0 0 10px;
+    padding: 22px 15px;
 }
 
 .dropdown {
@@ -28,10 +39,13 @@
     box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 1;
-    margin-left: 20px;
+    margin-left: -39px;
 }
 .dropdown-content a {
     display: block;
+}
+.dropdown-content a, .dropdown-content a:link, .dropdown-content a:visited {
+    color: black !important;
 }
 .dropdown-content a:first-child {
     margin-bottom: 5px;
