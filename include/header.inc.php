@@ -7,11 +7,14 @@
 
      <meta charset="utf-8">
 
+     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
      <link rel="stylesheet" href="css/reset.css">
      <link href='./css/fullcalendar.css' rel='stylesheet'/>
      <link href='./css/fullcalendar.print.css' rel='stylesheet' media='print'/>
      <link href='./css/calendrier.css' rel='stylesheet'/>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+     <link href='./css/maps.css' rel='stylesheet'/>
 </head>
 
 <body>

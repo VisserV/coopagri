@@ -19,6 +19,9 @@ case 0:
 case 11:
 	include_once('pages/calendrier.inc.php');
 	break;
+case 12:
+	include_once('pages/maps.inc.php');
+	break;
 default : 	include_once('pages/accueil.inc.php');
 }
 
