@@ -12,7 +12,7 @@
         <a>Commande</a>
         <div class="dropdown-content">
             <a href="index.php?page=31">Lister commande</a>
-            <a href="#">Passer commande</a>
+            <a href="index.php?page=34">Passer commande</a>
         </div>
     </div>
     <div class="Livraison_Menu_Accueil_Commande">
