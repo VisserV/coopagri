@@ -12,7 +12,7 @@ switch ($page) {
 
 case 0:
 	// inclure ici la page accueil photo
-	include_once('pages/accueil.inc.php');
+	include_once('pages/Stastique.inc.php');
 	break;
 	// page insertion nouveau client
 	
