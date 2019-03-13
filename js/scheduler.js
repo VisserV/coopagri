@@ -5805,13 +5805,14 @@ var PRESET_LICENSE_KEYS = [
 function processLicenseKey(key, containerEl) {
     if (!isImmuneUrl(window.location.href) && !isValidKey(key)) {
         if (!detectWarningInContainer(containerEl)) {
-            return renderingWarningInContainer('Please use a valid license key. <a href="' + LICENSE_INFO_URL + '">More Info</a>', containerEl);
+            return renderingWarningInContainer(' <a href="' + LICENSE_INFO_URL + '"></a>', containerEl);
         }
     }
 }
 exports.processLicenseKey = processLicenseKey;
 /*
 This decryption is not meant to be bulletproof. Just a way to remind about an upgrade.
+Please use a valid license key. More Info
 */
 function isValidKey(key) {
     if ($.inArray(key, PRESET_LICENSE_KEYS) !== -1) {

@@ -1,8 +1,8 @@
-function afficheCmd(){
+function afficheClt(){
      let externalevt = document.getElementById('external-events');
      console.log(externalevt);
      $.ajax({
-         url:'./ressources/json/commandes.json',
+         url:'./ressources/json/clients.json',
          dataType:'json',
          async : false,
          success : function(data){
@@ -11,17 +11,38 @@ function afficheCmd(){
                     //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                     let div = $('<div>');
                     div.attr('class', "fc-event");
-                    div.text('Commande n° '+ elt.id);
+                    div.text('Client n° '+ elt.id);
                     $(externalevt).append(div)
               });
          },
      });
 
  };
+ function affichefrs(){
+      let externalevt = document.getElementById('external-events');
+      console.log(externalevt);
+      $.ajax({
+          url:'./ressources/json/fournisseur.json',
+          dataType:'json',
+          async : false,
+          success : function(data){
+               console.log(data);
+               $.each(data, function(i, elt){
+                     //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
+                     let div = $('<div>');
+                     div.attr('class', "fc-event");
+                     div.text('Fournisseur n° '+ elt.id);
+                     $(externalevt).append(div)
+               });
+          },
+      });
+
+  };
 
  $(function() { // document ready
 
-   afficheCmd();
+   afficheClt();
+   affichefrs();
    /* initialize the external events
    -----------------------------------------------------------------*/
 
@@ -41,7 +62,6 @@ function afficheCmd(){
      });
 
    });
-
 
    /* initialize the calendar
    -----------------------------------------------------------------*/
