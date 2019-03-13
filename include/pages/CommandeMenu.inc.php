@@ -3,7 +3,10 @@
         <h4>Menu Commande</h4>
     </div>
     <div class="Connexion_Menu_Accueil_Commande">
-        <a href="">Connexion</a>
+        <a href="index.php?page=33">Connexion</a>
+    </div>
+    <div class="Deconnexion_Menu_Accueil_Commande">
+        <a href="index.php?page=35">Deconnexion</a>
     </div>
     <div class="Catalogue_Menu_Accueil_Commande">
         <a href="index.php?page=32">Catalogue</a>

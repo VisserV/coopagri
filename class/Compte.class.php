@@ -1,5 +1,5 @@
 <?php
-class Client{
+class Compte{
 
     private $compte_id;
     private $compte_login;
@@ -26,11 +26,11 @@ class Client{
     }
 
     public function SetCompte_login($log) {
-        $this->compte_id = $log;
+        $this->compte_login = $log;
     }
 
     public function SetCompte_pass($pwd) {
-        $this->compte_id = $pwd;
+        $this->compte_pass = $pwd;
     }
 
     public function GetCompte_id() {
@@ -43,6 +43,7 @@ class Client{
 
     public function GetCompte_pass() {
         return $this->compte_pass;
+        
     }
 }
 ?>

@@ -12,7 +12,7 @@ class CompteManager {
         $requete = $this->db->prepare($sql);
 
         $requete->bindValue(':log', $compte->GetCompte_login());
-        $requete->bindValue(':pass', $compte->GetCompte_password());
+        $requete->bindValue(':pass', $compte->GetCompte_pass());
 
         $retour = $requete->execute();
 
@@ -21,7 +21,7 @@ class CompteManager {
 
     public function GetCompte_from_login($log){
         $sql = 'SELECT * FROM compte WHERE COMPTE_LOGIN = :log';
-        $requete = this->db->prepare($sql);
+        $requete = $this->db->prepare($sql);
 
         $requete->bindValue(':log',$log);
         $retour = $requete->execute();

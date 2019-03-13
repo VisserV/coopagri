@@ -3,7 +3,7 @@ $pdo = new Mypdo();
 if(empty($_POST["login"]) || empty($_POST["password"])) {
   ?>
   <h1>Pour vous connecter</h1>
-  <form action="index.php?page=11" name ="connexion_personne" method="post">
+  <form action="index.php?page=33" name ="connexion_personne" method="post">
 
     Nom d'utilisateur : <br><input type="text" name="login" required/><br>
     Mot de passe : <br><input type="password" name="password" required/><br><br>
@@ -17,12 +17,12 @@ if(empty($_POST["login"]) || empty($_POST["password"])) {
   $compte = $compteManager->getCompte_from_login($_POST["login"]);
   if(!is_null($compte->getCompte_id())) {
 
-    if($client->getCompte_pass() == sha1(sha1($_POST["password"]).SALT)) {
+    if($compte->getCompte_pass() == $_POST["password"]) {
 
       $_SESSION["login"] = $_POST["login"];
       echo "Connecté.";
       sleep(1);
-      header('Location: index.php?page=0');
+      header('Location: index.php?page=1');
       exit();
 
     } else {
