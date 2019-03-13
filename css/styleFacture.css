@@ -1,0 +1,39 @@
+.couleurTexteFacture{
+	color: #E8D91D;
+}
+
+.couleurFondFacture{
+	background-color: #E8D91D;
+}
+
+.Menu_Accueil_Facture {
+	display: inline-block;
+    width: 200px;
+    text-align: center;
+    background-color: #222222;
+}
+
+.Menu_Accueil_Facture div {
+    margin: 15px 0;
+}
+
+.Title_Menu_Accueil_Facture {	
+    background-color: black;
+    margin: 0 !important;
+    padding: 15px 0;
+    font-size: 20px;
+}
+
+.aNeutreFacture a{
+	text-decoration: none;
+	color: #9d9d9d;
+}
+
+.aNeutreFacture:hover a{
+	color: white;
+	font-weight: bold;
+}
+
+.fondFacture{
+	background-color: dimgray;
+}
