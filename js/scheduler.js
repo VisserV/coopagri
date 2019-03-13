@@ -5835,6 +5835,16 @@ function isImmuneUrl(url) {
     return /\w+\:\/\/fullcalendar\.io\/|\/demos\/[\w-]+\.html$/.test(url);
 }
 exports.isImmuneUrl = isImmuneUrl;
+function renderingWarningInContainer(messageHtml, containerEl) {
+    return containerEl.append($('<div class="fc-license-message" />').html(messageHtml));
+}
+exports.renderingWarningInContainer = renderingWarningInContainer;
+// returns boolean of whether a license message is already rendered
+function detectWarningInContainer(containerEl) {
+    return containerEl.find('.fc-license-message').length >= 1;
+}
+exports.detectWarningInContainer = detectWarningInContainer;
+
 
 /***/ }),
 /* 53 */

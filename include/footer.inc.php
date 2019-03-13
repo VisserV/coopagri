@@ -11,5 +11,6 @@
     <script src='./js/scheduler.js'></script>
     <script src='./js/calendrier.js'></script>
     <script src='./js/locale/fr.js'></script>
+
   </body>
 </html>
