@@ -5,19 +5,20 @@ if (!empty($_GET["page"])){
 	else
 	{$page=0;
 	}
-switch ($page) {
+switch ($page){
 //
 // Personnes
 //
 
-case 0:
+    case 0:
 	// inclure ici la page accueil photo
 	include_once('pages/accueil.inc.php');
 	break;
 	// page insertion nouveau client
+    /*facturation entre 50 et 60 */
     case 50:
-        include_once('pages/factureMenu.inc.php');
-       break;
+        include_once('pages/facture.inc.php');
+        break;
 default : 	include_once('pages/accueil.inc.php');
 }
 

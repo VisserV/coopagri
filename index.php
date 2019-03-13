@@ -15,4 +15,3 @@ require_once("include/texte.inc.php");
 <div id="spacer"></div>
 <?php
 require_once("include/footer.inc.php"); ?>
-

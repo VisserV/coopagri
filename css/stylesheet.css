@@ -1,1 +1,4 @@
 /*css*/
+
+#resizable,#resizable2 { width: 202px; height: 10px; margin-bottom: 2.5% ; }
+#resizable h3,#resizable2 h3 { text-align: center; margin: 0; }
