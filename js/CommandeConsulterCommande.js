@@ -12,6 +12,7 @@ function init(){
     let divTab = $("<div>");
     divTab.attr('id','idDivTab');
     select.attr('id',"lstCommande");
+    let divReturn = $("<div><a href='index.php?page=30'><button type='button'>Retour</button></a>");
     let detailCommande = $("<p>Detail de la commande </p>");
     let table = $("<table>");
     table.addClass("table");
@@ -21,6 +22,7 @@ function init(){
     $('#container').append(select);
     $("#container").append(detailCommande);
     $('#container').append(divTab);
+    $('#container').append(divReturn);
     $('#idDivTab').append(table);
 
 }
@@ -63,8 +65,5 @@ function chargerDetailCommande(id){
             });
         }
     });
-
-
-
 }
 
