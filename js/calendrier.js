@@ -11,7 +11,7 @@ function afficheClt(){
                     //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                     let div = $('<div>');
                     div.attr('class', "fc-event");
-                    div.text('Client n° '+ elt.id);
+                    div.text('Client '+ elt.raisonSociale);
                     $(externalevt).append(div)
               });
          },
@@ -31,13 +31,35 @@ function afficheClt(){
                      //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                      let div = $('<div>');
                      div.attr('class', "fc-event");
-                     div.text('Fournisseur n° '+ elt.id);
+                     div.text('Fournisseur '+ elt.raisonSociale);
                      $(externalevt).append(div)
                });
           },
       });
 
   };
+
+  function afficheLivr(){
+       let externalevt = document.getElementById('external-events');
+       console.log(externalevt);
+       $.ajax({
+           url:'./ressources/json/personnes.json',
+           dataType:'json',
+           async : false,
+           success : function(data){
+                console.log(data);
+                $.each(data, function(i, elt){
+                      //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
+                  if (elt.prenom == 'Livreur 1' || elt.prenom == 'Livreur 2' ) {
+                      let div = $('<div>');
+                      div.text(elt.prenom);
+                      $(externalevt).append(div)
+                    }
+                });
+           },
+       });
+
+   };
 
  $(function() { // document ready
 
