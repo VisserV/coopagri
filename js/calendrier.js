@@ -2,7 +2,7 @@ function afficheCmd(){
      let externalevt = document.getElementById('external-events');
      console.log(externalevt);
      $.ajax({
-         url:'./ressources/json/livraisons.json',
+         url:'./ressources/json/commandes.json',
          dataType:'json',
          async : false,
          success : function(data){
