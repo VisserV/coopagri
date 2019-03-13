@@ -37,12 +37,19 @@
 			include_once('pages/CommandeConsulterLivraison.inc.php');
 			break;
 
-			case 32:
-			include_once('pages/CommandeConsulterCatalogue.inc.php');
-			break;
-			case 34:
+            case 32:
+            include_once('pages/CommandeConsulterCatalogue.inc.php');
+            break;
+    
+
+            case 34:
+            include_once('pages/ConsulterCommandeLivraison.inc.php');
+            break;
+            
+			case 35:
 			include_once('pages/CommandePasserCommande.inc.php');
 			break;
+			
 			default : 	include_once('pages/accueil.inc.php');
 		}
 
