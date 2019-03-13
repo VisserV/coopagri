@@ -38,7 +38,7 @@ case 30:
     break;  
 
 case 32:
-    include_once('pages/ConsulterCommandeCatalogue.inc.php');
+    include_once('pages/CommandeConsulterCatalogue.inc.php');
     break;
     
 
