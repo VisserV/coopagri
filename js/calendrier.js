@@ -40,7 +40,7 @@ function afficheClt(){
   };
 
   function afficheLivr(){
-       let externalevt = document.getElementById('external-events');
+       let externalevt = document.getElementById('calendar');
        console.log(externalevt);
        $.ajax({
            url:'./ressources/json/personnes.json',
@@ -106,24 +106,9 @@ function afficheClt(){
          duration: { days: 3 }
        }
      },
-     resourceLabelText: 'Rooms',
+     resourceLabelText: 'Livraison',
      resources: [
-       { id: 'a', title: 'Auditorium A' },
-       { id: 'b', title: 'Auditorium B', eventColor: 'green' },
-       { id: 'c', title: 'Auditorium C', eventColor: 'orange' },
-       { id: 'd', title: 'Auditorium D', children: [
-         { id: 'd1', title: 'Room D1' },
-         { id: 'd2', title: 'Room D2' }
-       ] },
-       { id: 'e', title: 'Auditorium E' },
-       { id: 'f', title: 'Auditorium F', eventColor: 'red' },
-       { id: 'g', title: 'Auditorium G' },
-       { id: 'h', title: 'Auditorium H' },
-       { id: 'i', title: 'Auditorium I' },
-       { id: 'j', title: 'Auditorium J' },
-       { id: 'k', title: 'Auditorium K' },
-       { id: 'l', title: 'Auditorium L' },
-       { id: 'm', title: 'Auditorium M' },
+       { id:'a', title: 'Livreur 1'}
      ],
      drop: function(date, jsEvent, ui, resourceId) {
        console.log('drop', date.format(), resourceId);
@@ -139,7 +124,13 @@ function afficheClt(){
      },
      eventDrop: function(event) { // called when an event (already on the calendar) is moved
        console.log('eventDrop', event);
-     }
+     },
+     eventRender: function(event, element) {
+        element.find(".fc-bg").css("pointer-events","none");
+        element.append("<div style='position:absolute;bottom:0px;right:0px' ><button type='button' id='btnDeleteEvent' class='btn btn-block btn-primary btn-flat'>X</button></div>" );
+        element.find("#btnDeleteEvent").click(function(){
+             $('#calendar').fullCalendar('removeEvents',event._id);
+        });}
    });
 
  });
