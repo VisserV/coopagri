@@ -88,4 +88,22 @@ ORDER by COMMANDE_DATE_CREATION';
         $requete->closeCursor();
         echo json_encode($resultat);
     }
+
+    public function getPrixCommandeAndFourniseur($COMMANDE_ID){
+        $sql = 'SELECT SUM(p.PRODUIT_PRIX_VENTE*l.LIGNE_QUANTITE) as Montant, s.SOCIETE_RAISON_SOCIAL
+                FROM commande c 
+                JOIN ligne l ON c.COMMANDE_ID = l.COMMANDE_ID 
+                JOIN produit p ON l.PRODUIT_ID = P.PRODUIT_ID 
+                JOIN categorieprod ca ON p.CATEGORIE_PROD_ID = ca.CATEGORIE_PROD_ID 
+                JOIN fournisseur f ON p.FOURNISSEUR_ID = f.FOURNISSEUR_ID
+                JOIN societe s ON f.SOCIETE_ID = s.SOCIETE_ID
+                WHERE c.COMMANDE_ID = 1';
+
+        $requete = $this->dbo->prepare($sql);
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_OBJ);
+        $requete->bindValue(':COMMANDE_ID', $COMMANDE_ID);
+        $requete->closeCursor();
+        echo json_encode($resultat);
+    }
 }
