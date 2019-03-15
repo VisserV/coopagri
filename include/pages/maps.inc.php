@@ -10,8 +10,8 @@
     $adresses = $bdd->query($sql);
 
     foreach ($adresses as $adresse) {
-      $adresseComplete = $adresse['ADRESSE_RUE_NUM'].' '.$adresse['RUE_TYPE_LIBELLE'].' '
-          .$adresse['ADRESSE_RUE_NOM'].' '.$adresse['ADRESSE_CP'].' '.$adresse['ADRESSE_VILLE'];
+      $adresseComplete = $adresse['ADRESSE_RUE_NUM'].'+'.$adresse['RUE_TYPE_LIBELLE'].'+'
+          .$adresse['ADRESSE_RUE_NOM'].',+'.$adresse['ADRESSE_CP'].'+'.$adresse['ADRESSE_VILLE'].',+FRANCE';
       echo '<option value="'.$adresseComplete.'">'.$adresse['ADRESSE_NOM'].'</option>';
     }
 ?>
@@ -30,8 +30,8 @@
       $adresses = $bdd->query($sql);
 
       foreach ($adresses as $adresse) {
-        $adresseComplete = $adresse['ADRESSE_RUE_NUM'].' '.$adresse['RUE_TYPE_LIBELLE'].' '
-            .$adresse['ADRESSE_RUE_NOM'].' '.$adresse['ADRESSE_CP'].' '.$adresse['ADRESSE_VILLE'];
+        $adresseComplete = $adresse['ADRESSE_RUE_NUM'].'+'.$adresse['RUE_TYPE_LIBELLE'].'+'
+            .$adresse['ADRESSE_RUE_NOM'].'+'.$adresse['ADRESSE_CP'].'+'.$adresse['ADRESSE_VILLE'].',+FRANCE';
         echo '<option value="'.$adresseComplete.'">'.$adresse['ADRESSE_NOM'].'</option>';
       }
     echo '</select>';
@@ -50,8 +50,8 @@
     $adresses = $bdd->query($sql);
 
     foreach ($adresses as $adresse) {
-      $adresseComplete = $adresse['ADRESSE_RUE_NUM'].' '.$adresse['RUE_TYPE_LIBELLE'].' '
-        .$adresse['ADRESSE_RUE_NOM'].' '.$adresse['ADRESSE_CP'].' '.$adresse['ADRESSE_VILLE'];
+      $adresseComplete = $adresse['ADRESSE_RUE_NUM'].'+'.$adresse['RUE_TYPE_LIBELLE'].'+'
+        .$adresse['ADRESSE_RUE_NOM'].'+'.$adresse['ADRESSE_CP'].'+'.$adresse['ADRESSE_VILLE'].',+FRANCE';
       echo '<option value="'.$adresseComplete.'">'.$adresse['ADRESSE_NOM'].'</option>';
     }
 ?>
