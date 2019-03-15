@@ -20,9 +20,15 @@ if(empty($_POST["login"]) || empty($_POST["password"])) {
     if($compte->getCompte_pass() == $_POST["password"]) {
 
       $_SESSION["login"] = $_POST["login"];
+      if($compteManager->IsAdmin($compte->getCompte_id())) {
+        $_SESSION["admin"] = true;
+      }
+      if($compteManager->IsLivreur($compte->getCompte_id())) {
+        $_SESSION["livreur"] = true;
+      }
       echo "Connecté.";
-      sleep(1);
-      header('Location: index.php?page=1');
+      //sleep(1);
+      header('Location: index.php?page=0');
       exit();
 
     } else {
