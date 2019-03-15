@@ -40,7 +40,7 @@ class CommandeManager
         $requete->execute();
         $resultat = $requete->fetch(PDO::FETCH_OBJ);
         $requete->closeCursor();
-        return json_encode($resultat);
+        echo json_encode($resultat);
     }
 
     public function getPrixParAnneeEtFournisseur(){
@@ -53,6 +53,30 @@ class CommandeManager
         $requete->execute();
         $resultat = $requete->fetch(PDO::FETCH_OBJ);
         $requete->closeCursor();
-        return json_encode($resultat);
+        echo json_encode($resultat);
     }
+
+    public function getFacture($COMMANDE_ID){
+
+        $sql = 'SELECT c.COMMANDE_ID, c.COMMANDE_DATE_CREATION, c.COMMANDE_DATE_LIVRAISON,
+                P.PRODUIT_LIBELLE, p.PRODUIT_PRIX_VENTE,
+                l.LIGNE_QUANTITE,
+                (p.PRODUIT_PRIX_VENTE*l.LIGNE_QUANTITE) as Montant,
+                cl.SOCIETE_ID,
+                a.ADRESSE_RUE_NUM, r.RUE_TYPE_LIBELLE, a.ADRESSE_RUE_NOM, a.ADRESSE_CP,a.ADRESSE_VILLE
+                FROM commande c 
+                JOIN ligne l ON c.COMMANDE_ID = l.COMMANDE_ID JOIN produit p ON l.PRODUIT_ID = P.PRODUIT_ID 
+                JOIN categorieprod ca ON p.CATEGORIE_PROD_ID = ca.CATEGORIE_PROD_ID 
+                JOIN client cl ON c.CLIENT_ID = cl.CLIENT_ID JOIN adresse a ON cl.SOCIETE_ID = a.SOCIETE_ID  
+                JOIN societe so ON a.SOCIETE_ID = so.SOCIETE_ID JOIN ruetype r ON a.RUE_TYPE_ID = r.RUE_TYPE_ID
+                WHERE c.COMMANDE_ID = :COMMANDE_ID';
+
+        $requete = $this->dbo->prepare($sql);
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_OBJ);
+        $requete->bindValue(':COMMANDE_ID', $COMMANDE_ID);
+        $requete->closeCursor();
+        echo json_encode($resultat);
+    }
+
 }
