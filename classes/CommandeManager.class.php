@@ -80,7 +80,8 @@ class CommandeManager
     }
 
     public function getAllNuméroCommande(){
-        $sql = 'SELECT c.COMMANDE_ID FROM commande c';
+        $sql = 'SELECT c.commande_id, s.SOCIETE_RAISON_SOCIAL FROM commande c JOIN client cl ON c.CLIENT_ID = cl.CLIENT_ID JOIN societe s ON cl.SOCIETE_ID = s.SOCIETE_ID
+ORDER by COMMANDE_DATE_CREATION';
         $requete = $this->dbo->prepare($sql);
         $requete->execute();
         $resultat = $requete->fetch(PDO::FETCH_OBJ);
