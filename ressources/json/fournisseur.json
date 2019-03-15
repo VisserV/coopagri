@@ -24,6 +24,30 @@
     }]
 }, {
     "stocks": [],
+    "id": 7,
+    "raisonSociale": "On cré pas des entreprises NOUUUUUUS ?",
+    "facturationAdresse": null,
+    "livraisonAdresses": [{
+        "id": 4,
+        "societe": {
+            "stocks": [],
+            "id": 4,
+            "raisonSociale": "Le bon potager",
+            "facturationAdresse": null,
+            "livraisonAdresses": [null]
+        },
+        "rueNumero": 1,
+        "rueNumeroComplement": null,
+        "rueType": {
+            "id": 1,
+            "libelle": "rue"
+        },
+        "rueNom": "des coop\u00e9rateurs",
+        "codePostal": "87200",
+        "ville": "saint junien"
+    }]
+}, {
+    "stocks": [],
     "id": 5,
     "raisonSociale": "D\u00e9lis Juice",
     "facturationAdresse": null,
@@ -46,4 +70,5 @@
         "codePostal": "87000",
         "ville": "limoges"
     }]
+
 }]

@@ -36,17 +36,17 @@ function chargerInfoLivraison(){
 		dataType :"json",
 		success:function(data){
 			data.forEach(function(element){
-				$('table').append('<tr><th>'
-					+element.id+'</th><th>'
-					+element.commande.dateLivraison+'</th><th>'
+				$('table').append('<tr><td>'
+					+element.id+'</td><td>'
+					+element.commande.dateLivraison+'</td><td>'
 					+element.commande.adresseLivraison.societe+' <br>'
 					+element.commande.adresseLivraison.rueNumero+' '
 					+element.commande.adresseLivraison.rueNumeroComplement+' <br>'
 					+element.commande.adresseLivraison.rueType+' '
 					+element.commande.adresseLivraison.rueNom+' <br>'
 					+element.commande.adresseLivraison.codePostal+' '
-					+element.commande.adresseLivraison.ville+'</th><th>'
-					+element.commande.client.facturationAdresse+'</th><th><a href="index.php?page=34"><button type="button">Détails</button></a></th></tr>')
+					+element.commande.adresseLivraison.ville+'</td><td>'
+					+element.commande.client.facturationAdresse+'</td><td><a href="index.php?page=34"><button type="button">Détails</button></a></td></tr>')
 				
 			})
 

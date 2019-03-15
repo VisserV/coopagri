@@ -46,6 +46,9 @@
     <div class="Pénalités_Menu_Accueil_Commande">
         <a href="#">Pénalités</a>
     </div>
+    <div class="Stat_Menu_Accueil_Commande">
+        <a href="index.php?page=37">Statistiques</a>
+    </div>
     <div class="Historique_Menu_Accueil_Commande">
         <a href="#">Historique</a>
     </div>

@@ -58,6 +58,10 @@ if(isset($_SESSION["login"])){
 			include_once('pages/CommandePasserCommande.inc.php');
 			break;
 
+        case 37 :
+            include_once ('pages/StatCommande.inc.php');
+            break;
+
         
         default : include_once('pages/accueil.inc.php');
     }
