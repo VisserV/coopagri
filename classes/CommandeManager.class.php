@@ -79,4 +79,12 @@ class CommandeManager
         echo json_encode($resultat);
     }
 
+    public function getAllNuméroCommande(){
+        $sql = 'SELECT c.COMMANDE_ID FROM commande c';
+        $requete = $this->dbo->prepare($sql);
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_OBJ);
+        $requete->closeCursor();
+        echo json_encode($resultat);
+    }
 }
