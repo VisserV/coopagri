@@ -2,7 +2,7 @@ $(document).ready(function () {
     init();
     chargerCategorie();
     chargerProd(1);
-    });
+});
 
 
 function init() {
@@ -27,12 +27,23 @@ function init() {
     tableau.attr('id', "liste");
     tableau.addClass("table");
     tableau.addClass("table-striped");
-    tableau.append("<tr><th scope='col'>ID</th><th scope='col'>Image</th><th scope='col'> NOM</th><th scope='col'>PU</th><th scope='col'>Quantité</th></tr>");
+    tableau.append("<th scope='col'>ID</th><th scope='col'>Image</th><th scope='col'> NOM</th><th scope='col'>PU</th><th scope='col'>Quantité</th>");
 
+    let prixTotal = $('<div>');
+    prixTotal.addClass("divPrixTotal");
+    prixTotal.append("<p> Prix total de la commande : </p>");
+
+    let inputPrixTotal = $('<input>');
+    inputPrixTotal.attr('id','prixTotal');
+    inputPrixTotal.attr('disabled',"disabled");
+    inputPrixTotal.val("0");
+
+    prixTotal.append(inputPrixTotal);
 
     //$('body').append(ligne);
     $('body').append(categorie);
     $('body').append(tableau);
+    $('body').append(prixTotal);
 
 };
 
@@ -53,41 +64,56 @@ function chargerProd(id) {
     $("#liste").empty();
 
     //let tableau = $('<table>');
-    $("#liste").append("<thead><tr><th scope='col'>ID</th><th scope='col'>Image</th><th scope='col'> NOM</th><th scope='col'>PU</th><th scope='col'>Quantité</th></tr></thead>");
+    $("#liste").append("<thead><th scope='col'>ID</th><th scope='col'>Image</th><th scope='col'> NOM</th><th scope='col'>PU</th><th scope='col'>Quantité</th></thead>");
     $.ajax({
         url: "ressources/json/produits.json",
         dataType: "json",
         success: function (data) {
-            data.forEach(function (element) {
+            data.forEach(function (element, index) {
                 if (id == element.categorie.id) {
                     if (element.image == null || element.image == "") {
                         var url = "ressources/img/no_image.png";
                     }else{
                         var url = element.image;
                     }
-                    $("#liste").append("<tr scope='row'>" +
+                    $("#liste").append("<tr class='ligne' scope='row'>" +
                     '<td>' + element.id + '</td>' +
                     '<td><img width="auto" height="50px" src='+url+'></td>' +
                     '<td>' + element.libelle + '</td>' +
-                    '<td>' + element.prixVente + '</td>' +
-                    '<td><form><div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div><input type="number" id="number" value="0" /><div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div></form></td>'+'</tr>')
+                    '<td id="prix'+index+'">' + element.prixVente + '</td>' +
+                    '<td><form><div class="value-button" id="decrease" onclick="decreaseValue('+index+')" value="Decrease Value">-</div><input type="number" id="number'+index+'" value="0" /><div class="value-button" id="increase" onclick="increaseValue('+index+')" value="Increase Value">+</div></form></td>'+'</tr>')
                 }
-            })
+            });
         }
     });
+
 }
 
-function increaseValue() {
-  var value = parseInt(document.getElementById('number').value, 10);
-  value = isNaN(value) ? 0 : value;
-  value++;
-  document.getElementById('number').value = value;
+function calculPrixTotal(){
+    let liste = $('#liste .ligne');
+    var total = 0;
+
+    for (var i = 0; i < liste.length; i++) {
+        var prix = parseFloat(document.getElementById('prix'+i).innerText);
+        var quantite = parseFloat(document.getElementById('number'+i).value);
+        total += prix*quantite
+    }
+    document.getElementById('prixTotal').value = total.toFixed(2);
 }
 
-function decreaseValue() {
-  var value = parseInt(document.getElementById('number').value, 10);
-  value = isNaN(value) ? 0 : value;
-  value < 1 ? value = 1 : '';
-  value--;
-  document.getElementById('number').value = value;
+function increaseValue(index) {
+    var value = parseInt(document.getElementById('number'+index).value, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById('number'+index).value = value;
+    calculPrixTotal();
+}
+
+function decreaseValue(index) {
+    var value = parseInt(document.getElementById('number'+index).value, 10);
+    value = isNaN(value) ? 0 : value;
+    value < 1 ? value = 1 : '';
+    value--;
+    document.getElementById('number'+index).value = value;
+    calculPrixTotal();
 }
