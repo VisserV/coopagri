@@ -12,6 +12,7 @@ function init() {
     rechercherSelect.attr('id',"rechercher");
 
     let categorie = $('<p>');
+    categorie.attr('id', 'idCategorie');
     categorie.text("Catégorie : ");
 
     let ligne = $('<select>');
@@ -31,7 +32,7 @@ function init() {
 
     let prixTotal = $('<div>');
     prixTotal.addClass("divPrixTotal");
-    prixTotal.append("<p> Prix total de la commande : </p>");
+    prixTotal.append("<b>Prix total de la commande :</b");
 
     let inputPrixTotal = $('<input>');
     inputPrixTotal.attr('id','prixTotal');
@@ -39,6 +40,7 @@ function init() {
     inputPrixTotal.val("0");
 
     prixTotal.append(inputPrixTotal);
+    prixTotal.append("€");
 
     //$('body').append(ligne);
     $('body').append(categorie);
@@ -81,7 +83,7 @@ function chargerProd(id) {
                     '<td><img width="auto" height="50px" src='+url+'></td>' +
                     '<td>' + element.libelle + '</td>' +
                     '<td id="prix'+index+'">' + element.prixVente + '</td>' +
-                    '<td><form><div class="value-button" id="decrease" onclick="decreaseValue('+index+')" value="Decrease Value">-</div><input type="number" id="number'+index+'" value="0" /><div class="value-button" id="increase" onclick="increaseValue('+index+')" value="Increase Value">+</div></form></td>'+'</tr>')
+                    '<td><div class="value-button" id="decrease" onclick="decreaseValue('+index+')" value="Decrease Value">-</div><input type="number" id="number'+index+'" value="0"  onchange="calculPrixTotal()" /><div class="value-button" id="increase" onclick="increaseValue('+index+')" value="Increase Value">+</div></td>'+'</tr>')
                 }
             });
         }

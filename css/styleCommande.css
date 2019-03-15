@@ -7,6 +7,7 @@
     flex-direction: row;
     margin: 5px 5px 25px 5px;
     background: gray;
+    flex-wrap: wrap;
 }
 .Menu_Accueil_Commande > div {
     margin: 22px 30px;
@@ -86,18 +87,42 @@
     padding: 7px;
 }
 
+.table {
+    width: 80% !important;
+    margin: auto;
+}
+
 .value-button {
     display: inline-block;
     border: 1px solid #ddd;
     margin: 0px;
+    margin-top: -5px;
     width: 40px;
-    height: 20px;
+    height: 30px;
     text-align: center;
     vertical-align: middle;
-    padding: 11px 0;
+    font-weight: bold;
     background: #eee;
 }
-
+#liste input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+}
+#prixTotal {
+    margin-right: 5px;
+    margin-left: 10px;
+}
+.divPrixTotal {
+    margin-left: 40px;
+}
+#idCategorie {
+    margin-left: 40px;
+}
+.divPrixTotal input {
+    text-align: right;
+    width: 135px;
+}
 .value-button:hover {
     cursor: pointer;
 }
