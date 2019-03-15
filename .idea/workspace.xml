@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="88e4e4b0-d9ec-4608-ba84-9382caed85ce" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="88e4e4b0-d9ec-4608-ba84-9382caed85ce" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/config.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/pages/accueil.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/pages/accueil.inc.php" afterDir="false" />
+    </list>
+>>>>>>> cf20c43a83c5c4bcfd7d7972d4af3e0295066d0f
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -11,6 +19,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FUSProjectUsageTrigger">
     <session id="-1619766279">
       <usages-collector id="statistics.lifecycle.project">
@@ -43,11 +52,24 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
               <caret line="17" selection-start-line="17" selection-end-line="17" />
+=======
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/classes/CommandeManager.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="31" column="52" lean-forward="true" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
+              <folding>
+                <element signature="e#6#90#0#PHP" expanded="true" />
+              </folding>
+>>>>>>> cf20c43a83c5c4bcfd7d7972d4af3e0295066d0f
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$USER_HOME$/WebstormProjects/programationRiche/TD2Exercice2.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="714">
@@ -84,11 +106,23 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+=======
+        <entry file="file://$PROJECT_DIR$/include/pages/factureMenu.inc.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/pages/accueil.inc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+>>>>>>> cf20c43a83c5c4bcfd7d7972d4af3e0295066d0f
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/js/router.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -116,6 +150,12 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+=======
+        <entry file="file://$PROJECT_DIR$/include/config.inc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+>>>>>>> cf20c43a83c5c4bcfd7d7972d4af3e0295066d0f
             </state>
           </provider>
         </entry>
@@ -138,24 +178,25 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/include/texte.inc.php" />
         <option value="$PROJECT_DIR$/include/header.inc.php" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/js/facturation.js" />
+=======
+        <option value="$PROJECT_DIR$/classes/CommandeManager.php" />
+        <option value="$PROJECT_DIR$/include/pages/accueil.inc.php" />
+        <option value="$PROJECT_DIR$/include/config.inc.php" />
+        <option value="$PROJECT_DIR$/classes/CommandeManager.class.php" />
+>>>>>>> cf20c43a83c5c4bcfd7d7972d4af3e0295066d0f
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpServers">
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-45" />
-    <option name="y" value="-30" />
-    <option name="width" value="1940" />
-    <option name="height" value="1050" />
+    <option name="x" value="345" />
+    <option name="y" value="-18" />
+    <option name="width" value="900" />
+    <option name="height" value="867" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -174,11 +215,19 @@
               <item name="coopagri" type="b2602c69:ProjectViewProjectNode" />
               <item name="coopagri" type="462c0819:PsiDirectoryNode" />
               <item name="classes" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
             </path>
             <path>
               <item name="coopagri" type="b2602c69:ProjectViewProjectNode" />
               <item name="coopagri" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coopagri" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coopagri" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+=======
+>>>>>>> cf20c43a83c5c4bcfd7d7972d4af3e0295066d0f
             </path>
             <path>
               <item name="coopagri" type="b2602c69:ProjectViewProjectNode" />
@@ -190,11 +239,6 @@
               <item name="coopagri" type="462c0819:PsiDirectoryNode" />
               <item name="include" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="coopagri" type="b2602c69:ProjectViewProjectNode" />
-              <item name="coopagri" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -233,18 +277,34 @@
       <updated>1549634779891</updated>
       <workItem from="1549634783272" duration="754000" />
       <workItem from="1550065057396" duration="759000" />
+<<<<<<< HEAD
       <workItem from="1552490471460" duration="12000" />
       <workItem from="1552653291477" duration="236000" />
+=======
+      <workItem from="1552640953228" duration="25000" />
+      <workItem from="1552641088343" duration="15000" />
+      <workItem from="1552649679850" duration="2456000" />
+>>>>>>> cf20c43a83c5c4bcfd7d7972d4af3e0295066d0f
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="4808000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2818792" />
+=======
+    <option name="totallyTimeSpent" value="6447000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30607286" />
+>>>>>>> cf20c43a83c5c4bcfd7d7972d4af3e0295066d0f
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -264,12 +324,29 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.254251" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Json Parser" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ressources/json/livraisons.json">
@@ -299,7 +376,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/pages/facture.inc.php">
+    <entry file="file://$PROJECT_DIR$/include/pages/facture.inc.php" />
+    <entry file="file://$PROJECT_DIR$/js/facturation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ressources/json/produits.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
@@ -319,6 +404,7 @@
     <entry file="file://$PROJECT_DIR$/css/stylesheet.css">
       <provider selected="true" editor-type-id="text-editor">
         <state>
+<<<<<<< HEAD
           <caret column="7" selection-start-column="7" selection-end-column="7" />
         </state>
       </provider>
@@ -327,13 +413,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+=======
+          <caret column="12331" selection-start-column="12331" selection-end-column="12331" />
+>>>>>>> cf20c43a83c5c4bcfd7d7972d4af3e0295066d0f
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/facturation.js">
+    <entry file="file://$PROJECT_DIR$/ressources/json/commandes.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ressources/json/livraisons.json">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="487">
           <caret line="137" column="52" lean-forward="true" selection-start-line="137" selection-start-column="52" selection-end-line="137" selection-end-column="52" />
+=======
+        <state>
+          <caret column="2341" selection-start-column="2341" selection-end-column="2341" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/Mypdo.class.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/pages/factureMenu.inc.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/pages/accueil.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/config.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/CommandeManager.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="31" column="52" lean-forward="true" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
+          <folding>
+            <element signature="e#6#90#0#PHP" expanded="true" />
+          </folding>
+>>>>>>> cf20c43a83c5c4bcfd7d7972d4af3e0295066d0f
         </state>
       </provider>
     </entry>
