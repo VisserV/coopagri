@@ -31,4 +31,39 @@ class CompteManager {
 
         return $cpt;
     }
+
+    public function IsAdmin($id) {
+        $sql = 'SELECT CATEGORIE_PER_ADMIN FROM compte JOIN personnel ON compte.COMPTE_ID = personnel.COMPTE_ID JOIN categorieper ON personnel.CATEGORIE_PER_ID = categorieper.CATEGORIE_PER_ID WHERE compte.COMPTE_ID = :id';
+        $requete = $this->db->prepare($sql);
+
+        $requete->bindValue(':id',$id);
+        $retour = $requete->execute();
+
+        $resultat = $requete->fetch(PDO::FETCH_OBJ);
+
+        if(isset($resultat->CATEGORIE_PER_LIVREUR)) {
+            return $resultat->CATEGORIE_PER_ADMIN == 1;
+        } else {
+            return null;
+        }
+        
+    }
+    
+
+    public function IsLivreur($id) {
+            $sql = 'SELECT CATEGORIE_PER_LIVREUR FROM compte JOIN personnel ON compte.COMPTE_ID = personnel.COMPTE_ID JOIN categorieper ON personnel.CATEGORIE_PER_ID = categorieper.CATEGORIE_PER_ID WHERE compte.COMPTE_ID = :id';
+            $requete = $this->db->prepare($sql);
+    
+            $requete->bindValue(':id',$id);
+            $retour = $requete->execute();
+    
+            $resultat = $requete->fetch(PDO::FETCH_OBJ);
+
+            if(isset($resultat->CATEGORIE_PER_LIVREUR)) {
+                return $resultat->CATEGORIE_PER_LIVREUR == 1;
+            } else {
+                return null;
+            }
+    }
+    
 }
