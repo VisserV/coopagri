@@ -42,4 +42,17 @@ class CommandeManager
         $requete->closeCursor();
         return json_encode($resultat);
     }
+
+    public function getPrixParAnneeEtFournisseur(){
+
+        $sql = 'SELECT p.PRODUIT_LIBELLE as TypeDeProduit, s.SOCIETE_RAISON_SOCIAL, SUM(p.PRODUIT_PRIX_VENTE * l.LIGNE_QUANTITE) as PrixParMois, YEAR(c.COMMANDE_DATE_CREATION) as Annee
+                FROM commande c JOIN ligne l ON c.COMMANDE_ID = l.COMMANDE_ID JOIN produit p ON l.PRODUIT_ID = P.PRODUIT_ID JOIN fournisseur f ON p.FOURNISSEUR_ID = f.FOURNISSEUR_ID JOIN societe s ON f.SOCIETE_ID = s.SOCIETE_ID  
+                GROUP BY TypeDeProduit, Annee, SOCIETE_RAISON_SOCIAL';
+
+        $requete = $this->dbo->prepare($sql);
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_OBJ);
+        $requete->closeCursor();
+        return json_encode($resultat);
+    }
 }
