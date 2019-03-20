@@ -1,5 +1,4 @@
 <?php
-
 class CompteManager {
     private $db;
 
@@ -41,7 +40,7 @@ class CompteManager {
 
         $resultat = $requete->fetch(PDO::FETCH_OBJ);
 
-        if(isset($resultat->CATEGORIE_PER_LIVREUR)) {
+        if(isset($resultat->CATEGORIE_PER_ADMIN)) {
             return $resultat->CATEGORIE_PER_ADMIN == 1;
         } else {
             return null;
@@ -65,5 +64,22 @@ class CompteManager {
                 return null;
             }
     }
+
+    public function IsClient($id) {
+        $sql = 'SELECT CLIENT_ID FROM compte JOIN societe ON compte.COMPTE_ID = societe.COMPTE_ID JOIN client ON societe.SOCIETE_ID = client.SOCIETE_ID WHERE compte.COMPTE_ID = :id';
+        $requete = $this->db->prepare($sql);
+
+        $requete->bindValue(':id', $id);
+        $retour = $requete->execute();
+
+        $resultat = $requete->fetch(PDO::FETCH_OBJ);
+
+        if(isset($resultat->CLIENT_ID)) {
+            return true;
+        } else {
+            return null;
+        }
+    }
     
 }
+?>

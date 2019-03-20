@@ -19,12 +19,19 @@ if(empty($_POST["login"]) || empty($_POST["password"])) {
 
     if($compte->getCompte_pass() == $_POST["password"]) {
 
-      $_SESSION["login"] = $_POST["login"];
+      $_SESSION["id"] = $compteManager->getCompte_from_login($_POST["login"])->getCompte_id();
+
       if($compteManager->IsAdmin($compte->getCompte_id())) {
         $_SESSION["admin"] = true;
       }
+
       if($compteManager->IsLivreur($compte->getCompte_id())) {
         $_SESSION["livreur"] = true;
+      }
+
+      if($compteManager->isClient($compte->getCompte_id())) {
+        //sleep(5);
+        $_SESSION["client"] = true;
       }
       echo "Connecté.";
       //sleep(1);
