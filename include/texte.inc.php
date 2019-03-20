@@ -67,6 +67,9 @@ if(isset($_SESSION["admin"])){
         case 34:
             include_once('pages/ConsulterCommandeLivraison.inc.php');
             break;
+
+        case 36 :
+            include_once('pages/CommandePasserCommande.inc.php');
     }
 } else if(isset($_SESSION["livreur"])) {
 

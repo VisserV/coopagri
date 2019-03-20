@@ -1,1 +1,1 @@
-<script src ='js/CommandePasserCommande.js'></script>
+<script src ="js/CommandePasserCommande.js"></script>
