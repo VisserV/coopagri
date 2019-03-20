@@ -3,12 +3,12 @@ $(document).ready(function () {
     function init(){
         let body = $('#texte');
         /*label et select fournisseur*/
-        let labelFournisseur = $('<label>');
-        labelFournisseur.append("Categorie");
-        body.append(labelFournisseur);
-        let selectFournisseur = $('<select>');
-        selectFournisseur.attr('id',"selectCategorie");
-        body.append(selectFournisseur);
+        // let labelFournisseur = $('<label>');
+        // labelFournisseur.append("Categorie");
+        // body.append(labelFournisseur);
+        // let selectFournisseur = $('<select>');
+        // selectFournisseur.attr('id',"selectCategorie");
+        // body.append(selectFournisseur);
 
 
 
@@ -84,9 +84,7 @@ $(document).ready(function () {
         valider.attr('id','valider');
         body.append(valider);
     }
-    /*$( function() {
-        $( "#accordion" ).accordion();
-    } );*/
+
     $( function() {
         $( "#resizable" ).resizable({
             maxHeight: 10,
@@ -115,18 +113,22 @@ $(document).ready(function () {
         });
     } );
     init();
-    chemin = "ressources/json/";
-    json = chemin + "clients.json";
+    chemin = "index.php?page=60&fct=1 ";
     $.ajax({
-        url: json,
-        dataType: 'json',
+        url: chemin,
+        dataType: 'html',
+        type:"Get",
         success: function (data) {
             console.log(data);
             $.each(data,function (i,donne) {
 
             });
         },
+        error : function(p1,p2){
+            console.log(p1,p2);
+        }
     });
+
     $(document).ready(function() {
         $('.js-example-basic-multiple').select2();
     });

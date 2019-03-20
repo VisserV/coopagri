@@ -1,5 +1,6 @@
+<?php if(!isset($_GET['fct'])){ ?>
 <div id="texte">
-<?php
+<?php }
 if (!empty($_GET["page"])){
 	$page=$_GET["page"];}
 	else
@@ -19,8 +20,11 @@ switch ($page){
     case 50:
         include_once('pages/facture.inc.php');
         break;
+    case 60 :
+        include_once('pages/facturationGet.php');
+        break;
 default : 	include_once('pages/accueil.inc.php');
-}
-
-?>
+} ?>
+<?php if(!isset($_GET['fct'])){?>
 </div>
+    <?php } ?>
