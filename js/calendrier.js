@@ -11,7 +11,7 @@ function afficheClt(){
                     //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                     let div = $('<div>');
                     div.attr('class', "fc-event");
-                    div.text('Client n° '+ elt.id);
+                    div.text('Client '+ elt.raisonSociale);
                     $(externalevt).append(div)
               });
          },
@@ -31,13 +31,35 @@ function afficheClt(){
                      //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                      let div = $('<div>');
                      div.attr('class', "fc-event");
-                     div.text('Fournisseur n° '+ elt.id);
+                     div.text('Fournisseur '+ elt.raisonSociale);
                      $(externalevt).append(div)
                });
           },
       });
 
   };
+
+  function afficheLivr(){
+       let externalevt = document.getElementById('calendar');
+       console.log(externalevt);
+       $.ajax({
+           url:'./ressources/json/personnes.json',
+           dataType:'json',
+           async : false,
+           success : function(data){
+                console.log(data);
+                $.each(data, function(i, elt){
+                      //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
+                  if (elt.prenom == 'Livreur 1' || elt.prenom == 'Livreur 2' ) {
+                      let div = $('<div>');
+                      div.text(elt.prenom);
+                      $(externalevt).append(div)
+                    }
+                });
+           },
+       });
+
+   };
 
  $(function() { // document ready
 
@@ -71,45 +93,24 @@ function afficheClt(){
      editable: true, // enable draggable events
      droppable: true, // this allows things to be dropped onto the calendar
      aspectRatio: 1.8,
+     eventOverlap: false,
      scrollTime: '00:00', // undo default 6am scrollTime
      header: {
-       left: 'prev,next',
+       left: 'today prev,next',
        center: 'title',
-       right: 'timelineDay'
+       right: 'timelineDay,timelineThreeDays,agendaWeek,month'
      },
      defaultView: 'timelineDay',
-     
-     resourceLabelText: 'Rooms',
+     views: {
+       timelineThreeDays: {
+         type: 'timeline',
+         duration: { days: 3 }
+       }
+     },
+     resourceLabelText: 'Livraison',
      resources: [
-       { id: 'a', title: 'Auditorium A' },
-       { id: 'b', title: 'Auditorium B', eventColor: 'green' },
-       { id: 'c', title: 'Auditorium C', eventColor: 'orange' },
-       { id: 'd', title: 'Auditorium D', children: [
-         { id: 'd1', title: 'Room D1' },
-         { id: 'd2', title: 'Room D2' }
-       ] },
-       { id: 'e', title: 'Auditorium E' },
-       { id: 'f', title: 'Auditorium F', eventColor: 'red' },
-       { id: 'g', title: 'Auditorium G' },
-       { id: 'h', title: 'Auditorium H' },
-       { id: 'i', title: 'Auditorium I' },
-       { id: 'j', title: 'Auditorium J' },
-       { id: 'k', title: 'Auditorium K' },
-       { id: 'l', title: 'Auditorium L' },
-       { id: 'm', title: 'Auditorium M' },
-       { id: 'n', title: 'Auditorium N' },
-       { id: 'o', title: 'Auditorium O' },
-       { id: 'p', title: 'Auditorium P' },
-       { id: 'q', title: 'Auditorium Q' },
-       { id: 'r', title: 'Auditorium R' },
-       { id: 's', title: 'Auditorium S' },
-       { id: 't', title: 'Auditorium T' },
-       { id: 'u', title: 'Auditorium U' },
-       { id: 'v', title: 'Auditorium V' },
-       { id: 'w', title: 'Auditorium W' },
-       { id: 'x', title: 'Auditorium X' },
-       { id: 'y', title: 'Auditorium Y' },
-       { id: 'z', title: 'Auditorium Z' }
+       { id:'a', title: 'Livreur 1'},
+       { id:'b', title: 'Livreur 2'}
      ],
      drop: function(date, jsEvent, ui, resourceId) {
        console.log('drop', date.format(), resourceId);
@@ -125,7 +126,13 @@ function afficheClt(){
      },
      eventDrop: function(event) { // called when an event (already on the calendar) is moved
        console.log('eventDrop', event);
-     }
+     },
+     eventRender: function(event, element) {
+        element.find(".fc-bg").css("pointer-events","none");
+        element.append("<div style='position:absolute;bottom:0px;right:0px; z-index:10;'><button type='button' id='btnDeleteEvent' class='btn btn-block btn-primary btn-flat'>X</button></div>" );
+        element.find("#btnDeleteEvent").click(function(){
+             $('#calendar').fullCalendar('removeEvents',event._id);
+        });}
    });
 
  });

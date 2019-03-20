@@ -1,10 +1,10 @@
 <div id='wrap'>
 
   <div id='external-events'>
-    <h4>Draggable Events</h4>
+    <h4>Evenement déplaçable</h4>
     <p>
       <input type='checkbox' id='drop-remove' />
-      <label for='drop-remove'>remove after drop</label>
+      <label for='drop-remove'>Effacer une fois insérer</label>
     </p>
   </div>
 
