@@ -12,4 +12,6 @@
 
   <div style='clear:both'></div>
 
+  <input type="button" value="Valider" onClick=valider() ; id="validation" />
+
 </div>
