@@ -83,7 +83,7 @@ function chargerProd(id) {
                     '<td><img width="auto" height="50px" src='+url+'></td>' +
                     '<td>' + element.libelle + '</td>' +
                     '<td id="prix'+index+'">' + element.prixVente + '</td>' +
-                    '<td><div class="value-button" id="decrease" onclick="decreaseValue('+index+')" value="Decrease Value">-</div><input type="number" id="number'+index+'" value="0"  onchange="calculPrixTotal()" /><div class="value-button" id="increase" onclick="increaseValue('+index+')" value="Increase Value">+</div></td>'+'</tr>')
+                    '<td><button class="value-button" id="decrease" onclick="decreaseValue('+index+')" value="Decrease Value">-</button><input type="number" id="number'+index+'" value="0"  onchange="calculPrixTotal()" /><button class="value-button" id="increase" onclick="increaseValue('+index+')" value="Increase Value">+</button></td>'+'</tr>')
                 }
             });
         }
