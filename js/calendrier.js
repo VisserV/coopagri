@@ -109,7 +109,8 @@ function afficheClt(){
      },
      resourceLabelText: 'Livraison',
      resources: [
-       { id:'a', title: 'Livreur 1'}
+       { id:'a', title: 'Livreur 1'},
+       { id:'b', title: 'Livreur 2'}
      ],
      drop: function(date, jsEvent, ui, resourceId) {
        console.log('drop', date.format(), resourceId);
@@ -128,7 +129,7 @@ function afficheClt(){
      },
      eventRender: function(event, element) {
         element.find(".fc-bg").css("pointer-events","none");
-        element.append("<div style='position:absolute;bottom:0px;right:0px' ><button type='button' id='btnDeleteEvent' class='btn btn-block btn-primary btn-flat'>X</button></div>" );
+        element.append("<div style='position:absolute;bottom:0px;right:0px; z-index:10;'><button type='button' id='btnDeleteEvent' class='btn btn-block btn-primary btn-flat'>X</button></div>" );
         element.find("#btnDeleteEvent").click(function(){
              $('#calendar').fullCalendar('removeEvents',event._id);
         });}
