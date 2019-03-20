@@ -1,7 +1,20 @@
+var mesProduits = new Array();
+
 $(document).ready(function () {
     init();
     chargerCategorie();
-    chargerProd(1);
+    chargerProd(0);
+
+    let tableau = $('#liste .ligne');
+
+    for (var i = 0; i < tableau.length; i++) {
+        var id = (document.getElementById(i).innerText);
+        var prix = parseFloat(document.getElementById('prix'+i).innerText);
+        var quantite = parseFloat(document.getElementById('number'+i).value);
+
+        var produit = [id, prix, quantite];
+        mesProduits[i] = produit;
+    }
 });
 
 
@@ -50,9 +63,11 @@ function init() {
 };
 
 function chargerCategorie() {
+    $('#LSTCATEG').append("<option value=0 >Tous</option>");
     $.ajax({
         url: "ressources/json/categorieProduit.json",
         dataType: "json",
+        async : false,
         success: function (data) {
             data.forEach(function (element) {
                 $('#LSTCATEG').append("<option value="+ element.id +" >" + element.libelle + "</option>")
@@ -70,20 +85,37 @@ function chargerProd(id) {
     $.ajax({
         url: "ressources/json/produits.json",
         dataType: "json",
+        async : false,
         success: function (data) {
             data.forEach(function (element, index) {
-                if (id == element.categorie.id) {
+                if(id != 0){
+                    if (id == element.categorie.id) {
+                        if (element.image == null || element.image == "") {
+                            var url = "ressources/img/no_image.png";
+                        }else{
+                            var url = element.image;
+                        }
+                        $("#liste").append("<tr class='ligne' scope='row'>" +
+                        '<td  id = "'+index+'">' + element.id + '</td>' +
+                        '<td><img width="auto" height="50px" src='+url+'></td>' +
+                        '<td>' + element.libelle + '</td>' +
+                        '<td id="prix'+index+'">' + element.prixVente + '</td>' +
+                        '<td><button class="value-button" id="decrease" onclick="decreaseValue('+index+')" value="Decrease Value">-</button><input type="number" id="number'+index+'" value="0"  onchange="calculPrixTotal()" /><button class="value-button" id="increase" onclick="increaseValue('+index+')" value="Increase Value">+</button></td>'+'</tr>')
+                    }
+                }
+                else{
                     if (element.image == null || element.image == "") {
                         var url = "ressources/img/no_image.png";
                     }else{
                         var url = element.image;
                     }
                     $("#liste").append("<tr class='ligne' scope='row'>" +
-                    '<td>' + element.id + '</td>' +
+                    '<td id = "'+index+'">' + element.id + '</td>' +
                     '<td><img width="auto" height="50px" src='+url+'></td>' +
                     '<td>' + element.libelle + '</td>' +
                     '<td id="prix'+index+'">' + element.prixVente + '</td>' +
-                    '<td><button class="value-button" id="decrease" onclick="decreaseValue('+index+')" value="Decrease Value">-</button><input type="number" id="number'+index+'" value="0"  onchange="calculPrixTotal()" /><button class="value-button" id="increase" onclick="increaseValue('+index+')" value="Increase Value">+</button></td>'+'</tr>')
+                    '<td><button class="value-button" id="decrease" onclick="decreaseValue('+index+')" value="Decrease Value">-</button><input type="number" id="number'+index+'" value="0"  onchange="calculPrixTotal()" /><button class="value-button" id="increase" onclick="increaseValue('+index+')" value="Increase Value">+</button></td>'+'</tr>');
+
                 }
             });
         }
@@ -91,31 +123,53 @@ function chargerProd(id) {
 
 }
 
-function calculPrixTotal(){
-    let liste = $('#liste .ligne');
-    var total = 0;
+/* Partie passer une commande */
 
-    for (var i = 0; i < liste.length; i++) {
-        var prix = parseFloat(document.getElementById('prix'+i).innerText);
-        var quantite = parseFloat(document.getElementById('number'+i).value);
-        total += prix*quantite
+var prixTotal = 0;
+
+function calculPrixTotalSomme(prix){
+    prixTotal += prix;
+    document.getElementById('prixTotal').value = prixTotal.toFixed(2);
+}
+
+function calculPrixTotalSoustraction(prix){
+    if (prixTotal >= prix) {
+        prixTotal -= prix;
     }
-    document.getElementById('prixTotal').value = total.toFixed(2);
+    document.getElementById('prixTotal').value = prixTotal.toFixed(2);
 }
 
 function increaseValue(index) {
+    var id = (document.getElementById(index).innerText);
     var value = parseInt(document.getElementById('number'+index).value, 10);
+    var prix = parseFloat(document.getElementById('prix'+index).innerText);
+
     value = isNaN(value) ? 0 : value;
     value++;
     document.getElementById('number'+index).value = value;
-    calculPrixTotal();
+
+    mesProduits[index] = [id, prix, value];
+    console.log(mesProduits);
+
+    calculPrixTotalSomme(prix);
 }
 
 function decreaseValue(index) {
+    var id = (document.getElementById(index).innerText);
     var value = parseInt(document.getElementById('number'+index).value, 10);
+    var prix = parseFloat(document.getElementById('prix'+index).innerText);
+
+    var limite = value;
+
     value = isNaN(value) ? 0 : value;
     value < 1 ? value = 1 : '';
     value--;
+
+    mesProduits[index] = [id, prix, value];
+    console.log(mesProduits);
+
     document.getElementById('number'+index).value = value;
-    calculPrixTotal();
+    if (limite != 0) {
+        calculPrixTotalSoustraction(prix);
+    }
 }
