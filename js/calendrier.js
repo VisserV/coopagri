@@ -89,10 +89,11 @@ function afficheClt(){
    -----------------------------------------------------------------*/
 
    $('#calendar').fullCalendar({
-     now: '2018-04-07',
+     now: moment().add(1,'day'),
      editable: true, // enable draggable events
      droppable: true, // this allows things to be dropped onto the calendar
      aspectRatio: 1.8,
+     eventOverlap: false,
      scrollTime: '00:00', // undo default 6am scrollTime
      header: {
        left: 'today prev,next',
