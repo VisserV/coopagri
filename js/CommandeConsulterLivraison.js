@@ -1,4 +1,4 @@
-$(document).ready(function(){	
+$(document).ready(function(){
 	init();
 	chargerInfoLivraison();
 });
@@ -11,7 +11,7 @@ function init (){
 	tableau.addClass('tableauLivraison');
 	tableau.append('<tr><th>Numéro commande</th><th>Date de livraison estimée</th><th>Adresse de livraison</th><th>Adresse de facturation</th><th>Produits</th></tr>');
 	div.append(tableau);
-	$('body').append(div);
+	$('#container').append(div);
 };
 
 function chargerproduits(){
@@ -47,10 +47,9 @@ function chargerInfoLivraison(){
 					+element.commande.adresseLivraison.codePostal+' '
 					+element.commande.adresseLivraison.ville+'</td><td>'
 					+element.commande.client.facturationAdresse+'</td><td><a href="index.php?page=34"><button type="button">Détails</button></a></td></tr>')
-				
+
 			})
 
 		}
 	});
 }
-

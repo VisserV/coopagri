@@ -57,9 +57,9 @@ function init() {
 
 
     //$('body').append(ligne);
-    $('body').append(categorie);
-    $('body').append(tableau);
-    $('body').append(prixTotal);
+    $('#container').append(categorie);
+    $('#container').append(tableau);
+    $('#container').append(prixTotal);
 
 };
 

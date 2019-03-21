@@ -31,8 +31,8 @@ function init() {
 
 
     //$('body').append(ligne);
-    $('body').append(categorie);
-    $('body').append(tableau);
+    $('#container').append(categorie);
+    $('#container').append(tableau);
 
 };
 
@@ -75,5 +75,3 @@ function chargerProd(id) {
         }
     });
 }
-
-

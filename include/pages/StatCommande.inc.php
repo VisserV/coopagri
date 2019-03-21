@@ -1,10 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Théo
- * Date: 15/03/2019
- * Time: 13:48
- */
+* Created by PhpStorm.
+* User: Théo
+* Date: 15/03/2019
+* Time: 13:48
+*/
 
 
 ?>
@@ -15,8 +15,8 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 
-<div id="container"></div>
+<div id="container">
 
+    <script src ='js/StatCommande.js'></script>
 
-
-<script src ='js/StatCommande.js'></script>
+</div>

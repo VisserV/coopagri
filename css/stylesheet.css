@@ -2,3 +2,14 @@
 nav ul li a#btn_Connexion, nav ul li a#btn_Connexion :link, nav ul li a#btn_Connexion :visited {
     color: white !important;
 }
+
+.img_Accueil {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    opacity: 0.5;
+}
+
+#container {
+    padding: 25px;
+}

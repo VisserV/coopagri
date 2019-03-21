@@ -1,4 +1,5 @@
 <?php
+/*
 unset($_SESSION['id']);
 if(isset($_SESSION['client'])) {
     unset($_SESSION['client']);
@@ -11,4 +12,5 @@ if(isset($_SESSION['livreur'])) {
 }
 header('Location: index.php?page=0');
 exit();
+*/
 ?>

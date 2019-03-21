@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!doctype html>
 <html lang="fr">
 
@@ -28,7 +27,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">Coopagri</a>
+      <a class="navbar-brand" href="index.php?page=0">Coopagri</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,5 +68,3 @@
       <li><a id="btn_Connexion" href="index.php?page=33">Connexion</a></li>
     </ul>
   </nav>
-
-  <div class="container-fluid">

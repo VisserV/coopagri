@@ -1,4 +1,5 @@
 <?php
+/*
 $pdo = new Mypdo();
 if(empty($_POST["login"]) || empty($_POST["password"])) {
   ?>
@@ -45,4 +46,5 @@ if(empty($_POST["login"]) || empty($_POST["password"])) {
     echo "Nom d'utilisateur invalide.";
   }
 }
+*/
 ?>
