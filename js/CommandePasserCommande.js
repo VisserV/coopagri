@@ -34,7 +34,7 @@ function init() {
     tableau.attr('id', "liste");
     tableau.addClass("table");
     tableau.addClass("table-striped");
-    tableau.append("<th scope='col'>ID</th><th scope='col'>Image</th><th scope='col'> NOM</th><th scope='col'>PU</th><th scope='col'>Quantité</th>");
+    tableau.append("<th scope='col'>Id</th><th scope='col'>Image</th><th scope='col'> Nom</th><th scope='col'>Prix Unitaire</th><th scope='col'>Quantité</th>");
 
     let prixTotal = $('<div>');
     prixTotal.addClass("divPrixTotal");
@@ -99,7 +99,7 @@ function chargerTableau() {
 function chargerProd(categorie_id) {
     $("#liste").empty();
     var produit;
-    $("#liste").append("<thead><th scope='col'>ID</th><th scope='col'>Image</th><th scope='col'> NOM</th><th scope='col'>PU</th><th scope='col'>Quantité</th></thead>");
+    $("#liste").append("<thead><th scope='col'>Id</th><th scope='col'>Image</th><th scope='col'> Nom</th><th scope='col'>Prix Unitaire</th><th scope='col'>Quantité</th></thead>");
 
                 if(categorie_id != 0){
                     for(var i = 1; i < mesProduits.length;i ++){
@@ -115,7 +115,7 @@ function chargerProd(categorie_id) {
                         '<td><img width="auto" height="50px" src='+url+'></td>' +
                         '<td>' + produit[5] + '</td>' +
                         '<td id="prix'+i+'">' + produit[2] + '</td>' +
-                        '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="calculPrixTotal()" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
+                        '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="updatePrice('+i+')" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
                     }
                 }
                 }
@@ -133,7 +133,7 @@ function chargerProd(categorie_id) {
                         '<td><img width="auto" height="50px" src='+url+'></td>' +
                         '<td>' + produit[5] + '</td>' +
                         '<td id="prix'+i+'">' + produit[2] + '</td>' +
-                        '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="calculPrixTotal()" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
+                        '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="updatePrice('+i+')" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
                     }
 
                 }
@@ -146,11 +146,13 @@ function chargerProd(categorie_id) {
 var prixTotal = 0;
 
 function calculPrixTotalSomme(prix){
+    prixTotal = parseFloat(document.getElementById('prixTotal').value);
     prixTotal += prix;
     document.getElementById('prixTotal').value = prixTotal.toFixed(2);
 }
 
 function calculPrixTotalSoustraction(prix){
+    prixTotal = parseFloat(document.getElementById('prixTotal').value);
     if (prixTotal >= prix) {
         prixTotal -= prix;
     }
@@ -176,6 +178,29 @@ function increaseValue(index) {
     console.log(mesProduits);
 
     calculPrixTotalSomme(prix);
+}
+
+function updatePrice(index){
+    var produit = mesProduits[index];
+    var id = (document.getElementById(index).innerText);
+    var value = parseInt(document.getElementById('number'+index).value, 10);
+    var prix = parseFloat(document.getElementById('prix'+index).innerText);
+
+    var calculTotal = parseFloat(document.getElementById('prixTotal').value);
+
+    if(value >= 0){
+        if(produit[3] != value) {
+            calculTotal -= prix * produit[3];
+            console.log(value);
+
+            calculTotal += prix * value;
+        }
+
+        produit[3] = value;
+        document.getElementById('prixTotal').value = calculTotal.toFixed(2);
+    }
+
+
 }
 
 function decreaseValue(index) {
@@ -224,7 +249,7 @@ function recapitulatifCommande(){
                 '<td><img width="auto" height="50px" src='+url+'></td>' +
                 '<td>' + produit[5] + '</td>' +
                 '<td id="prix'+i+'">' + produit[2] + '</td>' +
-                '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="calculPrixTotal()" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
+                '<td><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="calculPrixTotal()" disabled="disabled"/></td>'+'</tr>')
 
         }
     }
