@@ -1,1 +1,4 @@
 /*css*/
+nav ul li a#btn_Connexion, nav ul li a#btn_Connexion :link, nav ul li a#btn_Connexion :visited {
+    color: white !important;
+}
