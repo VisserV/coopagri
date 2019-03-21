@@ -6,8 +6,6 @@ if (!empty($_GET["page"])){
     $page=0;
 }
 
-if(isset($_SESSION["id"])){
-
     switch ($page) {
 
         case 0:
@@ -19,37 +17,16 @@ if(isset($_SESSION["id"])){
             include_once('pages/Deconnexion.inc.php');
             break;
 
-        default : include_once('pages/accueil.inc.php');
-    }
-        // page insertion nouveau client
-} else {
-
-    switch ($page) {
-
         case 33:
             include_once('pages/Connexion.inc.php');
             break;
         
-
-        default : include_once('pages/Connexion.inc.php');
-    }
-}
-
-if(isset($_SESSION["admin"])){
-
-    switch ($page) {
-
         case 37:
             include_once('pages/StatCommande.inc.php');
         //
         // Commandes Livraison
         //
-        default : include_once('pages/accueil.inc.php');
-    }
-
-} else if(isset($_SESSION["client"])) {
-
-    switch ($page) {
+        
         case 30:
             // inclure ici la page accueil photo
             include_once('pages/CommandeConsulterLivraison.inc.php');
@@ -70,14 +47,8 @@ if(isset($_SESSION["admin"])){
 
         case 36 :
             include_once('pages/CommandePasserCommande.inc.php');
-    }
-} else if(isset($_SESSION["livreur"])) {
-
-    switch ($page) {
-        case 34:
-            include_once('pages/ConsulterCommandeLivraison.inc.php');
-            break;
-    }
+            
+        default: include_once('pages/accueil.inc.php');
 }
 
 ?>
