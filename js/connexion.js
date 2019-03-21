@@ -60,11 +60,10 @@ function init(){
 
 
 
-    inputSubmit.html("valider"),
+    inputSubmit.html("Valider"),
     inputSubmit.attr('class',"btn btn-default");
-    inputSubmit.attr('style',"margin-left:150px;margin-top:10px;background-color:#b2b2b266;")
+    inputSubmit.attr('style',"margin-top:15px;background-color:#b2b2b266;")
     inputSubmit.on('click',function(){
-      console.log("valider");
       var id = inputText1.val();
       var mdp = inputText2.val();
       VerifierCompte(id,mdp);
@@ -82,21 +81,15 @@ function init(){
 
     $('#texte').append(container);
 
-
-    $('footer').attr('style',"margin-top:60px;");
-
-
-
-
 }
 
 
 function VerifierCompte(id,mdp){
 
   $.ajax({
-    url:'ressources/json/comptes.json', 
-      dataType:'json',              
-      success:function(xhr_data){          
+    url:'ressources/json/comptes.json',
+      dataType:'json',
+      success:function(xhr_data){
         console.log(xhr_data);
         sessionStorage.setItem("error","error");
         $.each(xhr_data, function (i,element) {
@@ -114,7 +107,7 @@ function VerifierCompte(id,mdp){
               if(id==element.login && mdp==element.pass){
                 if(element['personne']){
 
-                    let user =element.personne['prenom'];
+                    let user = element.personne['prenom'];
                     let userId = element.id;
                     let userNom = element.personne['nom'];
                     let userConges = element.personne['conges'];
@@ -149,7 +142,7 @@ function VerifierCompte(id,mdp){
     });
 
         if(sessionStorage.error == "error" && sessionStorage.tour==0){
-          $('.container').append("<p style='color:red;margin-top:10px;'> identifiant ou mot de passe incorrect ! </p>");
+            $('.container').append("<p style='color:red;margin-top:10px;'> dentifiant ou mot de passe incorrect ! </p>");
           sessionStorage.setItem("tour",1);
       }
   },

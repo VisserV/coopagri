@@ -26,9 +26,9 @@
 
 
 <script type="text/javascript">
-
-
+    alert(sessionStorage.User);
 </script>
+
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -36,7 +36,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.php?page=0">
                 <img src="ressources/img/coopAgri.png" width="30" height="30" class="d-inline-block align-top" alt="">
                 Coopagri
             </a>
