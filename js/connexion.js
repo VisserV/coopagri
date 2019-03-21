@@ -81,6 +81,8 @@ function init(){
 
     $('#texte').append(container);
 
+
+    $('footer').attr('style',"margin-top:60px;");
 }
 
 
@@ -112,7 +114,7 @@ function VerifierCompte(id,mdp){
                     let userNom = element.personne['nom'];
                     let userConges = element.personne['conges'];
                     let userObject = JSON.stringify(element);
-                    let categorieId = let userConges = element.personne.catégorie['conges'];
+                    let categorieId = element.personne.categorie['id'];
 
                     sessionStorage.setItem("User",user);
                     sessionStorage.setItem("UserId",userId);

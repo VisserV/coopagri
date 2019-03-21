@@ -26,7 +26,12 @@
 
 
 <script type="text/javascript">
-    alert(sessionStorage.User);
+    alert("Id categorie metier " + sessionStorage.CategorieId);
+    if (sessionStorage.CategorieId == 1) {
+        <?php $role = "Livreur"; ?>
+    }
+
+    alert("role : <?php echo $role ?>");
 </script>
 
 <body>
