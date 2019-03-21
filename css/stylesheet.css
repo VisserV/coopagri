@@ -3,6 +3,13 @@ nav ul li a#btn_Connexion, nav ul li a#btn_Connexion :link, nav ul li a#btn_Conn
     color: white !important;
 }
 
+footer {
+    color: white;
+}
+footer a, footer a:link,footer a:visited {
+    color: #ededed;
+}
+
 .img_Accueil {
     display: flex;
     justify-content: center;
