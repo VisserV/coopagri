@@ -1,0 +1,164 @@
+/*css*/
+.Menu_Accueil_Commande {
+    border: solid black 1px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    margin: 5px 5px 25px 5px;
+    background: gray;
+    flex-wrap: wrap;
+}
+.Menu_Accueil_Commande > div {
+    margin: 22px 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.Menu_Accueil_Commande > div a, .Menu_Accueil_Commande > div a:visited, .Menu_Accueil_Commande > div a:link {
+    color: white;
+    text-decoration: none;
+}
+.Title_Menu_Accueil_Commande {
+    background-color: black;
+    color: white;
+    margin: 0 !important;
+    padding: 15px 0;
+    border-radius: 10px 0 0 10px;
+    padding: 22px 15px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    margin-left: -39px;
+}
+.dropdown-content a {
+    display: block;
+}
+.dropdown-content a, .dropdown-content a:link, .dropdown-content a:visited {
+    color: black !important;
+}
+.dropdown-content a:first-child {
+    margin-bottom: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.MenuLivraison{
+    margin-top: 15px;
+    margin-left: 50px;
+    width: 100%;
+}
+
+.MenuLivraison th{
+    background-color: #488ca1;
+    color: white;
+    text-align: center;
+    width: 200px;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 7px;
+}
+
+.tableauLivraison {
+    margin-top: 15px;
+    margin-left: 50px;
+    width: 75%;
+}
+
+.tableauLivraison th {
+    background-color: lightgrey;
+    text-align: left;
+    border: solid black thin;
+    width: 200px;
+    margin: 15px;
+    padding: 7px;
+}
+
+.table {
+    width: 80% !important;
+    margin: auto;
+}
+
+.value-button {
+    display: inline-block;
+    border: 1px solid #ddd;
+    margin: 0px;
+    margin-top: -5px;
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    background: #eee;
+}
+#liste input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+}
+#prixTotal {
+    margin-right: 5px;
+    margin-left: 10px;
+}
+.divPrixTotal {
+    margin-left: 40px;
+    margin-top: 15px;
+}
+#idCategorie {
+    margin-left: 40px;
+}
+.divPrixTotal input {
+    text-align: right;
+    width: 135px;
+}
+.value-button:hover {
+    cursor: pointer;
+}
+
+form #decrease {
+    border-radius: 8px 0 0 8px;
+    height: 40px;
+    margin-top: -5px;
+    padding-top: 6px;
+}
+
+form #increase {
+    border-radius: 0 8px 8px 0;
+    height: 40px;
+    margin-top: -5px;
+    padding-top: 6px;
+}
+
+form #input-wrap {
+    margin: 0px;
+    padding: 0px;
+}
+
+input#number {
+    text-align: center;
+    border: none;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    width: 40px;
+    height: 40px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
