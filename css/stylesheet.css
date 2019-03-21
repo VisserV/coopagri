@@ -20,3 +20,13 @@ footer a, footer a:link,footer a:visited {
 #container {
     padding: 25px;
 }
+
+.head_Connexion {
+    margin: 1rem 0;
+}
+.container form input[type=text], .container form input[type=password] {
+    width: 300px;
+}
+.container button {
+    margin: 1rem 0;
+}

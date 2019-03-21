@@ -5,7 +5,7 @@ function init(){
 
     let container = $('<div>');
 
-    let titre = $("<h2>");
+    let titre = $("<div>");
     let p1 = $("<p>");
     let p2 = $("<p>");
     let form = $("<form>");
@@ -17,23 +17,20 @@ function init(){
 
 
     container.attr('class',"container");
-    form.attr('class',"form-inline");
+    form.attr('class',"form");
     form.attr('method',"post");
     form.attr('action',"index.php?page=0");
     form.attr('id',"formulaire")
 
-    titre.text( "Connexion " );
-    titre.attr("style",'margin-bottom:50px;font-size:24px;margin-top:50px;')
-
-
+    titre.addClass("head_Connexion");
+    titre.append("<h1> Connexion </h1>");
 
     p1.text("Saisir votre identifiant :");
     inputText1.attr('type',"text");
     inputText1.attr('class',"form-control");
-    inputText1.attr('placeholder',"Saisir votre identifiant");
+    inputText1.attr('placeholder',"Mon identifiant");
     inputText1.attr('name',"id");
     inputText1.attr('id',"id");
-    inputText1.attr('style',"margin-top:5px;margin-right:1500px;margin-left:15px;");
     inputText1.appendTo(p1);
 
 
@@ -48,21 +45,18 @@ function init(){
 
     p2.text("Saisir votre mot de passe :");
     inputText2.attr('type',"password");
-    inputText2.attr('placeholder',"Saisir votre mot de passe");
+    inputText2.attr('placeholder',"Mon mot de passe");
     inputText2.attr('class',"form-control");
     inputText2.attr('name',"mdp");
     inputText2.attr('id',"mdp");
-    inputText2.attr('style',"margin-top:5px;margin-left:15px;width:250px;");
     inputText2.appendTo(p2);
-    p2.attr('style',"margin-top:20px;");
     p2.attr('class',"form-group");
 
 
 
 
     inputSubmit.html("Valider"),
-    inputSubmit.attr('class',"btn btn-default");
-    inputSubmit.attr('style',"margin-top:15px;background-color:#b2b2b266;")
+    inputSubmit.attr('class',"btn btn-dark");
     inputSubmit.on('click',function(){
       var id = inputText1.val();
       var mdp = inputText2.val();
@@ -79,10 +73,7 @@ function init(){
     form.appendTo(container);
     inputSubmit.appendTo(container);
 
-    $('#texte').append(container);
-
-
-    $('footer').attr('style',"margin-top:60px;");
+    $('#container').append(container);
 }
 
 
