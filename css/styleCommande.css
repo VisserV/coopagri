@@ -162,3 +162,14 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+
+button#btn_val {
+    float: right;
+    margin-right: 40px;
+    background: black;
+    color: white;
+    border: solid black thin;
+    padding: 3.5px 10px;
+    border-radius: 5px;
+}
