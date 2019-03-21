@@ -34,7 +34,7 @@ function creerGraphe(tableau){
             point: {
                 events: {
                     click: function(e) {
-                        creerGrapheCategorie(event.point.id);
+                        //creerGrapheCategorie(event.point.id);
                     }
                 }
             },
