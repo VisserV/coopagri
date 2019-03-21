@@ -112,12 +112,14 @@ function VerifierCompte(id,mdp){
                     let userNom = element.personne['nom'];
                     let userConges = element.personne['conges'];
                     let userObject = JSON.stringify(element);
+                    let categorieId = let userConges = element.personne.catégorie['conges'];
 
                     sessionStorage.setItem("User",user);
                     sessionStorage.setItem("UserId",userId);
                     sessionStorage.setItem("UserNom",userNom);
                     sessionStorage.setItem("UserConges",userConges);
                     sessionStorage.setItem("UserObject",userObject);
+                    sessionStorage.setItem("CategorieId",categorieId);
                 }else{
                     let user = element.societe['raisonSociale'];
                     let userId = element.id;
