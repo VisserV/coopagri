@@ -1,0 +1,104 @@
+[
+  {
+    "id_facture":1,
+    "id_commande":11,
+    "date_creation":"03/03/2019",
+    "date_echeance":"03/04/2019",
+    "produits":
+      [
+        {
+          "id": 1,
+          "nom":"abricot",
+          "prix_unite": 3,
+          "quantite": 20,
+          "prix_produits": 60
+        },
+        {
+          "id": 2,
+          "nom":"ananas",
+          "prix_unite": 4,
+          "quantite": 10,
+          "prix_produits": 40
+        },
+        {
+          "id": 10,
+          "nom":"pomme",
+          "prix_unite": 1,
+          "quantite": 40,
+          "prix_produits": 40
+        }
+      ],
+    "id_client":2,
+    "nom_client":"Hopital des malades",
+    "adresse_client": "2 rue armand dutreix",
+    "cp_ville_client":"87000"
+  },
+  {
+    "id_facture":2,
+    "id_commande":12,
+    "date_creation":"05/03/2019",
+    "date_echeance":"05/04/2019",
+    "produits":
+    [
+      {
+        "id": 1,
+        "nom":"abricot",
+        "prix_unite": 3,
+        "quantite": 100,
+        "prix_produits": 300
+      },
+      {
+        "id": 2,
+        "nom":"ananas",
+        "prix_unite": 4,
+        "quantite": 80,
+        "prix_produits": 320
+      },
+      {
+        "id": 10,
+        "nom":"pomme",
+        "prix_unite": 1,
+        "quantite": 350,
+        "prix_produits": 250
+      }
+    ],
+    "id_client":2,
+    "nom_client":"Legrand",
+    "adresse_client": "17 rue lepetit",
+    "cp_ville_client":"87100"
+  },
+  {
+    "id_facture":3,
+    "id_commande":11,
+    "date_creation":"13/05/2019",
+    "date_echeance":"13/06/2019",
+    "produits":
+    [
+      {
+        "id": 1,
+        "nom":"abricot",
+        "prix_unite": 3,
+        "quantite": 40,
+        "prix_produits": 120
+      },
+      {
+        "id": 2,
+        "nom":"ananas",
+        "prix_unite": 4,
+        "quantite": 20,
+        "prix_produits": 80
+      },
+      {
+        "id": 10,
+        "nom":"pomme",
+        "prix_unite": 1,
+        "quantite": 80,
+        "prix_produits": 80
+      }
+    ],
+    "id_client":2,
+    "nom_client":"Hopital des malades",
+    "adresse_client": "2 rue armand dutreix",
+    "cp_ville_client":"87000"
+  }
+]
