@@ -11,15 +11,20 @@ function afficheClt(){
                     //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                     let div = $('<div>');
                     div.attr('class', "fc-event");
+<<<<<<< HEAD
                     div.text('Client '+ elt.raisonSociale);
                     div.attr('value',elt.livraisonAdresses[0].id);
                     console.log(elt.livraisonAdresses[0].id);
+=======
+                    div.text('Client n°' + elt.id + ' : ' + elt.raisonSociale);
+>>>>>>> 06bf55d27d9dcbb58a6c525837f57259a63e1538
                     $(externalevt).append(div)
               });
          },
      });
 
  };
+
  function affichefrs(){
       let externalevt = document.getElementById('external-events');
       console.log(externalevt);
@@ -33,36 +38,18 @@ function afficheClt(){
                      //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                      let div = $('<div>');
                      div.attr('class', "fc-event");
+<<<<<<< HEAD
                      div.text('Fournisseur '+ elt.raisonSociale);
                      div.attr('value',elt.livraisonAdresses[0].id);
+=======
+                     div.text('Fournisseur  n°' + elt.id + ' : ' + elt.raisonSociale);
+>>>>>>> 06bf55d27d9dcbb58a6c525837f57259a63e1538
                      $(externalevt).append(div)
                });
           },
       });
 
   };
-
-  function afficheLivr(){
-       let externalevt = document.getElementById('calendar');
-       console.log(externalevt);
-       $.ajax({
-           url:'./ressources/json/personnes.json',
-           dataType:'json',
-           async : false,
-           success : function(data){
-                console.log(data);
-                $.each(data, function(i, elt){
-                      //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
-                  if (elt.prenom == 'Livreur 1' || elt.prenom == 'Livreur 2' ) {
-                      let div = $('<div>');
-                      div.text(elt.prenom);
-                      $(externalevt).append(div)
-                    }
-                });
-           },
-       });
-
-   };
 
  $(function() { // document ready
 
