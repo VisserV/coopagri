@@ -11,13 +11,9 @@ function afficheClt(){
                     //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                     let div = $('<div>');
                     div.attr('class', "fc-event");
-<<<<<<< HEAD
-                    div.text('Client '+ elt.raisonSociale);
+                    div.text('Client n°' + elt.id + ' : '+ elt.raisonSociale);
                     div.attr('value',elt.livraisonAdresses[0].id);
                     console.log(elt.livraisonAdresses[0].id);
-=======
-                    div.text('Client n°' + elt.id + ' : ' + elt.raisonSociale);
->>>>>>> 06bf55d27d9dcbb58a6c525837f57259a63e1538
                     $(externalevt).append(div)
               });
          },
@@ -38,12 +34,8 @@ function afficheClt(){
                      //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                      let div = $('<div>');
                      div.attr('class', "fc-event");
-<<<<<<< HEAD
-                     div.text('Fournisseur '+ elt.raisonSociale);
+                     div.text('Fournisseur n°' + elt.id + ' : '+ elt.raisonSociale);
                      div.attr('value',elt.livraisonAdresses[0].id);
-=======
-                     div.text('Fournisseur  n°' + elt.id + ' : ' + elt.raisonSociale);
->>>>>>> 06bf55d27d9dcbb58a6c525837f57259a63e1538
                      $(externalevt).append(div)
                });
           },
