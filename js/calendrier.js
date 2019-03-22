@@ -12,6 +12,8 @@ function afficheClt(){
                     let div = $('<div>');
                     div.attr('class', "fc-event");
                     div.text('Client '+ elt.raisonSociale);
+                    div.attr('value',elt.livraisonAdresses[0].id);
+                    console.log(elt.livraisonAdresses[0].id);
                     $(externalevt).append(div)
               });
          },
@@ -32,6 +34,7 @@ function afficheClt(){
                      let div = $('<div>');
                      div.attr('class', "fc-event");
                      div.text('Fournisseur '+ elt.raisonSociale);
+                     div.attr('value',elt.livraisonAdresses[0].id);
                      $(externalevt).append(div)
                });
           },
@@ -89,7 +92,8 @@ function afficheClt(){
    -----------------------------------------------------------------*/
 
    $('#calendar').fullCalendar({
-     now: moment().add(1,'day'),
+     now: moment().add(1
+          ,'day'),
      editable: true, // enable draggable events
      droppable: true, // this allows things to be dropped onto the calendar
      aspectRatio: 1.8,
@@ -113,7 +117,23 @@ function afficheClt(){
        { id:'b', title: 'Livreur 2'}
      ],
      drop: function(date, jsEvent, ui, resourceId) {
-       console.log('drop', date.format(), resourceId);
+      // console.log(jsEvent);
+       //console.log(ui);
+       //console.log(ui.helper.attr('value'));
+       //console.log(date.format('HH:mm'));
+       let heure = date.format('HH:mm');
+       let adid = ui.helper.attr('value') ;
+       let iditi = 1;
+
+       $.ajax({
+          url:'./Insert.php',
+          dataType:'json',
+          data: 'fname=fonctionInsert&heure=' +heure +'&idAd=' +adid +'&id=' +iditi,
+          success : function(data){
+
+               console.log(data);
+          }});
+
 
        // is the "remove after drop" checkbox checked?
        if ($('#drop-remove').is(':checked')) {
@@ -126,6 +146,18 @@ function afficheClt(){
      },
      eventDrop: function(event) { // called when an event (already on the calendar) is moved
        console.log('eventDrop', event);
+       let heure = event.start.format('HH:mm');
+       console.log(heure);
+       let adid = ui.helper.attr('value') ;
+
+       $.ajax({
+          url:'./Insert.php',
+          dataType:'json',
+          data: 'fname=fonctionUpdate&heure=' +heure +'&idAd=' +adid,
+          success : function(data){
+
+               console.log(data);
+          }});
      },
      eventRender: function(event, element) {
         element.find(".fc-bg").css("pointer-events","none");
