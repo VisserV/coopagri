@@ -7,8 +7,10 @@
     <script src='./js/lib/moment.min.js'></script>
     <script src='./js/lib/jquery.min.js'></script>
     <script src='./js/lib/jquery-ui.min.js'></script>
-    <script src='./js/fullcalendar.js'></script>
-    <script src='./js/locale/fr.js'></script>
+    <script src='./js/fullcalendar.min.js'></script>
+    <script src='./js/scheduler.js'></script>
     <script src='./js/calendrier.js'></script>
+    <script src='./js/locale/fr.js'></script>
+
   </body>
 </html>

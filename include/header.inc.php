@@ -10,9 +10,10 @@
      <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
      <link rel="stylesheet" href="css/reset.css">
-     <link href='./css/fullcalendar.css' rel='stylesheet'/>
-     <link href='./css/fullcalendar.print.css' rel='stylesheet' media='print'/>
-     <link href='./css/calendrier.css' rel='stylesheet'/>
+     <link href='./css/fullcalendar.min.css' rel='stylesheet' />
+     <link href='./css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+     <link href='./css/scheduler.css' rel='stylesheet' />
+     <link href='./css/calendrier.css' rel='stylesheet' />
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
      <link href='./css/maps.css' rel='stylesheet'/>
 </head>
