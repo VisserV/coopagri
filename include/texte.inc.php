@@ -17,14 +17,20 @@ switch ($page){
 	break;
 	// page insertion nouveau client
     /*facturation entre 50 et 60 */
+
     case 50:
-        include_once('pages/facture.inc.php');
+        include_once('pages/menuFacturation.inc.php');
         break;
+
     case 51:
-        include_once('pages/GraphiqueFacturation.php');
+        include_once('pages/GraphiqueFacturation.inc.php');
         break;
     case 52:
         include_once ('pages/listerFacture.inc.php');
+	 break;
+        case 53:
+            include_once('pages/facture.inc.php');
+            break;
     case 60 :
         include_once('pages/facturationGet.php');
         break;

@@ -1,0 +1,67 @@
+.couleurTexteFacture{
+	color: #E8D91D;
+}
+
+.couleurFondFacture{
+	background-color: #E8D91D;
+}
+
+.Menu_Accueil_Facture {
+      position: fixed;
+      top: 100px;
+      right: 25px;
+	display: inline-block;
+    width: 200px;
+    text-align: center;
+    background-color: #222222;
+}
+
+.Menu_Accueil_Facture div {
+    margin: 15px 0;
+}
+
+.Title_Menu_Accueil_Facture {
+    background-color: black;
+    margin: 0 !important;
+    padding: 15px 0;
+    font-size: 20px;
+}
+
+.aNeutreFacture a{
+	text-decoration: none;
+	color: #9d9d9d;
+}
+
+.aNeutreFacture:hover a{
+	color: white;
+	font-weight: bold;
+}
+
+.fondFacture{
+	background-color: dimgray;
+}
+
+.titre{
+      font-size: 30px;
+      padding:20px;
+}
+
+.totaux_facture{
+      font-size: 20px;
+      padding: 15px;
+}
+
+.contenu_facture{
+      font-size: 18px;
+      padding: 10px;
+}
+
+.titre_facture{
+      margin-top: 20px;
+      padding: 20px;
+      font-size: 25px;
+}
+
+#resizable,#resizable2 { width: 202px; height: 10px; margin-bottom: 2.5% ; }
+resizable {float: right}
+#resizable h3,#resizable2 h3 { text-align: center; margin: 0; }

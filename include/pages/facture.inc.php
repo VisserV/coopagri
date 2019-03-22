@@ -1,7 +1,16 @@
-<style>
-    #resizable,#resizable2 { width: 202px; height: 10px; margin-bottom: 2.5% ; }
-    resizable {float: right}
-    #resizable h3,#resizable2 h3 { text-align: center; margin: 0; }
-</style>
+<div class="Menu_Accueil_Facture">
+    <div class="Title_Menu_Accueil_Facture couleurTexteFacture">
+        <h4>Menu Facture</h4>
+    </div>
+    <div class="aNeutreFacture">
+        <a href="index.php?page=52">Lister facture</a>
+    </div>
+    <div class="aNeutreFacture">
+        <a href="index.php?page=53">Attribuer facture</a>
+    </div>
+    <div class="aNeutreFacture">
+    	<a href="index.php?page=51">Consulter statistique</a>
+    </div>
+</div>
 
 <script src="js/facturation.js" />

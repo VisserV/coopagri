@@ -12,6 +12,3 @@
     	<a href="index.php?page=51">Consulter statistique</a>
     </div>
 </div>
-
-
-<script src="js/facture.js"></script>
