@@ -91,10 +91,7 @@ function afficheClt(){
        }
      },
      resourceLabelText: 'Livraison',
-     resources: [
-       { id:'a', title: 'Livreur 1'},
-       { id:'b', title: 'Livreur 2'}
-     ],
+     resources: './ressources/json/personnes.json',
      drop: function(date, jsEvent, ui, resourceId) {
       // console.log(jsEvent);
        //console.log(ui);
