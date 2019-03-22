@@ -100,7 +100,7 @@ function VerifierCompte(id,mdp){
                     let userConges = element.personne['conges'];
                     let userObject = JSON.stringify(element);
                     let categorieId = element.personne.categorie['id'];
-                    
+
                     sessionStorage.setItem("User",user);
                     sessionStorage.setItem("UserId",userId);
                     sessionStorage.setItem("UserNom",userNom);
@@ -133,7 +133,7 @@ function VerifierCompte(id,mdp){
     });
 
         if(sessionStorage.error == "error" && sessionStorage.tour==0){
-            $('.container').append("<p style='color:red;margin-top:10px;'> dentifiant ou mot de passe incorrect ! </p>");
+            $('.container').append("<p style='color:red;margin-top:10px;'> Identifiant ou mot de passe incorrect ! </p>");
             sessionStorage.setItem("tour",1);
         }
     },

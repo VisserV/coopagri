@@ -27,7 +27,6 @@ crossorigin="anonymous"></script>
     if (sessionStorage.Entreprise == "Entreprise") {
         <?php $_SESSION["role"] = "Entreprise"; ?>
     }
-
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

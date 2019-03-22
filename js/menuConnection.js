@@ -1,18 +1,23 @@
 function menuconnexion(){
-  if (typeof(sessionStorage.User) == "undefined") {
-    $('.navbar').append("  <div class=\"dropdown_\">        <button class=\"dropbtn_\">Comptes </button>        <div class=\"dropdown-content_ menuConnexion\"> </div>      </div>");
-    $('.menuConnexion').append("<a href=\"index.php?page=33\">Connexion</a>");
-        $('.menuConnexion').append("<a href=\"index.php?page=102\">S'inscrire</a>");
+    let liste = $("<ul>");
+    liste.addClass("nav navbar-nav navbar-right item_Connexion");
 
-  } else {
+    if (typeof(sessionStorage.User) == "undefined") {
+
+        liste.append("<li class='nav-item'><a  class='nav-link' href=\"index.php?page=33\">Connexion</a></li><li class='nav-item'><a class='nav-link' href=\"index.php?page=102\">S'inscrire</a></li>");
+        $('.navbar').append(liste);
+
+    } else {
         if(sessionStorage.User=="Admin" && sessionStorage.UserId=="0"){
-            $('.navbar').append("  <div class=\"dropdown_\">        <button class=\"dropbtn_\">"+sessionStorage.UserNom+"</button>        <div class=\"dropdown-content_ menuConnexion\"> </div>      </div>");
-            $('.menuConnexion').append("<a href=\"index.php?page=101\">Information compte</a>");
-            $('.menuConnexion').append("<a href=\"index.php?page=100\">Commande fournisseur</a>");
+
+            liste.append("<li class='nav-item'><a class='nav-link' href=\"index.php?page=101\">Information compte</a></li><li class='nav-item'><a class='nav-link' href=\"index.php?page=100\">Commande fournisseur</a></li>");
+            $('.navbar').append(liste);
+
             affclienCo();
         }else{
-            $('.navbar').append("  <div class=\"dropdown_\">        <button class=\"dropbtn_\">"+sessionStorage.User+"</button>        <div class=\"dropdown-content_ menuConnexion\"> </div>      </div>");
-            $('.menuConnexion').append("<a href=\"index.php?page=101\">Information compte</a>");
+
+            liste.append("<li class='nav-item'><a class='nav-link' href=\"index.php?page=101\">Information compte</a></li>");
+            $('.navbar').append(liste);
         }
 
 
@@ -35,40 +40,32 @@ function menuconnexion(){
         let sousmenu = $('<a>');
         sousmenu.text("deconnexion");
         sousmenu.on('click',function(){
-                sessionStorage.removeItem("User");
-                sessionStorage.removeItem("UserId");
-                sessionStorage.removeItem("UserNom");
-                sessionStorage.removeItem("UserConges");
-                sessionStorage.removeItem("UserLivAddr");
-                sessionStorage.removeItem("UserFactAddr");
-                $('#jsonHideWrite').val(""+sessionStorage.nombreCLientConnectes);
-                $('#formulaireHide').submit();
+            sessionStorage.removeItem("User");
+            sessionStorage.removeItem("UserId");
+            sessionStorage.removeItem("UserNom");
+            sessionStorage.removeItem("UserConges");
+            sessionStorage.removeItem("UserLivAddr");
+            sessionStorage.removeItem("UserFactAddr");
+            $('#jsonHideWrite').val(""+sessionStorage.nombreCLientConnectes);
+            $('#formulaireHide').submit();
 
         });
-            $('.menuConnexion').append(sousmenu);
-
-
-
-
-
-
-
-  }
-
+        $('.menuConnexion').append(sousmenu);
+    }
 }
 
 function affclienCo(){
     $.ajax({
-            url:'clientsConnectes.json',  //chemin d'acces
-            dataType:'json',              //type attendu
+        url:'clientsConnectes.json',  //chemin d'acces
+        dataType:'json',              //type attendu
 
-            success:function(xhr_data){      //exe si ok
-                $('.menuConnexion').append("<a id='affNbClientCo'>Nombre de Personnes connectées : "+xhr_data+" </a>");
-                    setTimeout(function(){ majClientCO();}, 2000);
-            },
-            error:function(){
-                    alert("Impossible d'afficher les clients connectes")
-            }
+        success:function(xhr_data){      //exe si ok
+            $('.menuConnexion').append("<a id='affNbClientCo'>Nombre de Personnes connectées : "+xhr_data+" </a>");
+            setTimeout(function(){ majClientCO();}, 2000);
+        },
+        error:function(){
+            alert("Impossible d'afficher les clients connectes")
+        }
     });
 }
 
@@ -77,33 +74,33 @@ function affclienCo(){
 
 function getJsonCLientCo(){
     $.ajax({
-            url:'clientsConnectes.json',  //chemin d'acces
-            dataType:'json',              //type attendu
+        url:'clientsConnectes.json',  //chemin d'acces
+        dataType:'json',              //type attendu
 
-            success:function(xhr_data){           //exe si ok
-                    sessionStorage.setItem("nombreCLientConnectes", JSON.stringify(xhr_data));
+        success:function(xhr_data){           //exe si ok
+            sessionStorage.setItem("nombreCLientConnectes", JSON.stringify(xhr_data));
 
-            },
-            error:function(){
-                    alert("Impossible de charger les clients connectes")
-            }
+        },
+        error:function(){
+            alert("Impossible de charger les clients connectes")
+        }
     });
 }
 
 
 function majClientCO(){
     $.ajax({
-            url:'clientsConnectes.json',  //chemin d'acces
-            dataType:'json',              //type attendu
+        url:'clientsConnectes.json',  //chemin d'acces
+        dataType:'json',              //type attendu
 
-            success:function(xhr_data){           //exe si ok
-                $('#affNbClientCo').text("Nombre de Personnes connectées : "+xhr_data+"");
+        success:function(xhr_data){           //exe si ok
+            $('#affNbClientCo').text("Nombre de Personnes connectées : "+xhr_data+"");
 
-                setTimeout(function(){getJsonCLientCo(); majClientCO();}, 2000);
-            },
-            error:function(){
-                    alert("Impossible de mettre à jour les clients connectes")
-            }
+            setTimeout(function(){getJsonCLientCo(); majClientCO();}, 2000);
+        },
+        error:function(){
+            alert("Impossible de mettre à jour les clients connectes")
+        }
 
     });
 
