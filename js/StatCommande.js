@@ -43,7 +43,6 @@ function creerGraphe(tableau){
             point: {
                 events: {
                     click: function(e) {
-                        //console.log(this.id);
                        nomCateg(this.id);
                     }
                 }
@@ -59,42 +58,45 @@ function creerGraphe(tableau){
 function creerGrapheCategorie(id,tableauCategorie){
 
 // Build the chart
-Highcharts.chart('container', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Quantité de vente par categorie de produit du fournisseur ' +id
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: false
-            },
-            showInLegend: true
-        }
-    },
-    series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        point: {
-            events: {
-                click: function(e) {
-                   // venteCategorie(1);
+ Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Proportion des volumes de ventes du fournisseurs'+id
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
                 }
             }
         },
-        data: tableauCategorie
-    }]
-});
+        series: [{
+            name: 'Catégories',
+            colorByPoint: true,
+            point: {
+                events: {
+                    click: function(e) {
+                       nomCateg(this.id);
+                    }
+                }
+            },
+            data:tableauCategorie
+        }]
+    });
 }
 
 // function venteCategorie(idCateg){
@@ -174,7 +176,6 @@ function nomFournisseur(){
             $.each(data,function(i,element){
                 tableau[i] = {id : element.id, name : element.raisonSociale ,y : getQuantiteVenteFournisseur(element.id)};
             })
-            //console.log(tableau);
             creerGraphe(tableau);
         }
     });
@@ -213,7 +214,7 @@ function nomCateg(id){
 
                     if(!estDansleTab(tableauIdCat,element.CATEGORIE_PROD_ID,tableauIdCat.length)) {
 
-                        tableauCat[i] = {
+                        tableauCat[index] = {
                             idFournisseur: element.FOURNISSEUR_ID,
                             idProd: element.CATEGORIE_PROD_ID,
                             name: element.CATEGORIE_PROD_LIBELLE,
@@ -228,7 +229,6 @@ function nomCateg(id){
                 }
                 estDansLeTab = false;
             })
-            console.log(tableauCat);
             creerGrapheCategorie(id,tableauCat);
         }
     });
@@ -252,7 +252,6 @@ function getQuantiteVenteCateg(idFournisseur, idCateg) {
         }
     });
     return quantiteCateg;
-
 }
 
 

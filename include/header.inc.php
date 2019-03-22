@@ -12,21 +12,22 @@ crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
-<script src="js/menuConnection.js"></script>
+<script src="js/menuConnexion.js"></script>
 
 
 <script>
-    if (sessionStorage.CategorieId == 1) {
-        <?php $_SESSION["role"] = "Livreur";    ?>
-    }
+if (sessionStorage.CategorieId == 1) {
+    <?php $_SESSION["role"] = "Livreur"; ?>
 
-    if (sessionStorage.UserId == 0) {
-        <?php $_SESSION["role"] = "Admin"; ?>
-    }
+}
 
-    if (sessionStorage.Entreprise == "Entreprise") {
-        <?php $_SESSION["role"] = "Entreprise"; ?>
-    }
+if (sessionStorage.UserId == 0) {
+    <?php $_SESSION["role"] = "Admin"; ?>
+}
+
+if (sessionStorage.Entreprise == "Entreprise") {
+    <?php $_SESSION["role"] = "Entreprise"; ?>
+}
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -65,8 +66,6 @@ crossorigin="anonymous"></script>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-
-
                     <a class="dropdown-item" href="index.php?page=32">Catalogue</a>
                     <a class="dropdown-item" href="index.php?page=31">Lister commande</a>
                     <a class="dropdown-item" href="index.php?page=36">Passer commande</a>
@@ -78,8 +77,6 @@ crossorigin="anonymous"></script>
         </ul>
     </div>
 </nav>
-
-
 
 <?php
 if(isset($_POST['jsonHide'])){
@@ -99,7 +96,9 @@ if(isset($_POST['jsonHide'])){
 if(isset($_POST['jsonHideWrite'])){
 
     $jsonString = $_POST['jsonHideWrite'];
-    $_SESSION['nbCo']-=1;
+    if ($_SESSION['nbCo'] > 0) {
+        $_SESSION['nbCo'] = $_SESSION['nbCo'] - 1;
+    }
 
     $fp = fopen('clientsConnectes.json', 'w');
     fwrite($fp, json_encode($_SESSION['nbCo']));

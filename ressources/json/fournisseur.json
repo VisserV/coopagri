@@ -47,4 +47,52 @@
         "ville": "limoges"
     }]
 
+}, {
+        "stocks": [],
+        "id": 3,
+        "raisonSociale": "Nebrownies",
+        "facturationAdresse": null,
+        "livraisonAdresses": [{
+            "id": 3,
+            "societe": {
+                "stocks": [],
+                "id": 7,
+                "raisonSociale": "Nebrownies",
+                "facturationAdresse": null,
+                "livraisonAdresses": [null]
+            },
+            "rueNumero": 68,
+            "rueNumeroComplement": null,
+            "rueType": {
+                "id": 1,
+                "libelle": "rue"
+            },
+            "rueNom": "Albert Tamair",
+            "codePostal": "87000",
+            "ville": "limoges"
+        }]
+    }, {
+        "stocks": [],
+        "id": 4,
+        "raisonSociale": "Garry Salami",
+        "facturationAdresse": null,
+        "livraisonAdresses": [{
+            "id": 4,
+            "societe": {
+                "stocks": [],
+                "id": 8,
+                "raisonSociale": "Garry Salami",
+                "facturationAdresse": null,
+                "livraisonAdresses": [null]
+            },
+            "rueNumero": 68,
+            "rueNumeroComplement": null,
+            "rueType": {
+                "id": 1,
+                "libelle": "rue"
+            },
+            "rueNom": "Etienne Alor",
+            "codePostal": "87000",
+            "ville": "limoges"
+    }]
 }]
