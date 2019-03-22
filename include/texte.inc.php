@@ -8,6 +8,8 @@
 
     switch ($page) {
 
+        default: include_once('pages/accueil.inc.php');
+
         case 0:
         // inclure ici la page accueil photo
         include_once('pages/accueil.inc.php');
@@ -49,7 +51,7 @@
         include_once('pages/StatCommande.inc.php');
         break;
 
-        default: include_once('pages/accueil.inc.php');
+
     }
 
     ?>
