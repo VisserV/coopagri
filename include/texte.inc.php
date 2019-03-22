@@ -22,6 +22,9 @@ switch ($page){
         break;
     case 51:
         include_once('pages/GraphiqueFacturation.php');
+        break;
+    case 52:
+        include_once ('pages/listerFacture.inc.php');
     case 60 :
         include_once('pages/facturationGet.php');
         break;
