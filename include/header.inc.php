@@ -65,8 +65,6 @@ crossorigin="anonymous"></script>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-
-
                     <a class="dropdown-item" href="index.php?page=32">Catalogue</a>
                     <a class="dropdown-item" href="index.php?page=31">Lister commande</a>
                     <a class="dropdown-item" href="index.php?page=36">Passer commande</a>
