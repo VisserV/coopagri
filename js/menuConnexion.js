@@ -1,7 +1,7 @@
-function menuconnexion(){
-    let liste = $("<ul>");
-    liste.addClass("nav navbar-nav navbar-right item_Connexion");
+let liste = $("<ul>");
+liste.addClass("nav navbar-nav navbar-right item_Connexion");
 
+function menuconnexion(){
     if (typeof(sessionStorage.User) == "undefined") {
 
         liste.append("<li class='nav-item'><a  class='nav-link' href=\"index.php?page=33\">Connexion</a></li><li class='nav-item'><a class='nav-link' href=\"index.php?page=102\">S'inscrire</a></li>");
@@ -10,17 +10,17 @@ function menuconnexion(){
     } else {
         if(sessionStorage.User=="Admin" && sessionStorage.UserId=="0"){
 
-            liste.append("<li class='nav-item'><a class='nav-link' href=\"index.php?page=101\">Information compte</a></li><li class='nav-item'><a class='nav-link' href=\"index.php?page=100\">Commande fournisseur</a></li>");
+            liste.append("<li class='nav-item dropdown'><a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Admin</a> <div class='dropdown-menu' aria-labelledby='navbarDropdown'><a class='dropdown-item nav-link text-dark' href=\"index.php?page=101\">Information compte</a><a class='dropdown-item nav-link text-dark' href=\"index.php?page=100\">Commande fournisseur</a</div></li>");
+
             $('.navbar').append(liste);
 
             affclienCo();
         }else{
 
-            liste.append("<li class='nav-item'><a class='nav-link' href=\"index.php?page=101\">Information compte</a></li>");
+            liste.append("<li class='nav-item dropdown'><a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Bonjour "+sessionStorage.UserNom+"</a> <div class='dropdown-menu' aria-labelledby='navbarDropdown'><a class='dropdown-item nav-link text-dark' href=\"index.php?page=101\">Information compte</a></div></li>");
+
             $('.navbar').append(liste);
         }
-
-
 
         let form = $('<form>');
         form.attr('class',"form-inline");
@@ -34,11 +34,9 @@ function menuconnexion(){
         inputTextHide2.attr('id',"jsonHideWrite");
         inputTextHide2.hide();
         inputTextHide2.appendTo(form);
-        $('.menuConnexion').append(form);
+        $('.navbar').append(form);
 
-
-        let sousmenu = $('<a>');
-        sousmenu.text("deconnexion");
+        let sousmenu = $("<a class='nav-link' href='#'> Déconnexion </a>");
         sousmenu.on('click',function(){
             sessionStorage.removeItem("User");
             sessionStorage.removeItem("UserId");
@@ -50,7 +48,11 @@ function menuconnexion(){
             $('#formulaireHide').submit();
 
         });
-        $('.menuConnexion').append(sousmenu);
+        let li_SousMenu = $('<li>');
+        li_SousMenu.addClass('nav-item');
+        li_SousMenu.append(sousmenu);
+
+        liste.append(li_SousMenu);
     }
 }
 
@@ -60,7 +62,7 @@ function affclienCo(){
         dataType:'json',              //type attendu
 
         success:function(xhr_data){      //exe si ok
-            $('.menuConnexion').append("<a id='affNbClientCo'>Nombre de Personnes connectées : "+xhr_data+" </a>");
+            liste.append("<li class='nav-item'><a id='affNbClientCo' class='nav-link'>Nombre de Personnes connectées : "+xhr_data+" </a>");
             setTimeout(function(){ majClientCO();}, 2000);
         },
         error:function(){
@@ -110,6 +112,4 @@ function majClientCO(){
 $(function(){
     menuconnexion();
     getJsonCLientCo();
-
-
 });

@@ -14,7 +14,7 @@ footer a, footer a:link,footer a:visited {
     display: flex;
     justify-content: center;
     padding: 50px;
-    opacity: 0.5;
+    opacity: 0.85;
 }
 
 #container {
