@@ -5,11 +5,8 @@ $(document).ready(function () {
     chargerTableau();
     chargerCategorie();
     chargerProd(0);
-
-
+    slider();
 });
-
-
 
 function init() {
 
@@ -29,6 +26,30 @@ function init() {
     //var text = document.createTextNode("  Rechercher par : ");
     //categorie.append(text);
 
+
+    let texte = $('<p>');
+
+    let texte_label = $('<label>');
+    texte_label.attr('for', "amount");
+    texte_label.text("Prix :")
+
+    let texte_input = $('<input>');
+    texte_input.attr('type', "text");
+    texte_input.attr('id', "amount");
+    texte_input.prop('readonly', true);
+    texte_input.attr('style', "border:0; color:#f6931f; font-weight:bold;");
+
+    texte.append(texte_label);
+    texte.append(texte_input);
+
+    let range = $('<div>');
+    range.attr('id', 'slider-range');
+
+    let wrap_range = $('<div>');
+    wrap_range.addClass('wrap_range');
+
+    wrap_range.append(texte);
+    wrap_range.append(range);
 
     let tableau = $('<table>');
     tableau.attr('id', "liste");
@@ -56,8 +77,9 @@ function init() {
     prixTotal.append(bouton_valider);
 
 
-    //$('body').append(ligne);
+
     $('#container').append(categorie);
+    $('#container').append(wrap_range);
     $('#container').append(tableau);
     $('#container').append(prixTotal);
 
@@ -80,20 +102,20 @@ function chargerCategorie() {
 
 function chargerTableau() {
 
-        var produit ;
+    var produit ;
 
-        $.ajax({
-            url: "ressources/json/produits.json",
-            dataType: "json",
-            async: false,
-            success: function (data) {
-                data.forEach(function (element, index) {
-                    produit = [element.categorie.id, element.id, element.prixVente, 0, element.image,element.libelle];
-                    mesProduits[index+1] = produit;
-                });
-            }
+    $.ajax({
+        url: "ressources/json/produits.json",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            data.forEach(function (element, index) {
+                produit = [element.categorie.id, element.id, element.prixVente, 0, element.image,element.libelle];
+                mesProduits[index+1] = produit;
+            });
+        }
 
-        });
+    });
 }
 
 function chargerProd(categorie_id) {
@@ -101,42 +123,42 @@ function chargerProd(categorie_id) {
     var produit;
     $("#liste").append("<thead><th scope='col'>Id</th><th scope='col'>Image</th><th scope='col'> Nom</th><th scope='col'>Prix Unitaire</th><th scope='col'>Quantité</th></thead>");
 
-                if(categorie_id != 0){
-                    for(var i = 1; i < mesProduits.length;i ++){
-                        produit = mesProduits[i];
-                    if (categorie_id == produit[0]) {
-                        if (produit[4] == null || produit[4] == "") {
-                            var url = "ressources/img/no_image.png";
-                        }else{
-                            var url = produit[4];
-                        }
-                        $("#liste").append("<tr class='ligne' scope='row'>" +
-                        '<td  id = "'+i+'">' + produit[1] + '</td>' +
-                        '<td><img width="auto" height="50px" src='+url+'></td>' +
-                        '<td>' + produit[5] + '</td>' +
-                        '<td id="prix'+i+'">' + produit[2] + '</td>' +
-                        '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="updatePrice('+i+')" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
-                    }
+    if(categorie_id != 0){
+        for(var i = 1; i < mesProduits.length;i ++){
+            produit = mesProduits[i];
+            if (categorie_id == produit[0]) {
+                if (produit[4] == null || produit[4] == "") {
+                    var url = "ressources/img/no_image.png";
+                }else{
+                    var url = produit[4];
                 }
-                }
+                $("#liste").append("<tr class='ligne' scope='row'>" +
+                '<td  id = "'+i+'">' + produit[1] + '</td>' +
+                '<td><img width="auto" height="50px" src='+url+'></td>' +
+                '<td>' + produit[5] + '</td>' +
+                '<td id="prix'+i+'">' + produit[2] + '</td>' +
+                '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="updatePrice('+i+')" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
+            }
+        }
+    }
 
-                else{
-                    for(var i = 1; i < mesProduits.length;i ++){
-                        produit = mesProduits[i];
-                    if (produit[4] == null || produit[4] == "") {
-                        var url = "ressources/img/no_image.png";
-                    }else{
-                        var url = produit[4];
-                    }
-                    $("#liste").append("<tr class='ligne' scope='row'>" +
-                        '<td  id = "'+i+'">' + produit[1] + '</td>' +
-                        '<td><img width="auto" height="50px" src='+url+'></td>' +
-                        '<td>' + produit[5] + '</td>' +
-                        '<td id="prix'+i+'">' + produit[2] + '</td>' +
-                        '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="updatePrice('+i+')" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
-                    }
+    else{
+        for(var i = 1; i < mesProduits.length;i ++){
+            produit = mesProduits[i];
+            if (produit[4] == null || produit[4] == "") {
+                var url = "ressources/img/no_image.png";
+            }else{
+                var url = produit[4];
+            }
+            $("#liste").append("<tr class='ligne' scope='row'>" +
+            '<td  id = "'+i+'">' + produit[1] + '</td>' +
+            '<td><img width="auto" height="50px" src='+url+'></td>' +
+            '<td>' + produit[5] + '</td>' +
+            '<td id="prix'+i+'">' + produit[2] + '</td>' +
+            '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="updatePrice('+i+')" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
+        }
 
-                }
+    }
 
 
 }
@@ -245,13 +267,29 @@ function recapitulatifCommande(){
                 var url = produit[4];
             }
             $("#liste").append("<tr class='ligne' scope='row'>" +
-                '<td  id = "'+i+'">' + produit[1] + '</td>' +
-                '<td><img width="auto" height="50px" src='+url+'></td>' +
-                '<td>' + produit[5] + '</td>' +
-                '<td id="prix'+i+'">' + produit[2] + '</td>' +
-                '<td><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="calculPrixTotal()" disabled="disabled"/></td>'+'</tr>')
+            '<td  id = "'+i+'">' + produit[1] + '</td>' +
+            '<td><img width="auto" height="50px" src='+url+'></td>' +
+            '<td>' + produit[5] + '</td>' +
+            '<td id="prix'+i+'">' + produit[2] + '</td>' +
+            '<td><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="calculPrixTotal()" disabled="disabled"/></td>'+'</tr>')
 
         }
     }
     $('#btn_val').html("Valider Commande");
+}
+
+
+function slider() {
+    $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 10,
+        step: 0.5,
+        values: [ 0, 2 ],
+        slide: function( event, ui ) {
+            $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        }
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+    " - $" + $( "#slider-range" ).slider( "values", 1 ) );
 }
