@@ -1,5 +1,4 @@
 init();
-
 function init(){
     sessionStorage.setItem("tour",0);
 
@@ -61,7 +60,6 @@ function init(){
       var id = inputText1.val();
       var mdp = inputText2.val();
       VerifierCompte(id,mdp);
-
   });
 
     titre.appendTo(container);
@@ -78,35 +76,31 @@ function init(){
 
 
 function VerifierCompte(id,mdp){
-
   $.ajax({
     url:'ressources/json/comptes.json',
-      dataType:'json',
-      success:function(xhr_data){
-        console.log(xhr_data);
+    dataType:'json',
+    success:function(xhr_data){
         sessionStorage.setItem("error","error");
         $.each(xhr_data, function (i,element) {
             if(id=="root" && mdp=="root"){
-              sessionStorage.setItem("User","Admin");
-              sessionStorage.setItem("UserId","0");
-              sessionStorage.setItem("UserNom","Admininistrateur");
-              sessionStorage.setItem("UserConges","0");
-              sessionStorage.setItem("UserObject",JSON.stringify(element));
-
-              $('#jsonHide').val(""+sessionStorage.nombreCLientConnectes);
-              $('#formulaire').submit();
-              sessionStorage.removeItem("error")
-          }else {
+                sessionStorage.setItem("User","Admin");
+                sessionStorage.setItem("UserId","0");
+                sessionStorage.setItem("UserNom","Admininistrateur");
+                sessionStorage.setItem("UserConges","0");
+                sessionStorage.setItem("UserObject",JSON.stringify(element));
+                $('#jsonHide').val(""+sessionStorage.nombreCLientConnectes);
+                $('#formulaire').submit();
+                sessionStorage.removeItem("error")
+            }else {
               if(id==element.login && mdp==element.pass){
                 if(element['personne']){
-
                     let user = element.personne['prenom'];
                     let userId = element.id;
                     let userNom = element.personne['nom'];
                     let userConges = element.personne['conges'];
                     let userObject = JSON.stringify(element);
                     let categorieId = element.personne.categorie['id'];
-
+                    
                     sessionStorage.setItem("User",user);
                     sessionStorage.setItem("UserId",userId);
                     sessionStorage.setItem("UserNom",userNom);
@@ -114,12 +108,14 @@ function VerifierCompte(id,mdp){
                     sessionStorage.setItem("UserObject",userObject);
                     sessionStorage.setItem("CategorieId",categorieId);
                 }else{
+                    console.log("Entreprise");
                     let user = element.societe['raisonSociale'];
                     let userId = element.id;
                     let userFactAddr = element.societe['facturationAdresse'];
                     let userLivAddr = element.societe['livraisonAdresses'];
                     let userObject = JSON.stringify(element);
 
+                    sessionStorage.setItem("Entreprise", "Entreprise");
                     sessionStorage.setItem("User",user);
                     sessionStorage.setItem("UserId",userId);
                     sessionStorage.setItem("UserFactAddr",userFactAddr);
@@ -138,10 +134,10 @@ function VerifierCompte(id,mdp){
 
         if(sessionStorage.error == "error" && sessionStorage.tour==0){
             $('.container').append("<p style='color:red;margin-top:10px;'> dentifiant ou mot de passe incorrect ! </p>");
-          sessionStorage.setItem("tour",1);
-      }
-  },
-  error:function(){
+            sessionStorage.setItem("tour",1);
+        }
+    },
+    error:function(){
       alert("Impossible de charger les catégories")
   }
 });
