@@ -59,6 +59,21 @@
       "COMMANDE_ID":"1",
       "LIGNE_QUANTITE":"100"
    },
+   {
+      "CATEGORIE_PROD_ID":"2",
+      "CATEGORIE_PROD_LIBELLE":"Fruits et L\u00e9gumes",
+      "PRODUIT_ID":"6",
+      "PRODUIT_LIBELLE":"Kumquat",
+      "PRODUIT_REF":"F2",
+      "PRODUIT_IMG":null,
+      "VENTE_ID":"1",
+      "PRODUIT_PRIX_VENTE":"1",
+      "PRODUIT_PRIX_ACHAT":"0",
+      "FOURNISSEUR_ID":"1",
+      "LIGNE_ID":"3",
+      "COMMANDE_ID":"1",
+      "LIGNE_QUANTITE":"255"
+   },
    {  
       "CATEGORIE_PROD_ID":"2",
       "CATEGORIE_PROD_LIBELLE":"Fruits et L\u00e9gumes",
