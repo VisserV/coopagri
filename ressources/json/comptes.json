@@ -12,7 +12,22 @@
     "id": 1,
     "login": "liv1",
     "pass": "liv1"
-}, {
+},
+{ "personne": {
+        "categorie": {
+            "id": 2,
+            "libelle": "Client"
+        },
+        "conges": [],
+        "id": 1,
+        "nom": "Dupont",
+        "prenom": "Jean"
+    },
+    "id": 1,
+    "login": "cli1",
+    "pass": "cli1"
+},
+ {
     "personne": {
         "categorie": {
             "id": 1,
