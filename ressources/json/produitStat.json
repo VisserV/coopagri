@@ -103,5 +103,50 @@
       "LIGNE_ID":"5",
       "COMMANDE_ID":"1",
       "LIGNE_QUANTITE":"120"
+   },
+   {
+      "CATEGORIE_PROD_ID":"2",
+      "CATEGORIE_PROD_LIBELLE":"Fruits et L\u00e9gumes",
+      "PRODUIT_ID":"7",
+      "PRODUIT_LIBELLE":"Ananas",
+      "PRODUIT_REF":"F3",
+      "PRODUIT_IMG":null,
+      "VENTE_ID":"1",
+      "PRODUIT_PRIX_VENTE":"4",
+      "PRODUIT_PRIX_ACHAT":"2",
+      "FOURNISSEUR_ID":"3",
+      "LIGNE_ID":"2",
+      "COMMANDE_ID":"1",
+      "LIGNE_QUANTITE":"110"
+   },
+   {
+      "CATEGORIE_PROD_ID":"1",
+      "CATEGORIE_PROD_LIBELLE":"Boissons",
+      "PRODUIT_ID":"4",
+      "PRODUIT_LIBELLE":"Jus de pomme base de concentr\u00e9 , 1 L",
+      "PRODUIT_REF":"CONCP",
+      "PRODUIT_IMG":null,
+      "VENTE_ID":"2",
+      "PRODUIT_PRIX_VENTE":"2",
+      "PRODUIT_PRIX_ACHAT":"1",
+      "FOURNISSEUR_ID":"4",
+      "LIGNE_ID":"3",
+      "COMMANDE_ID":"2",
+      "LIGNE_QUANTITE":"50"
+   },
+   {
+      "CATEGORIE_PROD_ID":"2",
+      "CATEGORIE_PROD_LIBELLE":"Fruits et L\u00e9gumes",
+      "PRODUIT_ID":"6",
+      "PRODUIT_LIBELLE":"Kumquat",
+      "PRODUIT_REF":"F2",
+      "PRODUIT_IMG":null,
+      "VENTE_ID":"1",
+      "PRODUIT_PRIX_VENTE":"7",
+      "PRODUIT_PRIX_ACHAT":"6",
+      "FOURNISSEUR_ID":"3",
+      "LIGNE_ID":"7",
+      "COMMANDE_ID":"1",
+      "LIGNE_QUANTITE":"75"
    }
 ]
