@@ -1,6 +1,6 @@
 
-Groupe ayant réalisé la base de données : Planification
-Groupe ayant réalisé le template (Structure + routage) : Commande-Livraison
+- Groupe ayant réalisé la base de données : Planification
+- Groupe ayant réalisé le template (Structure + routage) : Commande-Livraison
 
 
 Commande-Livraison :
