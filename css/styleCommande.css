@@ -56,37 +56,6 @@
     display: block;
 }
 
-.MenuLivraison{
-    margin-top: 15px;
-    margin-left: 50px;
-    width: 100%;
-}
-
-.MenuLivraison th{
-    background-color: #488ca1;
-    color: white;
-    text-align: center;
-    width: 200px;
-    border-radius: 10px;
-    margin: 15px;
-    padding: 7px;
-}
-
-.tableauLivraison {
-    margin-top: 15px;
-    margin-left: 50px;
-    width: 75%;
-}
-
-.tableauLivraison th {
-    background-color: lightgrey;
-    text-align: left;
-    border: solid black thin;
-    width: 200px;
-    margin: 15px;
-    padding: 7px;
-}
-
 .table {
     width: 80% !important;
     margin: auto;
@@ -161,4 +130,32 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.head_ConsulterLivraison h1 {
+    margin-bottom: 1rem;
+}
+.table_Livraison button {
+    background: black;
+    color: white;
+    border: solid black thin;
+    border-radius: 5px;
+    padding: 3.5px 10px;
+}
+.btn_RetourLivraison button {
+    background: black;
+    color: white;
+    border: solid black thin;
+    border-radius: 5px;
+    padding: 3.5px 10px;
+}
+
+button#btn_val {
+    float: right;
+    margin-right: 40px;
+    background: black;
+    color: white;
+    border: solid black thin;
+    padding: 3.5px 10px;
+    border-radius: 5px;
 }

@@ -1,17 +1,23 @@
 $(document).ready(function(){
+	let div = $("<div>");
+	div.addClass("head_ConsulterLivraison");
+	div.append("<h1> Livraisons </h1>")
+	$('#container').append(div);
+
 	init();
 	chargerInfoLivraison();
 });
 
 function init (){
-	let div = $('<div>');
 
-	let tableau = $('<table>');
-	tableau.attr('id',"LSTPDT");
-	tableau.addClass('tableauLivraison');
-	tableau.append('<tr><th>Numéro commande</th><th>Date de livraison estimée</th><th>Adresse de livraison</th><th>Adresse de facturation</th><th>Produits</th></tr>');
-	div.append(tableau);
-	$('#container').append(div);
+	let table = $("<table>");
+    table.addClass("table");
+    table.attr('id',"lstPdt");
+    table.addClass("table-striped");
+	table.addClass("table_Livraison");
+    table.append("<thead><tr><th scope='col' class='align-middle'>Numéro commande</th><th scope='col' class='align-middle'>Date de livraison estimée</th><th scope='col' class='align-middle'>Adresse de livraison</th><th scope='col' class='align-middle'>Adresse de facturation</th><th scope='col' class='align-middle'>Produits</th></tr></thead>");
+
+    $('#container').append(table);
 };
 
 function chargerproduits(){

@@ -12,7 +12,8 @@ function init(){
     let divTab = $("<div>");
     divTab.attr('id','idDivTab');
     select.attr('id',"lstCommande");
-    let divReturn = $("<div><a href='index.php?page=30'><button type='button'>Retour</button></a>");
+
+    let divReturn = $("<div class='btn_RetourLivraison'><a href='index.php?page=30'><button type='button'>Retour</button></a>");
     let detailCommande = $("<p>Detail de la commande </p>");
     let table = $("<table>");
     table.addClass("table");
@@ -66,4 +67,3 @@ function chargerDetailCommande(id){
         }
     });
 }
-
