@@ -4,13 +4,13 @@
     "client": {
         "id": 1,
         "raisonSociale": "Ecole de mon quartier",
-        "facturationAdresse": null,
+        "facturationAdresse": "5 rue des Potiers",
         "livraisonAdresses": [{
             "id": 1,
-            "societe": null,
+            "societe": "Habibi",
             "rueNumero": 16,
-            "rueNumeroComplement": null,
-            "rueType": null,
+            "rueNumeroComplement": "A",
+            "rueType": "rue",
             "rueNom": "DES ALOUETTES",
             "codePostal": "87110",
             "ville": "Bosmie-L'aiguille"

@@ -7,7 +7,7 @@
         "client": {
             "id": 1,
             "raisonSociale": "Ecole de mon quartier",
-            "facturationAdresse": null,
+            "facturationAdresse": "8 rue des Potiers",
             "livraisonAdresses": [null, null]
         },
         "dateLivraison": "2018-03-29 18:39:00",
@@ -24,10 +24,10 @@
         }],
         "adresseLivraison": {
             "id": 1,
-            "societe": null,
+            "societe": "Habibi",
             "rueNumero": 16,
-            "rueNumeroComplement": null,
-            "rueType": null,
+            "rueNumeroComplement": "A",
+            "rueType": "rue",
             "rueNom": "DES ALOUETTES",
             "codePostal": "87110",
             "ville": "Bosmie-L'aiguille"
@@ -83,7 +83,7 @@
         "client": {
             "id": 2,
             "raisonSociale": "Hopital des malades",
-            "facturationAdresse": null,
+            "facturationAdresse": "5 allée André Maurois",
             "livraisonAdresses": [null]
         },
         "dateLivraison": "2018-03-29 18:40:00",
@@ -100,10 +100,10 @@
         }],
         "adresseLivraison": {
             "id": 2,
-            "societe": null,
+            "societe": "Potter",
             "rueNumero": 1,
-            "rueNumeroComplement": null,
-            "rueType": null,
+            "rueNumeroComplement": "B",
+            "rueType": "rue",
             "rueNom": "DES MESANGES",
             "codePostal": "87280",
             "ville": "LIMOGES"
