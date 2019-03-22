@@ -38,19 +38,19 @@ $(document).ready(function () {
         sommef2.append(( $("#change2").text() * $("#sommeFacture").text())/pourcent );
 
         let th = $('<tr>');
-
+        th.attr('id',"premiereLigne");
 
         let td  = $('<td>');
         td.append(" ");
         th.append(td);
 
-        let td2 =$('<td>');
-        td2.append("fournisseur 1");
-        th.append(td2);
-
-        let td3 =$('<td>');
-        td3.append("fournisseur 2");
-        th.append(td3);
+        // let td2 =$('<td>');
+        // td2.append("fournisseur 1");
+        // th.append(td2);
+        //
+        // let td3 =$('<td>');
+        // td3.append("fournisseur 2");
+        // th.append(td3);
 
         let tr = $('<tr>');
 
@@ -70,7 +70,7 @@ $(document).ready(function () {
 
         let somme = $('<p>');
         somme.attr('id','sommeFacture');
-        somme.append("850");
+        //somme.append("850");
         body.append(somme);
 
         let table = $('<table>');
@@ -113,22 +113,24 @@ $(document).ready(function () {
         });
     } );
     init();
-    chemin = "index.php?page=60&fct=1 ";
-    $.ajax({
-        url: chemin,
-        dataType: 'html',
-        type:"Get",
-        success: function (data) {
-            console.log(data);
-            $.each(data,function (i,donne) {
-
-            });
-        },
-        error : function(p1,p2){
-            console.log(p1,p2);
-        }
-    });
-
+    function getJson() {
+        chemin = "/coopagri/ressources/json/Facture.json";
+        $.ajax({
+            url: chemin,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                $("#sommeFacture").append(data.prix);
+                $.each(data.produits, function (i, donne) {
+                    $("#premiereLigne").append("<td>"+donne.fournisseur.raison_social+"</td>");
+                });
+            },
+            error: function (p1, p2) {
+                console.log(p1, p2);
+            }
+        });
+    }
+    getJson();
     $(document).ready(function() {
         $('.js-example-basic-multiple').select2();
     });
