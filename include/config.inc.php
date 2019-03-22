@@ -1,7 +1,7 @@
 <?php
 
 define('DBHOST', "localhost");
-define('DBNAME', "coopagri");
+define('DBNAME', "clientriche_test");
 define('DBUSER', "root");
 define('DBPASSWD', "");
 define('ENV','dev');

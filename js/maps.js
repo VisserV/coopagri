@@ -60,7 +60,7 @@ function inscrireMarkers(lat, lng, type){
 
 function calculateWayPoints(){
     var waypts = [];
-    for (var i = 0; i<4; i++) {
+    for (var i = 0; i<1; i++) {
         // pour utilisation de geocoding avec AJAX :
         var url =   'https://maps.googleapis.com/maps/api/geocode/json?';
         url = url + 'address='+document.getElementById('etape'+i).value;
