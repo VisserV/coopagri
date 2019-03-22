@@ -6,6 +6,9 @@ nomFournisseur();
 // nomCateg(2);
 
 //nomCateg(1);
+
+
+//venteCategorie(1);
 function creerGraphe(tableau){
 
     Highcharts.chart('container', {
