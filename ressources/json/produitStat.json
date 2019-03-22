@@ -145,8 +145,72 @@
       "PRODUIT_PRIX_VENTE":"7",
       "PRODUIT_PRIX_ACHAT":"6",
       "FOURNISSEUR_ID":"3",
-      "LIGNE_ID":"7",
+      "LIGNE_ID":"4",
       "COMMANDE_ID":"1",
       "LIGNE_QUANTITE":"75"
+   },
+
+   {
+      "CATEGORIE_PROD_ID":"4",
+      "CATEGORIE_PROD_LIBELLE":"C\u00e9r\u00e9ales",
+      "PRODUIT_ID":"1",
+      "PRODUIT_LIBELLE":"Bl\u00e9",
+      "PRODUIT_REF":"C1",
+      "PRODUIT_IMG":null,
+      "VENTE_ID":"2",
+      "PRODUIT_PRIX_VENTE":"3",
+      "PRODUIT_PRIX_ACHAT":"2",
+      "FOURNISSEUR_ID":"3",
+      "LIGNE_ID":"3",
+      "COMMANDE_ID":"2",
+      "LIGNE_QUANTITE":"200"
+   },
+
+   {
+      "CATEGORIE_PROD_ID":"5",
+      "CATEGORIE_PROD_LIBELLE":"Produits Laitiers",
+      "PRODUIT_ID":"1",
+      "PRODUIT_LIBELLE":"Lait",
+      "PRODUIT_REF":"P1",
+      "PRODUIT_IMG":null,
+      "VENTE_ID":"1",
+      "PRODUIT_PRIX_VENTE":"4",
+      "PRODUIT_PRIX_ACHAT":"1",
+      "FOURNISSEUR_ID":"1",
+      "LIGNE_ID":"1",
+      "COMMANDE_ID":"1",
+      "LIGNE_QUANTITE":"95"
+   },
+
+   {
+      "CATEGORIE_PROD_ID":"5",
+      "CATEGORIE_PROD_LIBELLE":"Produits Laitiers",
+      "PRODUIT_ID":"1",
+      "PRODUIT_LIBELLE":"Lait",
+      "PRODUIT_REF":"P1",
+      "PRODUIT_IMG":null,
+      "VENTE_ID":"1",
+      "PRODUIT_PRIX_VENTE":"4",
+      "PRODUIT_PRIX_ACHAT":"2",
+      "FOURNISSEUR_ID":"3",
+      "LIGNE_ID":"1",
+      "COMMANDE_ID":"1",
+      "LIGNE_QUANTITE":"60"
+   },
+
+   {
+      "CATEGORIE_PROD_ID":"5",
+      "CATEGORIE_PROD_LIBELLE":"C\u00e9r\u00e9ales",
+      "PRODUIT_ID":"2",
+      "PRODUIT_LIBELLE":"Mais",
+      "PRODUIT_REF":"C2",
+      "PRODUIT_IMG":null,
+      "VENTE_ID":"2",
+      "PRODUIT_PRIX_VENTE":"5",
+      "PRODUIT_PRIX_ACHAT":"3",
+      "FOURNISSEUR_ID":"4",
+      "LIGNE_ID":"3",
+      "COMMANDE_ID":"2",
+      "LIGNE_QUANTITE":"150"
    }
 ]
