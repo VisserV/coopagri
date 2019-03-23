@@ -123,7 +123,8 @@ function chargerProd(categorie_id) {
     $("#title_recap").remove();
     $("#btn_return_commande").remove();
 
-    $("#idCategorie").css("display","inline");
+    $("#idCategorie").css("display","block");
+    $(".wrap_range").css("display","block");
 
     var produit;
     $("#liste").append("<thead><th scope='col'>Id</th><th scope='col'>Image</th><th scope='col'> Nom</th><th scope='col'>Prix Unitaire</th><th scope='col'>Quantité</th></thead>");
