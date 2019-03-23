@@ -1,12 +1,25 @@
 var map;
 var iti;
+var geo;
+var start;
+
 function initMap() {
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 6.5,
+        center: {lat: 46.862725, lng: 2.287592}
+    });
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(geolocate, function(){
+            alert('pas de géolocalisation');
+        });
+    } else {
+        alert('pas de géolocatisation');
+    }
+
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var directionsService = new google.maps.DirectionsService;
-    map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 6.5,
-    center: {lat: 46.862725, lng: 2.287592}
-    });
 
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel(document.getElementById('right-panel'));
@@ -16,9 +29,22 @@ function initMap() {
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
 
     var onChangeHandler = function() {
-    calculateAndDisplayRoute(directionsService, directionsDisplay);
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
     };
     document.getElementById('iti').addEventListener('change', onChangeHandler);
+}
+
+function geolocate(position) {
+    pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+    };
+
+    map.setCenter(pos); 
+
+    start = new google.maps.LatLng(pos.lat, pos.lng);
+
+    inscrireMarkers(pos.lat, pos.lng, 'depart');
 }
 
 function inscrireMarkers(lat, lng, type){
@@ -92,13 +118,14 @@ function calculateWayPoints(adresses){
                     var lat = data.results[0].geometry.location.lat;
                     var lng = data.results[0].geometry.location.lng;
 
-                    if (attrAd == 0){
-                        // start
-                        waypts.push({
-                            location: new google.maps.LatLng(lat,lng),
-                        });
-                        inscrireMarkers(lat,lng, 'depart');
-                    } else if (attrAd == adresses.length-1){
+                    // if (attrAd == 0){
+                    //     // start
+                    //     waypts.push({
+                    //         location: new google.maps.LatLng(lat,lng),
+                    //     });
+                    //     inscrireMarkers(lat,lng, 'depart');
+                    // } else 
+                    if (attrAd == adresses.length-1){
                         // end 
                         waypts.push({
                             location: new google.maps.LatLng(lat,lng),
@@ -135,23 +162,31 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
     // recup la liste des adresses
     $.ajax({
+        async: false,
         url:'./Insert.php',
         dataType:'json',
         data: 'fname=fonctionSelect&id=' +iti,
         success : function(data){
+            
+            //on replace au centre de la map la position géolocatisée
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(geolocate, function(){
+                    alert('pas de géolocalisation');
+                });
+            } else {
+                alert('pas de géolocatisation');
+            }
 
             //  console.log('data : ');
             //  console.log(data);
 
             var waypts = calculateWayPoints(data);
 
-            var start = waypts.shift();
+            //var start = waypts.shift();
             var end = waypts.pop();
 
-            console.log(waypts);
-
             directionsService.route({
-                origin: start.location,
+                origin: start,
                 destination: end.location,
                 waypoints: waypts,
                 optimizeWaypoints: false,
