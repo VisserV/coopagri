@@ -120,6 +120,12 @@ function chargerTableau() {
 
 function chargerProd(categorie_id) {
     $("#liste").empty();
+    $("#title_recap").remove();
+    $("#btn_return_commande").remove();
+
+    $("#idCategorie").css("display","inline");
+    $(".wrap_range").css("display","inline");
+
     var produit;
     $("#liste").append("<thead><th scope='col'>Id</th><th scope='col'>Image</th><th scope='col'> Nom</th><th scope='col'>Prix Unitaire</th><th scope='col'>Quantité</th></thead>");
 
@@ -259,6 +265,7 @@ function recapitulatifCommande(){
 
     let btn_return = $('<button>');
     btn_return.attr('id', "btn_return_commande");
+    btn_return.attr('onclick',"chargerProd(0)");
 
     let arrow_left = $('<i>');
     arrow_left.addClass("fas fa-arrow-left fa-2x");
@@ -268,8 +275,10 @@ function recapitulatifCommande(){
 
     let wrap_title_recap = $('<div>');
     wrap_title_recap.addClass("wrap_title_recap d-flex justify-content-center");
+
     let title_recap = $("<h3>");
-    title_recap.text("Récapitulatif de la commande")
+    title_recap.text("Récapitulatif de la commande");
+    title_recap.attr('id',"title_recap");
 
     wrap_title_recap.append(title_recap);
     $('#container').prepend(wrap_title_recap)
