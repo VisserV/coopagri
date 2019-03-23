@@ -1,3 +1,4 @@
+
     </div>
     <div id="footer">
 
@@ -12,5 +13,14 @@
     <script src='./js/calendrier.js'></script>
     <script src='./js/locale/fr.js'></script>
 
-  </body>
+</body>
+<footer class="page-footer bg-dark footer-dark">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright :
+        <a href="#.html"> Coopagri</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
 </html>
