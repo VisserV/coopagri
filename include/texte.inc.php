@@ -1,4 +1,3 @@
-
 <?php
 if (!empty($_GET["page"])){
     $page=$_GET["page"];
@@ -62,8 +61,25 @@ switch ($page) {
     case 102:
     include_once('pages/Inscription.inc.php');
     break;
+    
+    /* Partie Facturation */    
+    case 51:
+        include_once('pages/GraphiqueFacturation.inc.php');
+        break;
+    case 52:
+        include_once ('pages/listerFacture.inc.php');
+	      break;
+    case 53:
+        include_once('pages/facture.inc.php');
+        break;
+    
+  
+    default : 	
+        include_once('pages/accueil.inc.php');
 
 }
 
-?>
+} ?>
+<?php if(!isset($_GET['fct'])){?>
 </div>
+    <?php } ?>

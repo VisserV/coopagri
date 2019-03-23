@@ -1,0 +1,39 @@
+
+  {
+    "id-facture":1,
+    "id_commande":11,
+    "date_creation":"03/03/2019",
+    "date_echeance":"03/04/2019",
+    "prix": 140,
+    "produits":
+      [
+        {
+          "id": 1,
+          "nom":"abricot",
+          "prix_unite": 3,
+          "quantite": 20,
+          "prix_produits": 60,
+          "fournisseur":
+          {
+           "id": 1,
+            "raison_social": "fournisseur d'abricot"
+          }
+        },
+        {
+          "id": 2,
+          "nom":"ananas",
+          "prix_unite": 4,
+          "quantite": 10,
+          "prix_produits": 40,
+          "fournisseur":
+          {
+            "id": 2,
+            "raison_social": "fournisseur d'ananas"
+          }
+        }
+      ],
+    "id_client":2,
+    "nom_client":"Hopital des malades",
+    "adresse_client": "2 rue armand dutreix",
+    "cp_ville_client":"87000"
+  }

@@ -1,7 +1,16 @@
-
 <link rel="icon" href="ressources/img/coopAgri" type="image/png" sizes="16x16">
 
 <link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/styleFacture.css">
+<!--<link rel="stylesheet" href="../css/stylesheet.css"/>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 <link rel="stylesheet" href="css/stylesheet.css">
 <link rel="stylesheet" href="css/styleCommande.css">
 <link href='./css/fullcalendar.min.css' rel='stylesheet' />
@@ -66,9 +75,9 @@ if (sessionStorage.Entreprise == "Entreprise") {
                     Facture
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Lister facture</a>
-                    <a class="dropdown-item" href="#">Consulter statistiques</a>
-                    <a class="dropdown-item" href="#">Attribuer facture</a>
+                    <a class="dropdown-item" href="index.php?page=52">Lister facture</a>
+                    <a class="dropdown-item" href="index.php?page=51">Consulter statistiques</a>
+                    <a class="dropdown-item" href="index.php?page=53">Attribuer facture</a>
                 </div>
             </li>
 
@@ -127,3 +136,4 @@ if(isset($_POST['jsonHideWrite'])){
 
 }
 ?>
+

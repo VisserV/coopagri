@@ -22,4 +22,3 @@ Facturation :
   - MEGDOUDA Chebah
   - PERRUCHAUD Lucie 
   - TRICARD Aurélien
-   

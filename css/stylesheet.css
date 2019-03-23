@@ -1,4 +1,9 @@
 /*css*/
+
+
+#resizable,#resizable2 { width: 202px; height: 10px; margin-bottom: 2.5% ; }
+#resizable h3,#resizable2 h3 { text-align: center; margin: 0; }
+
 nav ul li a#btn_Connexion, nav ul li a#btn_Connexion :link, nav ul li a#btn_Connexion :visited {
     color: white !important;
 }
