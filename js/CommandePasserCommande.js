@@ -197,7 +197,7 @@ function increaseValue(index) {
 
     mesProduits[index] = produit;
 
-    console.log(mesProduits);
+    // console.log(mesProduits);
 
     calculPrixTotalSomme(prix);
 }
@@ -213,7 +213,7 @@ function updatePrice(index){
     if(value >= 0){
         if(produit[3] != value) {
             calculTotal -= prix * produit[3];
-            console.log(value);
+            // console.log(value);
 
             calculTotal += prix * value;
         }
@@ -245,7 +245,7 @@ function decreaseValue(index) {
 
     mesProduits[index] = produit;
 
-    console.log(mesProduits);
+    // console.log(mesProduits);
 
     document.getElementById('number'+index).value = value;
     if (limite != 0) {
@@ -254,6 +254,17 @@ function decreaseValue(index) {
 }
 
 function recapitulatifCommande(){
+    $("#idCategorie").css("display","none");
+    $(".wrap_range").css("display","none");
+
+    let wrap_title_recap = $('<div>');
+    wrap_title_recap.addClass("wrap_title_recap d-flex justify-content-center");
+    let title_recap = $("<h3>");
+    title_recap.text("Récapitulatif de la commande")
+
+    wrap_title_recap.append(title_recap);
+    $('#container').prepend(wrap_title_recap)
+
     $("#liste").empty();
 
     $("#liste").append("<thead><th scope='col'>ID</th><th scope='col'>Image</th><th scope='col'> NOM</th><th scope='col'>PU</th><th scope='col'>Quantité</th></thead>");

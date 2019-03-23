@@ -171,3 +171,6 @@ button#btn_val {
 .wrap_range > div {
     margin-top: -15px;
 }
+.wrap_title_recap h3 {
+    margin-bottom: 1rem;
+}
