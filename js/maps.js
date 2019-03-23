@@ -1,10 +1,11 @@
 var map;
+var iti;
 function initMap() {
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var directionsService = new google.maps.DirectionsService;
     map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 6.5,
-      center: {lat: 46.862725, lng: 2.287592}
+    zoom: 6.5,
+    center: {lat: 46.862725, lng: 2.287592}
     });
 
     directionsDisplay.setMap(map);
@@ -15,9 +16,9 @@ function initMap() {
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
 
     var onChangeHandler = function() {
-      calculateAndDisplayRoute(directionsService, directionsDisplay);
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
     };
-    document.getElementById('end').addEventListener('change', onChangeHandler);
+    document.getElementById('iti').addEventListener('change', onChangeHandler);
 }
 
 function inscrireMarkers(lat, lng, type){
@@ -58,12 +59,27 @@ function inscrireMarkers(lat, lng, type){
 
 }
 
-function calculateWayPoints(){
+function calculateWayPoints(adresses){
     var waypts = [];
-    for (var i = 0; i<1; i++) {
+
+    // console.log('adresses :');
+    // console.log(adresses);
+
+    for (attrAd in adresses) {
+
+        // console.log('adresses[attrAd] :');
+        // console.log(adresses[attrAd]);
+
+        ad = adresses[attrAd]['ADRESSE_RUE_NUM'] + '+' + adresses[attrAd]['ADRESSE_RUE_LIBELLE'] + ',+'
+                + adresses[attrAd]['ADRESSE_CP'] + '+' + adresses[attrAd]['ADRESSE_VILLE'] + ',+FRANCE';
+
+        // console.log('ad : ');
+        // console.log(ad);
+        
+    
         // pour utilisation de geocoding avec AJAX :
         var url =   'https://maps.googleapis.com/maps/api/geocode/json?';
-        url = url + 'address='+document.getElementById('etape'+i).value;
+        url = url + 'address='+ad;
         url = url + '&key=AIzaSyAnySGIvsEVGgE6-YL-jLS0SXxCvJ2-J5s';
 
         $.ajax({
@@ -76,92 +92,79 @@ function calculateWayPoints(){
                     var lat = data.results[0].geometry.location.lat;
                     var lng = data.results[0].geometry.location.lng;
 
-                    waypts.push({
-                        location: new google.maps.LatLng(lat,lng),
-                        stopover: true
-                    });
+                    if (attrAd == 0){
+                        // start
+                        waypts.push({
+                            location: new google.maps.LatLng(lat,lng),
+                        });
+                        inscrireMarkers(lat,lng, 'depart');
+                    } else if (attrAd == adresses.length-1){
+                        // end 
+                        waypts.push({
+                            location: new google.maps.LatLng(lat,lng),
+                        });
+                        inscrireMarkers(lat,lng, 'client');
+                    } else {
+                        // waypoints
+                        waypts.push({
+                            location: new google.maps.LatLng(lat,lng),
+                            stopover: true
+                        });
+                        inscrireMarkers(lat,lng, 'fournisseur');
+                    }
 
-                    inscrireMarkers(lat,lng, 'fournisseur');
+                    console.log(waypts);
 
-
-                } else {
-                    console.log('Impossible d\'obtenir la latitude et la longitude');
+                    
                 }
             },
+            error : function(error){
+                console.log('Impossible d\'obtenir la latitude et la longitude');
+                console.log(error);
+            }
         });
     }
     return waypts;
 }
 
-function markStartAndStop(start, stop){
-    // pour utilisation de geocoding avec AJAX :
-    var url =   'https://maps.googleapis.com/maps/api/geocode/json?';
-    url = url + 'address='+start;
-    url = url + '&key=AIzaSyAnySGIvsEVGgE6-YL-jLS0SXxCvJ2-J5s';
-
-    $.ajax({
-        async:false,
-        url: url,
-        dataType: 'json',
-        success : function(data){
-            
-            if (data.status == 'OK') {
-                var lat = data.results[0].geometry.location.lat;
-                var lng = data.results[0].geometry.location.lng;
-
-                inscrireMarkers(lat,lng, 'depart');
-
-
-            } else {
-                console.log('Impossible d\'obtenir la latitude et la longitude');
-            }
-        },
-    });
-
-    url =   'https://maps.googleapis.com/maps/api/geocode/json?';
-    url = url + 'address='+stop;
-    url = url + '&key=AIzaSyAnySGIvsEVGgE6-YL-jLS0SXxCvJ2-J5s';
-
-    $.ajax({
-        async:false,
-        url: url,
-        dataType: 'json',
-        success : function(data){
-            
-            if (data.status == 'OK') {
-                var lat = data.results[0].geometry.location.lat;
-                var lng = data.results[0].geometry.location.lng;
-
-                inscrireMarkers(lat,lng, 'client');
-
-
-            } else {
-                console.log('Impossible d\'obtenir la latitude et la longitude');
-            }
-        },
-    });
-}
-
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-    var start = document.getElementById('start').value;
-    var end = document.getElementById('end').value;
+    iti = document.getElementById('iti').value;
 
-    markStartAndStop(start, end);
+    // recup la liste des adresses
+    $.ajax({
+        url:'./Insert.php',
+        dataType:'json',
+        data: 'fname=fonctionSelect&id=' +iti,
+        success : function(data){
 
-    var waypts = this.calculateWayPoints();
+            //  console.log('data : ');
+            //  console.log(data);
 
+            var waypts = calculateWayPoints(data);
 
-    directionsService.route({
-        origin: start,
-        destination: end,
-        waypoints: waypts,
-        optimizeWaypoints: false,
-        travelMode: 'DRIVING'
-    }, function(response, status) {
-        if (status === 'OK') {
-            directionsDisplay.setDirections(response);
-        } else {
-            window.alert('Directions request failed due to ' + status);
+            var start = waypts.shift();
+            var end = waypts.pop();
+
+            console.log(waypts);
+
+            directionsService.route({
+                origin: start.location,
+                destination: end.location,
+                waypoints: waypts,
+                optimizeWaypoints: false,
+                travelMode: 'DRIVING'
+            }, function(response, status) {
+                if (status === 'OK') {
+                    directionsDisplay.setDirections(response);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+        },
+        error : function(error){
+            alert('Erreur, veuillez recommencer');
+
+            console.log(error);
         }
     });
 }

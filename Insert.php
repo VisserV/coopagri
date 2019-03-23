@@ -13,6 +13,10 @@ switch ($_GET['fname']) {
           $PlanificationManager->updateItineraire($_GET['idAd'],$_GET['heure']);
           break;
 
+     case 'fonctionSelect':
+          $PlanificationManager->selectItineraire($_GET['id']);
+          break;
+          
      default:
           // code...
           break;
