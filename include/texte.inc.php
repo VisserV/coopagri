@@ -73,13 +73,10 @@ switch ($page) {
         include_once('pages/facture.inc.php');
         break;
     
-  
-    default : 	
+    default :
         include_once('pages/accueil.inc.php');
 
 }
 
-} ?>
-<?php if(!isset($_GET['fct'])){?>
+?>
 </div>
-    <?php } ?>
