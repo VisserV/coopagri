@@ -72,10 +72,6 @@ switch ($page) {
     case 53:
         include_once('pages/facture.inc.php');
         break;
-    
-    default :
-        include_once('pages/accueil.inc.php');
-
 }
 
 ?>
