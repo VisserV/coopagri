@@ -174,3 +174,11 @@ button#btn_val {
 .wrap_title_recap h3 {
     margin-bottom: 1rem;
 }
+
+#btn_return_commande {
+    border: 0;
+    background: transparent;
+    position: absolute;
+    left: 150px;
+    top: 85px;
+}

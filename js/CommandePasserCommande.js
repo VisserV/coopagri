@@ -257,6 +257,15 @@ function recapitulatifCommande(){
     $("#idCategorie").css("display","none");
     $(".wrap_range").css("display","none");
 
+    let btn_return = $('<button>');
+    btn_return.attr('id', "btn_return_commande");
+
+    let arrow_left = $('<i>');
+    arrow_left.addClass("fas fa-arrow-left fa-2x");
+
+    btn_return.append(arrow_left);
+    $("#container").prepend(btn_return);
+
     let wrap_title_recap = $('<div>');
     wrap_title_recap.addClass("wrap_title_recap d-flex justify-content-center");
     let title_recap = $("<h3>");
