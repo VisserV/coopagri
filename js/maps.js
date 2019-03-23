@@ -113,7 +113,10 @@ function calculateWayPoints(adresses){
                         inscrireMarkers(lat,lng, 'fournisseur');
                     }
 
-                    console.log(waypts);
+                    // pour le moment tous les points intermédiaires sont des fournisseur 
+                    // et la destination finale est le client
+
+                    // console.log(waypts);
 
                     
                 }
