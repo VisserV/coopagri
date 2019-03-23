@@ -182,3 +182,8 @@ button#btn_val {
     left: 150px;
     top: 85px;
 }
+
+.input_RecapCommande input[type=number] {
+    border: 0;
+    background: transparent;
+}

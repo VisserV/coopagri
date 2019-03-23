@@ -291,7 +291,7 @@ function recapitulatifCommande(){
             '<td><img width="auto" height="50px" src='+url+'></td>' +
             '<td>' + produit[5] + '</td>' +
             '<td id="prix'+i+'">' + produit[2] + '</td>' +
-            '<td><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="calculPrixTotal()" disabled="disabled"/></td>'+'</tr>')
+            '<td class="input_RecapCommande"><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="calculPrixTotal()" disabled="disabled"/></td>'+'</tr>')
 
         }
     }
