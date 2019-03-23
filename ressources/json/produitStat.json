@@ -1,5 +1,5 @@
-[  
-   {  
+[
+   {
       "CATEGORIE_PROD_ID":"1",
       "CATEGORIE_PROD_LIBELLE":"Boissons",
       "PRODUIT_ID":"1",
@@ -14,7 +14,7 @@
       "COMMANDE_ID":"1",
       "LIGNE_QUANTITE":"200"
    },
-   {  
+   {
       "CATEGORIE_PROD_ID":"1",
       "CATEGORIE_PROD_LIBELLE":"Boissons",
       "PRODUIT_ID":"3",
@@ -29,7 +29,7 @@
       "COMMANDE_ID":"1",
       "LIGNE_QUANTITE":"20"
    },
-   {  
+   {
       "CATEGORIE_PROD_ID":"1",
       "CATEGORIE_PROD_LIBELLE":"Boissons",
       "PRODUIT_ID":"4",
@@ -44,7 +44,7 @@
       "COMMANDE_ID":"1",
       "LIGNE_QUANTITE":"35"
    },
-   {  
+   {
       "CATEGORIE_PROD_ID":"1",
       "CATEGORIE_PROD_LIBELLE":"Boissons",
       "PRODUIT_ID":"4",
@@ -74,7 +74,7 @@
       "COMMANDE_ID":"1",
       "LIGNE_QUANTITE":"255"
    },
-   {  
+   {
       "CATEGORIE_PROD_ID":"2",
       "CATEGORIE_PROD_LIBELLE":"Fruits et L\u00e9gumes",
       "PRODUIT_ID":"6",
@@ -89,7 +89,7 @@
       "COMMANDE_ID":"1",
       "LIGNE_QUANTITE":"25"
    },
-   {  
+   {
       "CATEGORIE_PROD_ID":"2",
       "CATEGORIE_PROD_LIBELLE":"Fruits et L\u00e9gumes",
       "PRODUIT_ID":"7",
