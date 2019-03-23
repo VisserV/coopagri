@@ -4,6 +4,12 @@
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/stylesheet.css">
 <link rel="stylesheet" href="css/styleCommande.css">
+<link href='./css/fullcalendar.min.css' rel='stylesheet' />
+<link href='./css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+<link href='./css/scheduler.css' rel='stylesheet' />
+<link href='./css/calendrier.css' rel='stylesheet' />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link href='./css/maps.css' rel='stylesheet'/>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -62,8 +68,8 @@ if (sessionStorage.Entreprise == "Entreprise") {
                     Planification
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Calendrier</a>
-                    <a class="dropdown-item" href="#">Map</a>
+                    <a class="dropdown-item" href="index.php?page=11">Calendrier</a>
+                    <a class="dropdown-item" href="index.php?page=12">Map</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
