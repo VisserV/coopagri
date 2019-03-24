@@ -46,7 +46,7 @@ function menuconnexion(){
             sessionStorage.removeItem("UserFactAddr");
             $('#jsonHideWrite').val(""+sessionStorage.nombreCLientConnectes);
             $('#formulaireHide').submit();
-
+            session_destroy();
         });
         let li_SousMenu = $('<li>');
         li_SousMenu.addClass('nav-item');

@@ -1,13 +1,14 @@
-function afficheClt(){
-     let externalevt = document.getElementById('external-events');
-     console.log(externalevt);
-     $.ajax({
-         url:'./ressources/json/clients.json',
-         dataType:'json',
-         async : false,
-         success : function(data){
-              console.log(data);
-              $.each(data, function(i, elt){
+if((sessionStorage.User=="Admin") || (sessionStorage.User=="Livreur")){
+  function afficheClt(){
+   let externalevt = document.getElementById('external-events');
+   console.log(externalevt);
+   $.ajax({
+     url:'./ressources/json/clients.json',
+     dataType:'json',
+     async : false,
+     success : function(data){
+      console.log(data);
+      $.each(data, function(i, elt){
                     //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                     let div = $('<div>');
                     div.attr('class', "fc-event");
@@ -15,33 +16,33 @@ function afficheClt(){
                     div.attr('value',elt.livraisonAdresses[0].id);
                     console.log(elt.livraisonAdresses[0].id);
                     $(externalevt).append(div)
-              });
-         },
-     });
+                  });
+    },
+  });
 
  };
 
  function affichefrs(){
-      let externalevt = document.getElementById('external-events');
-      console.log(externalevt);
-      $.ajax({
-          url:'./ressources/json/fournisseur.json',
-          dataType:'json',
-          async : false,
-          success : function(data){
-               console.log(data);
-               $.each(data, function(i, elt){
+  let externalevt = document.getElementById('external-events');
+  console.log(externalevt);
+  $.ajax({
+    url:'./ressources/json/fournisseur.json',
+    dataType:'json',
+    async : false,
+    success : function(data){
+     console.log(data);
+     $.each(data, function(i, elt){
                      //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                      let div = $('<div>');
                      div.attr('class', "fc-event");
                      div.text('Fournisseur n°' + elt.id + ' : '+ elt.raisonSociale);
                      div.attr('value',elt.livraisonAdresses[0].id);
                      $(externalevt).append(div)
-               });
-          },
-      });
+                   });
+   },
+ });
 
-  };
+};
 
  $(function() { // document ready
 
@@ -72,7 +73,7 @@ function afficheClt(){
 
    $('#calendar').fullCalendar({
      now: moment().add(1
-          ,'day'),
+      ,'day'),
      editable: true, // enable draggable events
      droppable: true, // this allows things to be dropped onto the calendar
      aspectRatio: 1.8,
@@ -102,13 +103,13 @@ function afficheClt(){
        let iditi = 1;
 
        $.ajax({
-          url:'./Insert.php',
-          dataType:'json',
-          data: 'fname=fonctionInsert&heure=' +heure +'&idAd=' +adid +'&id=' +iditi,
-          success : function(data){
+        url:'./Insert.php',
+        dataType:'json',
+        data: 'fname=fonctionInsert&heure=' +heure +'&idAd=' +adid +'&id=' +iditi,
+        success : function(data){
 
-               console.log(data);
-          }});
+         console.log(data);
+       }});
 
 
        // is the "remove after drop" checkbox checked?
@@ -127,20 +128,23 @@ function afficheClt(){
        let adid = ui.helper.attr('value') ;
 
        $.ajax({
-          url:'./Insert.php',
-          dataType:'json',
-          data: 'fname=fonctionUpdate&heure=' +heure +'&idAd=' +adid,
-          success : function(data){
+        url:'./Insert.php',
+        dataType:'json',
+        data: 'fname=fonctionUpdate&heure=' +heure +'&idAd=' +adid,
+        success : function(data){
 
-               console.log(data);
-          }});
+         console.log(data);
+       }});
      },
      eventRender: function(event, element) {
-        element.find(".fc-bg").css("pointer-events","none");
-        element.append("<div style='position:absolute;bottom:0px;right:0px; z-index:10;'><button type='button' id='btnDeleteEvent' class='btn btn-block btn-primary btn-flat'>X</button></div>" );
-        element.find("#btnDeleteEvent").click(function(){
-             $('#calendar').fullCalendar('removeEvents',event._id);
-        });}
-   });
+      element.find(".fc-bg").css("pointer-events","none");
+      element.append("<div style='position:absolute;bottom:0px;right:0px; z-index:10;'><button type='button' id='btnDeleteEvent' class='btn btn-block btn-primary btn-flat'>X</button></div>" );
+      element.find("#btnDeleteEvent").click(function(){
+       $('#calendar').fullCalendar('removeEvents',event._id);
+     });}
+    });
 
  });
+}else{
+  window.location.replace("http://localhost/coopagri/index.php?page=1");
+}
