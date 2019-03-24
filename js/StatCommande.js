@@ -1,3 +1,10 @@
+/**
+* Created by PhpStorm.
+* User: Théo
+* Date: 15/03/2019
+* Time: 13:50
+*/
+
 if((sessionStorage.User=="Admin") || (sessionStorage.User=="Entreprise")){
     nomFournisseur();
     
