@@ -8,3 +8,7 @@
 	<script src ="js/CommandePasserCommande.js"></script>
 
 </div>
+
+<?php
+$_SESSION["id_vente"]= 1;
+?>
