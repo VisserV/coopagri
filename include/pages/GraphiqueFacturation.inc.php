@@ -1,6 +1,3 @@
-<div id="select">
-
-</div>
 <div id="container">
 
 
