@@ -314,6 +314,8 @@ if(sessionStorage.CategorieId=="2"){
     }
 
     function recapitulatifCommande(){
+        $("#form_ad").css("display", "none");
+        $("#liste").css("display", "");
         $("#idCategorie").css("display","none");
         $(".wrap_range").css("display","none");
 
@@ -359,6 +361,139 @@ if(sessionStorage.CategorieId=="2"){
             }
         }
         $('#btn_val').html("Valider Commande");
+        $('#btn_val').attr('onclick', "saisirAdresse()");
+}
+
+function saisirAdresse() {
+
+    $("#liste").css("display","none");
+    $("#infoLivraison").css("display","none");
+
+    $("#title_recap").text("Adresse de livraison");
+
+    let btn_val_ad = $('<button>');
+    btn_val_ad.attr('id', "btn_ad");
+    btn_val_ad.html("Valider Adresse");
+    btn_val_ad.attr('onclick',"recapTotal()");
+
+    $("#btn_return_commande").attr('onclick',"recapitulatifCommande()");
+
+    let p1 = $("<p>");
+    let p2 = $("<p>");
+    let p3 = $("<p>");
+    let p4 = $("<p>");
+    let form = $("<form>");
+    let paysClient = $("<input>");
+    let codePosClient = $("<input>");
+    let villeClient = $("<input>");
+    let adresseClient = $("<input>");
+
+    form.attr('id', 'form_ad');
+
+    p1.text("Pays :");
+    paysClient.attr('type',"text");
+    paysClient.attr('class',"form-control");
+    paysClient.attr('placeholder',"Pays");
+    paysClient.attr('id',"paysClient");
+    paysClient.appendTo(p1);
+
+    p2.text("Code Postal :");
+    codePosClient.attr('type',"text");
+    codePosClient.attr('class',"form-control");
+    codePosClient.attr('placeholder',"Code Postal");
+    codePosClient.attr('id',"codePosClient");
+    codePosClient.appendTo(p2);
+
+    p3.text("Ville :");
+    villeClient.attr('type',"text");
+    villeClient.attr('class',"form-control");
+    villeClient.attr('placeholder',"Ville");
+    villeClient.attr('id',"villeClient");
+    villeClient.appendTo(p3);
+
+    p4.text("Adresse :");
+    adresseClient.attr('type',"text");
+    adresseClient.attr('class',"form-control");
+    adresseClient.attr('placeholder',"Adresse");
+    adresseClient.attr('id',"adresseClient");
+    adresseClient.appendTo(p4);
+
+    p1.appendTo(form);
+    p2.appendTo(form);
+    p3.appendTo(form);
+    p4.appendTo(form);
+
+    form.appendTo($("#container"));
+
+    btn_val_ad.insertAfter(form);
+
+    $(".divPrixTotal").css("display", "none");
+
+}
+
+function recapTotal() {
+    $("#idCategorie").css("display","none");
+    $(".wrap_range").css("display","none");
+    $("#form_ad").css("display", "none");
+    $("#btn_ad").css("display", "none");
+
+    $("#liste").css("display","");
+
+    $("#title_recap").text("Informations Commande");
+
+    $("#btn_return_commande").attr('onclick',"saisirAdresse()");
+
+    $("#liste").empty();
+
+    $("#liste").append("<thead><th scope='col'>ID</th><th scope='col'>Image</th><th scope='col'> NOM</th><th scope='col'>PU</th><th scope='col'>Quantité</th></thead>");
+
+    for(var i = 1; i < mesProduits.length;i ++){
+        produit = mesProduits[i];
+        if (produit[3]>0) {
+            if (produit[4] == null || produit[4] == "") {
+                var url = "ressources/img/no_image.png";
+            }else{
+                var url = produit[4];
+            }
+            $("#liste").append("<tr class='ligne' scope='row'>" +
+                '<td  id = "'+i+'">' + produit[1] + '</td>' +
+                '<td><img width="auto" height="50px" src='+url+'></td>' +
+                '<td>' + produit[5] + '</td>' +
+                '<td id="prix'+i+'">' + produit[2] + '</td>' +
+                '<td class="input_RecapCommande"><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="calculPrixTotal()" disabled="disabled"/></td>'+'</tr>')
+
+        }
+    }
+
+    let infoLivraison = $("<div>");
+    infoLivraison.attr("id", "infoLivraison");
+
+    let titreAdresse = $("<h4>");
+    titreAdresse.text("Adresse de livraison");
+
+    let infoPays = $("<p>");
+    infoPays.text($("#paysClient").val());
+
+    let infoCodePos = $("<p>");
+    infoCodePos.text($("#codePosClient").val());
+
+    let infoVille = $("<p>");
+    infoVille.text($("#villeClient").val());
+
+    let infoAdresse = $("<p>");
+    infoAdresse.text($("#adresseClient").val());
+
+    titreAdresse.appendTo(infoLivraison);
+    infoPays.appendTo(infoLivraison);
+    infoCodePos.appendTo(infoLivraison);
+    infoVille.appendTo(infoLivraison);
+    infoAdresse.appendTo(infoLivraison);
+
+    infoLivraison.appendTo($("#container"));
+
+    infoLivraison.css("text-align", "center");
+
+    $('#btn_val').html("Valider Commande");
     }
 
 
