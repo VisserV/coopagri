@@ -28,7 +28,8 @@
   <div style='clear:both'></div>
 
   <div id="mapCalendar"></div>
-
+  <!-- cette map ne se met pas à jour en fonction de ce qui est mis dans le calendrier, il faut aller 
+        voir la map se trouvant sur la page "map", destinée au livreur -->
   <script src="./js/mapsCalendar.js"></script>
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnySGIvsEVGgE6-YL-jLS0SXxCvJ2-J5s&callback=initMap"></script>
