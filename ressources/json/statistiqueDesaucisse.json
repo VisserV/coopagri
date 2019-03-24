@@ -1,0 +1,17 @@
+[
+  {
+    "produit": "Merguez",
+    "PrixParMois": 35,
+    "MOIS": "MARS"
+  },
+  {
+    "produit": "Merguez",
+    "PrixParMois": 40,
+    "MOIS": "AVRIL"
+  },
+  {
+    "produit": "Merguez",
+    "PrixParMois": 50,
+    "MOIS": "MAI"
+  }
+]

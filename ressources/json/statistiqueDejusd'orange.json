@@ -1,0 +1,17 @@
+[
+  {
+    "produit": "jus de poire",
+    "PrixParMois": 50,
+    "MOIS": "MARS"
+  },
+  {
+    "produit": "jus de poire",
+    "PrixParMois": 30,
+    "MOIS": "AVRIL"
+  },
+  {
+    "produit": "jus de poire",
+    "PrixParMois": 20,
+    "MOIS": "MAI"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "produit": "jus de banane",
+    "PrixParMois": 0,
+    "MOIS": "MARS"
+  },
+  {
+    "produit": "jus de banane",
+    "PrixParMois": 10,
+    "MOIS": "AVRIL"
+  },
+  {
+    "produit": "jus de banane",
+    "PrixParMois": 20,
+    "MOIS": "MAI"
+  }
+]

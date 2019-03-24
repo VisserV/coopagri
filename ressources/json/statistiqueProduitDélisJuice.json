@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "produit": "jus de banane",
+    "prix": 30
+  },
+  {
+    "id": 2,
+    "produit": "jus de poire",
+    "prix": 100
+  },
+  {
+    "id": 3,
+    "produit": "jus d'orange",
+    "prix": 110
+  }
+]

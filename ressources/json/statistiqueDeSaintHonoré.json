@@ -1,0 +1,17 @@
+[
+  {
+    "produit": "trois chocolat",
+    "PrixParMois": 20,
+    "MOIS": "MARS"
+  },
+  {
+    "produit": "trois chocolat",
+    "PrixParMois": 80,
+    "MOIS": "AVRIL"
+  },
+  {
+    "produit": "trois chocolat",
+    "PrixParMois":100,
+    "MOIS": "MAI"
+  }
+]
