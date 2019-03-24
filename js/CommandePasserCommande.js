@@ -170,6 +170,59 @@ function chargerProd(categorie_id) {
 
 }
 
+function chargerProdParPrix(categorie_id,prix_min, prix_max) {
+    $("#liste").empty();
+    $("#title_recap").remove();
+    $("#btn_return_commande").remove();
+
+    $("#idCategorie").css("display", "inline");
+    $(".wrap_range").css("display", "inline");
+
+    var produit;
+    $("#liste").append("<thead><th scope='col'>Id</th><th scope='col'>Image</th><th scope='col'> Nom</th><th scope='col'>Prix Unitaire</th><th scope='col'>Quantité</th></thead>");
+    if(categorie_id != 0) {
+        for (var i = 1; i < mesProduits.length; i++) {
+            produit = mesProduits[i];
+            if (categorie_id == produit[0]) {
+                if (produit[2] >= prix_min && produit[2] <= prix_max) {
+                    if (produit[4] == null || produit[4] == "") {
+                        var url = "ressources/img/no_image.png";
+                    } else {
+                        var url = produit[4];
+                    }
+                    $("#liste").append("<tr class='ligne' scope='row'>" +
+                        '<td  id = "' + i + '">' + produit[1] + '</td>' +
+                        '<td><img width="auto" height="50px" src=' + url + '></td>' +
+                        '<td>' + produit[5] + '</td>' +
+                        '<td id="prix' + i + '">' + produit[2] + '</td>' +
+                        '<td><button class="value-button" id="decrease" onclick="decreaseValue(' + i + ')" value="Decrease Value">-</button><input type="number" id="number' + i + '" value="' + produit[3] + '"  onchange="updatePrice(' + i + ')" /><button class="value-button" id="increase" onclick="increaseValue(' + i + ')" value="Increase Value">+</button></td>' + '</tr>')
+                }
+            }
+
+        }
+    }
+    else{
+        for(var i = 1; i < mesProduits.length;i ++){
+            produit = mesProduits[i];
+            if (produit[2] >= prix_min && produit[2] <= prix_max) {
+                if (produit[4] == null || produit[4] == "") {
+                    var url = "ressources/img/no_image.png";
+                } else {
+                    var url = produit[4];
+                }
+                $("#liste").append("<tr class='ligne' scope='row'>" +
+                    '<td  id = "' + i + '">' + produit[1] + '</td>' +
+                    '<td><img width="auto" height="50px" src=' + url + '></td>' +
+                    '<td>' + produit[5] + '</td>' +
+                    '<td id="prix' + i + '">' + produit[2] + '</td>' +
+                    '<td><button class="value-button" id="decrease" onclick="decreaseValue(' + i + ')" value="Decrease Value">-</button><input type="number" id="number' + i + '" value="' + produit[3] + '"  onchange="updatePrice(' + i + ')" /><button class="value-button" id="increase" onclick="increaseValue(' + i + ')" value="Increase Value">+</button></td>' + '</tr>')
+            }
+        }
+
+    }
+
+}
+
 /* Partie passer une commande */
 
 var prixTotal = 0;
@@ -317,7 +370,10 @@ function slider() {
         step: 0.5,
         values: [ 0, 5 ],
         slide: function( event, ui ) {
-            $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            $( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
+            categorie = $("#LSTCATEG").val();
+            console.log(categorie);
+            chargerProdParPrix(categorie,ui.values[ 0 ],ui.values[ 1 ]);
         }
     });
     $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
