@@ -62,11 +62,15 @@ switch ($page) {
     include_once('pages/StatCommande.inc.php');
     break;
 
+    case 101:
+    include_once('pages/InformationCompte.inc.php');
+    break;
+
     case 102:
     include_once('pages/Inscription.inc.php');
     break;
-    
-    /* Partie Facturation */    
+
+    /* Partie Facturation */
     case 51:
         include_once('pages/GraphiqueFacturation.inc.php');
         break;
