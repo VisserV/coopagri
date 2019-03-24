@@ -1,0 +1,17 @@
+[
+  {
+    "produit": "Salade",
+    "PrixParMois": 70,
+    "MOIS": "MARS"
+  },
+  {
+    "produit": "Salade",
+    "PrixParMois": 50,
+    "MOIS": "AVRIL"
+  },
+  {
+    "produit": "Salade",
+    "PrixParMois": 50,
+    "MOIS": "MAI"
+  }
+]

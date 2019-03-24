@@ -1,0 +1,17 @@
+[
+  {
+    "produit": "Paris Brest",
+    "PrixParMois": 200,
+    "MOIS": "MARS"
+  },
+  {
+    "produit": "Paris Brest",
+    "PrixParMois": 100,
+    "MOIS": "AVRIL"
+  },
+  {
+    "produit": "Paris Brest",
+    "PrixParMois":200,
+    "MOIS": "MAI"
+  }
+]

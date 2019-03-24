@@ -1,0 +1,17 @@
+[
+  {
+    "produit": "Haricot",
+    "PrixParMois": 35,
+    "MOIS": "MARS"
+  },
+  {
+    "produit": "Haricot",
+    "PrixParMois": 50,
+    "MOIS": "AVRIL"
+  },
+  {
+    "produit": "Haricot",
+    "PrixParMois": 50,
+    "MOIS": "MAI"
+  }
+]

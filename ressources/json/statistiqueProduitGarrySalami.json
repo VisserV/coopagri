@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "produit": "Saucisse",
+    "prix": 150
+  },
+  {
+    "id": 2,
+    "produit": "Merguez",
+    "prix": 250
+  },
+  {
+    "id": 3,
+    "produit": "ventrèche",
+    "prix": 100
+  }
+]

@@ -9,7 +9,7 @@ function getFournisseur(){
         async:false,
         success:function(data){
             $.each(data,function(i,element){
-                tableau[i] = {name : element.raisonSociale ,y : getQuantiteVenteFournisseur(element.id)};
+                tableau[i] = {name : element.raisonSociale ,y : getPrixVenteFournisseur(element.id)};
             })
             creerGraphe(tableau);
         }
@@ -19,49 +19,30 @@ function getFournisseur(){
 function getTypesDeProduit(Fournisseur){
     tableau = new Array();
     $.ajax({
-        url:"ressources/json/statistiqueDe"+Fournisseur+"ParAnnee.json",
+        url:"ressources/json/statistiqueProduit"+Fournisseur+".json",
         dataType :"json",
         async:false,
         success:function(data){
             $.each(data,function(i,element){
-                tableau[i] = {name : element.TypeDeProduit ,y : element.Prix};
+                tableau[i] = {name : element.produit ,y : element.prix};
+
             })
             creerGrapheTypesDeProduit(Fournisseur,tableau);
         }
     });
 }
 
-function getTypeDeProduitParMois(Fournisseur, type){
-    choixProduit(Fournisseur, type);
-    chargerStatistiqueProduit(Fournisseur, type);
+function getProduitParMois(produit){
     tableau = new Array();
-    MOIS = new Array()
+    MOIS = new Array();
     $.ajax({
-        url:'ressources/json/statistiqueDe'+ type + 'De' + Fournisseur + '.json',
+        url:'ressources/json/statistiqueDe'+ produit + '.json',
         dataType :"json",
         async:false,
         success:function(data){
             $.each(data,function(i,element){
                 tableau[i] = {name : element.MOIS ,y : element.PrixParMois};
                 MOIS[i] = element.MOIS;
-            })
-            creerGrapheTypeDeProduitParMois(Fournisseur, type, tableau, MOIS);
-        }
-    });
-}
-
-function getProduitParMois(produit){
-
-    produit = enleverEspace(produit);
-    alert(produit);
-    tableau = new Array();
-    $.ajax({
-        url:'ressources/json/StatistiqueDe'+ produit + '.json',
-        dataType :"json",
-        async:false,
-        success:function(data){
-            $.each(data,function(i,element){
-                tableau[i] = {name : element.MOIS ,y : element.PrixParMois};
             })
             creerGrapheProduit(produit, tableau);
         }
@@ -81,7 +62,7 @@ function creerGraphe(tableau){
             text: 'Proportion des volumes de ventes des fournisseurs'
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            pointFormat: '{series.name}: <b>{point.y}€ </b>'
         },
         plotOptions: {
             pie: {
@@ -124,7 +105,7 @@ function creerGrapheTypesDeProduit(Fournisseur, tableau){
             text: 'Proportion du volume de vente de ' + Fournisseur + ' par type de produit'
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            pointFormat: '{series.name}: <b>{point.y}€</b>'
         },
         plotOptions: {
             pie: {
@@ -145,42 +126,7 @@ function creerGrapheTypesDeProduit(Fournisseur, tableau){
             point: {
                 events: {
                     click: function(e) {
-                        getTypeDeProduitParMois(Fournisseur, enleverEspace(this.name));
-                    }
-                }
-            },
-            data:tableau
-        }]
-    });
-
-}
-
-function creerGrapheTypeDeProduitParMois(Fournisseur, type, tableau, MOIS){
-
-    console.log(MOIS);
-    Highcharts.chart('container', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'column'
-        },
-        title: {
-            text: 'Proportion des volumes de ventes de ' + Fournisseur + ' pour les ' + type
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.y}</b>'
-        },
-        xAxis: {
-            categories:MOIS
-        },
-        series: [{
-            name: 'argent gagné par mois',
-            colorByPoint: false,
-            point: {
-                events: {
-                    click: function(e) {
-                        getProduitParMois(Fournisseur, enleverEspace(this.name));
+                        getProduitParMois(enleverEspace(this.name));
                     }
                 }
             },
@@ -211,21 +157,14 @@ function creerGrapheProduit(produit, tableau){
         series: [{
             name: 'argent gagné par mois',
             colorByPoint: false,
-            point: {
-                events: {
-                    click: function(e) {
-                        getProduitParMois(Fournisseur, enleverEspace(this.name));
-                    }
-                }
-            },
             data:tableau
         }]
     });
 
 }
 
-function getQuantiteVenteFournisseur(id){
-    var quantite = 0;
+function getPrixVenteFournisseur(id){
+    var prix = 0;
     $.ajax({
         url:"ressources/json/produitStat.json",
         dataType :"json",
@@ -233,12 +172,12 @@ function getQuantiteVenteFournisseur(id){
         success:function(data){
             $.each(data,function(i,element){
                 if (id == parseInt(element.FOURNISSEUR_ID)) {
-                    quantite += parseInt(element.LIGNE_QUANTITE);
+                    prix += parseInt(element.LIGNE_QUANTITE)*parseInt(element.PRODUIT_PRIX_ACHAT);
                 }
             })
         }
     });
-    return quantite;
+    return prix;
 }
 
 function enleverEspace(name){
@@ -249,32 +188,3 @@ function enleverEspace(name){
     }
     return name;
 }
-
-function choixProduit() {
-    let rechercherSelect = $('<select>');
-    rechercherSelect.attr('id',"rechercher");
-
-    let categorie = $('<p>');
-    categorie.text("Produit : ");
-
-    let ligne = $('<select>');
-    ligne.attr('id', "ChoixProduit");
-    ligne.attr('onchange', "getProduitParMois(this.value)");
-
-    categorie.append(ligne);
-
-    $('#select').append(categorie);
-
-};
-
-function chargerStatistiqueProduit(Fournisseur, type) {
-    $.ajax({
-        url: "ressources/json/listeDe"+type+"De"+Fournisseur+".json",
-        dataType: "json",
-        success: function (data) {
-            data.forEach(function (element) {
-                $('#ChoixProduit').append("<option>" + element.produit + "</option>")
-            })
-        }
-    });
-};
