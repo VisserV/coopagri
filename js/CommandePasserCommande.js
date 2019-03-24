@@ -361,7 +361,7 @@ if(sessionStorage.CategorieId=="2"){
             }
         }
         $('#btn_val').html("Valider Commande");
-        $('#btn_val').attr('onclick', "saisirAdresse()");
+        //$('#btn_val').attr('onclick', "saisirAdresse()");
 }
 
 function saisirAdresse() {
@@ -375,6 +375,7 @@ function saisirAdresse() {
     btn_val_ad.attr('id', "btn_ad");
     btn_val_ad.html("Valider Adresse");
     btn_val_ad.attr('onclick',"recapTotal()");
+    //$("#btn_val").attr('onclick',"btn_commande()");
 
     $("#btn_return_commande").attr('onclick',"recapitulatifCommande()");
 
@@ -435,7 +436,8 @@ function recapTotal() {
     $("#idCategorie").css("display","none");
     $(".wrap_range").css("display","none");
     $("#form_ad").css("display", "none");
-    $("#btn_ad").css("display", "none");
+
+
 
     $("#liste").css("display","");
 
@@ -493,7 +495,9 @@ function recapTotal() {
 
     infoLivraison.css("text-align", "center");
 
-    $('#btn_val').html("Valider Commande");
+    $("#btn_ad").css("display", "block");
+    $("#btn_ad").attr("onclick","envoiJson()");
+    $("#title_recap").css("display", "none");
     }
 
 
@@ -548,9 +552,18 @@ function envoiJson() {
             }
         }
 
-
     }
 
+    var commande2 = [{
+
+        "PAYS" : $("#paysClient").val(),
+        "CODE_POSTAL" : $("#codePosClient").val(),
+        "VILLE" : $("#villeClient").val(),
+        "ADRESSE" : $("#adresseClient").val(),
+
+    }];
+
+    commande = commande.concat(commande2);
     console.log(commande);
     var param = JSON.stringify(commande);
 
@@ -567,18 +580,35 @@ function envoiJson() {
         }
     });
 
+    alert("Votre commande est validé ! ");
+    chargerTableau();
+    chargerProd(0);
+    $("#btn_ad").css("display", "none");
+    infoLivraison.remove();
+
 }
-var bool = true;
+var int = 1;
 function btn_commande(){
 
-    if(bool){
-        recapitulatifCommande();
-        bool = false;
-    }else{
-        envoiJson();
-        alert("Votre commande est validé ! ");
-        chargerTableau();
-        chargerProd(0);
-        bool = true;
+    switch (int)
+    {
+    case 1:
+        {
+            recapitulatifCommande();
+            int = 2;
+            break;
+        }
+    case 2 :
+        {
+            saisirAdresse();
+            int = 3;
+            break;
+        }
+        default :
+        {
+            alert("erreur");
+            int = 1;
+        }
+
     }
 }
