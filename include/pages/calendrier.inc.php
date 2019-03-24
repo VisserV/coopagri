@@ -27,6 +27,11 @@
 
   <div style='clear:both'></div>
 
-  <input type="button" value="Valider" onClick=valider() ; id="validation" />
+  <div id="mapCalendar"></div>
+
+  <script src="./js/mapsCalendar.js"></script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnySGIvsEVGgE6-YL-jLS0SXxCvJ2-J5s&callback=initMap"></script>
+
 
 </div>

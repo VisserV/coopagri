@@ -1,20 +1,20 @@
 
 function afficheClt(){
  let externalevt = document.getElementById('external-events');
- console.log(externalevt);
+ // console.log(externalevt);
  $.ajax({
    url:'./ressources/json/clients.json',
    dataType:'json',
    async : false,
    success : function(data){
-    console.log(data);
+    // console.log(data);
     $.each(data, function(i, elt){
                     //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                     let div = $('<div>');
                     div.attr('class', "fc-event");
                     div.text('Client n°' + elt.id + ' : '+ elt.raisonSociale);
                     div.attr('value',elt.livraisonAdresses[0].id);
-                    console.log(elt.livraisonAdresses[0].id);
+                    // console.log(elt.livraisonAdresses[0].id);
                     $(externalevt).append(div)
                   });
   },
@@ -24,13 +24,13 @@ function afficheClt(){
 
 function affichefrs(){
   let externalevt = document.getElementById('external-events');
-  console.log(externalevt);
+  // console.log(externalevt);
   $.ajax({
     url:'./ressources/json/fournisseur.json',
     dataType:'json',
     async : false,
     success : function(data){
-     console.log(data);
+     // console.log(data);
      $.each(data, function(i, elt){
                      //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                      let div = $('<div>');
@@ -94,10 +94,10 @@ function affichefrs(){
      resourceLabelText: 'Livraison',
      resources: './ressources/json/personnes.json',
      drop: function(date, jsEvent, ui, resourceId) {
-      // console.log(jsEvent);
-       //console.log(ui);
-       //console.log(ui.helper.attr('value'));
-       //console.log(date.format('HH:mm'));
+      //  console.log(jsEvent);
+       // console.log(ui);
+       // console.log(ui.helper.attr('value'));
+       // console.log(date.format('HH:mm'));
        let heure = date.format('HH:mm');
        let adid = ui.helper.attr('value') ;
        let iditi = 1;
@@ -108,7 +108,7 @@ function affichefrs(){
         data: 'fname=fonctionInsert&heure=' +heure +'&idAd=' +adid +'&id=' +iditi,
         success : function(data){
 
-         console.log(data);
+        // console.log(data);
        }});
 
 
@@ -119,12 +119,12 @@ function affichefrs(){
        }
      },
      eventReceive: function(event) { // called when a proper external event is dropped
-       console.log('eventReceive', event);
+       // console.log('eventReceive', event);
      },
      eventDrop: function(event) { // called when an event (already on the calendar) is moved
-       console.log('eventDrop', event);
+       // console.log('eventDrop', event);
        let heure = event.start.format('HH:mm');
-       console.log(heure);
+       // console.log(heure);
        let adid = ui.helper.attr('value') ;
 
        $.ajax({
@@ -133,7 +133,7 @@ function affichefrs(){
         data: 'fname=fonctionUpdate&heure=' +heure +'&idAd=' +adid,
         success : function(data){
 
-         console.log(data);
+         // console.log(data);
        }});
      },
      eventRender: function(event, element) {

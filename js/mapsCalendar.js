@@ -1,23 +1,12 @@
-if((sessionStorage.User=="Admin") || (sessionStorage.CategorieId=="1")){
+if(sessionStorage.User=="Admin"){
     var map;
-    var iti;
-    var geo;
-    var start;
 
     function initMap() {
 
-        map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('mapCalendar'), {
             zoom: 6.5,
             center: {lat: 46.862725, lng: 2.287592}
         });
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(geolocate, function(){
-                alert('pas de géolocalisation');
-            });
-        } else {
-            alert('pas de géolocatisation');
-        }
 
         var directionsDisplay = new google.maps.DirectionsRenderer;
         var directionsService = new google.maps.DirectionsService;
@@ -33,19 +22,6 @@ if((sessionStorage.User=="Admin") || (sessionStorage.CategorieId=="1")){
             calculateAndDisplayRoute(directionsService, directionsDisplay);
         };
         document.getElementById('iti').addEventListener('change', onChangeHandler);
-    }
-
-    function geolocate(position) {
-        pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-        };
-
-        map.setCenter(pos); 
-
-        start = new google.maps.LatLng(pos.lat, pos.lng);
-
-        inscrireMarkers(pos.lat, pos.lng, 'depart');
     }
 
     function inscrireMarkers(lat, lng, type){
@@ -174,21 +150,12 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         data: 'fname=fonctionSelect&id=' +iti,
         success : function(data){
 
-            //on replace au centre de la map la position géolocatisée
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(geolocate, function(){
-                    alert('pas de géolocalisation');
-                });
-            } else {
-                alert('pas de géolocatisation');
-            }
-
             //  console.log('data : ');
             //  console.log(data);
 
             var waypts = calculateWayPoints(data);
 
-            //var start = waypts.shift();
+            var start = waypts.shift();
             var end = waypts.pop();
 
             directionsService.route({

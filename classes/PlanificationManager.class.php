@@ -15,7 +15,7 @@ class PlanificationManager{
      public function selectItineraire($id){
           $ad = array();
 
-          $req = $this->db->prepare("SELECT ADRESSE_RUE_NUM, ADRESSE_RUE_LIBELLE, ADRESSE_CP, ADRESSE_VILLE
+          $req = $this->db->prepare("SELECT a.ADRESSE_ID, ADRESSE_RUE_NUM, ADRESSE_RUE_LIBELLE, ADRESSE_CP, ADRESSE_VILLE
            FROM adresse a, itineraire i WHERE a.ADRESSE_ID = i.ADRESSE_ID 
            AND i.ITINERAIRE_ID = $id ORDER BY ITINERAIRE_HEURE_PASSAGE");
 
