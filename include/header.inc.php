@@ -32,13 +32,13 @@ crossorigin="anonymous"></script>
 <script src="js/menuConnexion.js"></script>
 
 <!-- Map et Calendrier -->
-<!--<script src='./js/lib/moment.min.js'></script>
+<script src='./js/lib/moment.min.js'></script>
 <script src='./js/lib/jquery.min.js'></script>
 <script src='./js/lib/jquery-ui.min.js'></script>
 <script src='./js/fullcalendar.min.js'></script>
 <script src='./js/scheduler.js'></script>
 <script src='./js/calendrier.js'></script>
-<script src='./js/locale/fr.js'></script> -->
+<script src='./js/locale/fr.js'></script> 
 
 <!-- Price Range -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

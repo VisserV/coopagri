@@ -1,3 +1,4 @@
+if((sessionStorage.User=="Admin") || (sessionStorage.User=="Livreur")){
     var map;
     var iti;
     var geo;

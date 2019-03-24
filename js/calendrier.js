@@ -1,14 +1,14 @@
-if((sessionStorage.User=="Admin") || (sessionStorage.User=="Livreur")){
-  function afficheClt(){
-   let externalevt = document.getElementById('external-events');
-   console.log(externalevt);
-   $.ajax({
-     url:'./ressources/json/clients.json',
-     dataType:'json',
-     async : false,
-     success : function(data){
-      console.log(data);
-      $.each(data, function(i, elt){
+
+function afficheClt(){
+ let externalevt = document.getElementById('external-events');
+ console.log(externalevt);
+ $.ajax({
+   url:'./ressources/json/clients.json',
+   dataType:'json',
+   async : false,
+   success : function(data){
+    console.log(data);
+    $.each(data, function(i, elt){
                     //let div = $('<div class="fc-event"> Commande n° '+ elt.id + '</div>');
                     let div = $('<div>');
                     div.attr('class', "fc-event");
@@ -17,12 +17,12 @@ if((sessionStorage.User=="Admin") || (sessionStorage.User=="Livreur")){
                     console.log(elt.livraisonAdresses[0].id);
                     $(externalevt).append(div)
                   });
-    },
-  });
+  },
+});
 
- };
+};
 
- function affichefrs(){
+function affichefrs(){
   let externalevt = document.getElementById('external-events');
   console.log(externalevt);
   $.ajax({
@@ -145,6 +145,3 @@ if((sessionStorage.User=="Admin") || (sessionStorage.User=="Livreur")){
     });
 
  });
-}else{
-  window.location.replace("http://localhost/coopagri/index.php?page=1");
-}
