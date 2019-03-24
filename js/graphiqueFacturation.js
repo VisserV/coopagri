@@ -135,6 +135,7 @@ function creerGrapheTypesDeProduit(Fournisseur, tableau){
 
     let retour = $('<button>');
     retour.attr('onclick',"getFournisseur()");
+    retour.addClass("btn btn-dark");
     retour.text("Retour");
     $("#container").append(retour);
 }
@@ -165,6 +166,7 @@ function creerGrapheProduit(Fournisseur, produit, tableau){
     });
 
     let retour = $('<button>');
+    retour.addClass("btn btn-dark");
     retour.click(function(){
         getTypesDeProduit(Fournisseur)
         }
