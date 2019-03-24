@@ -1,24 +1,25 @@
-$(document).ready(function () {
-    init();
-    chargerCategorie();
-    chargerProd(1);
-});
+
+    $(document).ready(function () {
+        init();
+        chargerCategorie();
+        chargerProd(1);
+    });
 
 
-function init() {
+    function init() {
 
 
-    let rechercherSelect = $('<select>');
-    rechercherSelect.attr('id',"rechercher");
+        let rechercherSelect = $('<select>');
+        rechercherSelect.attr('id',"rechercher");
 
-    let categorie = $('<p>');
-    categorie.text("Catégorie : ");
+        let categorie = $('<p>');
+        categorie.text("Catégorie : ");
 
-    let ligne = $('<select>');
-    ligne.attr('id', "LSTCATEG");
-    ligne.attr('onchange', "chargerProd(this.value)");
+        let ligne = $('<select>');
+        ligne.attr('id', "LSTCATEG");
+        ligne.attr('onchange', "chargerProd(this.value)");
 
-    categorie.append(ligne);
+        categorie.append(ligne);
     //var text = document.createTextNode("  Rechercher par : ");
     //categorie.append(text);
 

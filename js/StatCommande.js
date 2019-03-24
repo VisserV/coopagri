@@ -1,102 +1,94 @@
+if((sessionStorage.User=="Admin") || (sessionStorage.User=="Entreprise")){
+    nomFournisseur();
+    
+    function creerGraphe(tableau){
 
-nomFournisseur();
-//
-//console.log(getQuantiteVenteCateg(1,1));
-//nomCateg(1);
-// nomCateg(2);
-
-//nomCateg(1);
-
-
-//venteCategorie(1);
-function creerGraphe(tableau){
-
-    Highcharts.chart('container', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'Proportion des volumes de ventes des fournisseurs'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                }
-            }
-        },
-        series: [{
-            name: 'Fournisseurs',
-            colorByPoint: true,
-            point: {
-                events: {
-                    click: function(e) {
-                       nomCateg(this.id);
+        Highcharts.chart('container', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Proportion des volumes de ventes des fournisseurs'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
                     }
                 }
             },
-            data:tableau
-        }]
-    });
+            series: [{
+                name: 'Fournisseurs',
+                colorByPoint: true,
+                point: {
+                    events: {
+                        click: function(e) {
+                           nomCateg(this.id);
+                       }
+                   }
+               },
+               data:tableau
+           }]
+       });
 
-}
+    }
 
 
 
-function creerGrapheCategorie(id,tableauCategorie){
+    function creerGrapheCategorie(id,tableauCategorie){
 
 // Build the chart
- Highcharts.chart('container', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'Proportion des volumes de ventes du fournisseurs'+id
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
+Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Proportion des volumes de ventes du fournisseurs'+id
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                 }
             }
-        },
-        series: [{
-            name: 'Catégories',
-            colorByPoint: true,
-            point: {
-                events: {
-                    click: function(e) {
-                       nomCateg(this.id);
-                    }
-                }
-            },
-            data:tableauCategorie
-        }]
-    });
+        }
+    },
+    series: [{
+        name: 'Catégories',
+        colorByPoint: true,
+        point: {
+            events: {
+                click: function(e) {
+                   nomCateg(this.id);
+               }
+           }
+       },
+       data:tableauCategorie
+   }]
+});
 }
 
 // function venteCategorie(idCateg){
@@ -263,5 +255,7 @@ function estDansleTab(tab,id,taille){
     }
 
 }
-
+}else{
+    window.location.replace("http://localhost/coopagri/index.php?page=1");
+}
 

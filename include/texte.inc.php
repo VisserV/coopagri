@@ -14,6 +14,10 @@ switch ($page) {
     include_once('pages/accueil.inc.php');
     break;
 
+    case 1:
+    include_once('pages/redirection.inc.php');
+    break;
+
     /* Partie Plannification */
     case 11:
     include_once('pages/calendrier.inc.php');
