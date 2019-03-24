@@ -1,146 +1,280 @@
-$(document).ready(function () {
 
-    function addGraphique() {
-        let body = $('body');
-        let wrap  = $('<div>');
-        wrap.attr('id','wrapper');
-        body.append(wrap)
-        let canvas = $('<canvas>');
-        canvas.attr('id','myChart');
-        wrap.append(canvas);
-        var ctx = document.getElementById('myChart').getContext('2d');
-        label = [];
-        prix = [];
-        nom = [];
-        $.ajax({
-            url: '/coopagri/ressources/json/statistiqueParAnnee.json',
-            dataType: 'json',
-            success: function (data) {
+getFournisseur();
 
-                $.each(data,function (i,donne) {
-                    label.push(donne.TypeDeProduit);
-                    prix.push(donne.Prix);
-                    nom.push(donne.SOCIETE_RAISON_SOCIAL);
-                });
-                //return [label,prix];
-                nom = nom[0];
-                console.log(nom);
-            },
-            error : function(p1,p2){
-                console.log(p1,p2);
-            }
-        });
-       // console.log(label,prix);
-        var myChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: label,
-                datasets: [{
-                    label: 'statistique de ' . nom,
-                    data: prix,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(0, 206, 86, 1)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(0, 206, 86, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+function getFournisseur(){
+    tableau = new Array();
+    $.ajax({
+        url:"ressources/json/fournisseur.json",
+        dataType :"json",
+        async:false,
+        success:function(data){
+            $.each(data,function(i,element){
+                tableau[i] = {name : element.raisonSociale ,y : getQuantiteVenteFournisseur(element.id)};
+            })
+            creerGraphe(tableau);
+        }
+    });
+}
+
+function getTypesDeProduit(Fournisseur){
+    tableau = new Array();
+    $.ajax({
+        url:"ressources/json/statistiqueDe"+Fournisseur+"ParAnnee.json",
+        dataType :"json",
+        async:false,
+        success:function(data){
+            $.each(data,function(i,element){
+                tableau[i] = {name : element.TypeDeProduit ,y : element.Prix};
+            })
+            creerGrapheTypesDeProduit(Fournisseur,tableau);
+        }
+    });
+}
+
+function getTypeDeProduitParMois(Fournisseur, type){
+    choixProduit(Fournisseur, type);
+    chargerStatistiqueProduit(Fournisseur, type);
+    tableau = new Array();
+    MOIS = new Array()
+    $.ajax({
+        url:'ressources/json/statistiqueDe'+ type + 'De' + Fournisseur + '.json',
+        dataType :"json",
+        async:false,
+        success:function(data){
+            $.each(data,function(i,element){
+                tableau[i] = {name : element.MOIS ,y : element.PrixParMois};
+                MOIS[i] = element.MOIS;
+            })
+            creerGrapheTypeDeProduitParMois(Fournisseur, type, tableau, MOIS);
+        }
+    });
+}
+
+function getProduitParMois(produit){
+
+    produit = enleverEspace(produit);
+    alert(produit);
+    tableau = new Array();
+    $.ajax({
+        url:'ressources/json/StatistiqueDe'+ produit + '.json',
+        dataType :"json",
+        async:false,
+        success:function(data){
+            $.each(data,function(i,element){
+                tableau[i] = {name : element.MOIS ,y : element.PrixParMois};
+            })
+            creerGrapheProduit(produit, tableau);
+        }
+    });
+}
+
+function creerGraphe(tableau){
+
+    Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Proportion des volumes de ventes des fournisseurs'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
                 }
             }
-        });
-        var canvasP = $('#myChart');//document.getElementById("myChart");
-        canvasP.on('click',function(e) {
-            //console.log('click');
-             var slice = myChart.getElementAtEvent(e);
-            var label = slice[0]._model.label;
-             console.log(label);
-             addViande(label);
-        });
-        var wrapper = document.getElementById('wrapper').style;
-        wrapper.height = "10px";
-    }
-    function addViande(type){
-        var ctx = $('#myChart');
-        ctx.remove();
-        let body = $('#wrapper');
-        let canvas = $('<canvas>');
-        canvas.attr('id','myChart');
-        body.append(canvas);
-        var ctx = document.getElementById('myChart').getContext('2d');
-        label = [];
-        prix = [];
-        nom = [];
-        chemin = '/coopagri/ressources/json/statistique'+ type + '.json';
-        console.log(chemin);
-        $.ajax({
-            url: chemin,
-            dataType: 'json',
-            success: function (data) {
+        },
+        series: [{
+            name: 'Fournisseurs',
+            colorByPoint: true,
+            point: {
+                events: {
+                    click: function(e) {
+                        getTypesDeProduit(enleverEspace(this.name));
+                    }
+                }
+            },
+            data:tableau
+        }]
+    });
 
-                $.each(data,function (i,donne) {
-                    label.push(donne.MOIS);
-                    prix.push(donne.PrixParMois);
-                    nom.push(donne.TypeDeProduit);
-                });
-                //return [label,prix];
-                nom = nom[0];
-                console.log(nom);
-            },
-            error : function(p1,p2){
-                console.log(p1,p2);
-            }
-        });
-        labelChart = 'statistique '+type;
-        // console.log(label,prix);
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: label,
-                datasets: [{
-                    label:  labelChart ,
-                    data: prix,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(0, 206, 86, 1)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(0, 206, 86, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+}
+
+function creerGrapheTypesDeProduit(Fournisseur, tableau){
+    Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Proportion du volume de vente de ' + Fournisseur + ' par type de produit'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
                 }
             }
-        });
+        },
+        series: [{
+            name: 'Type de produit',
+            colorByPoint: true,
+            point: {
+                events: {
+                    click: function(e) {
+                        getTypeDeProduitParMois(Fournisseur, enleverEspace(this.name));
+                    }
+                }
+            },
+            data:tableau
+        }]
+    });
+
+}
+
+function creerGrapheTypeDeProduitParMois(Fournisseur, type, tableau, MOIS){
+
+    console.log(MOIS);
+    Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'column'
+        },
+        title: {
+            text: 'Proportion des volumes de ventes de ' + Fournisseur + ' pour les ' + type
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y}</b>'
+        },
+        xAxis: {
+            categories:MOIS
+        },
+        series: [{
+            name: 'argent gagné par mois',
+            colorByPoint: false,
+            point: {
+                events: {
+                    click: function(e) {
+                        getProduitParMois(Fournisseur, enleverEspace(this.name));
+                    }
+                }
+            },
+            data:tableau
+        }]
+    });
+
+}
+
+function creerGrapheProduit(produit, tableau){
+
+    Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'column'
+        },
+        title: {
+            text: 'Proportion des volumes de ventes de pour les ' + produit
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y}</b>'
+        },
+        xAxis: {
+            categories:MOIS
+        },
+        series: [{
+            name: 'argent gagné par mois',
+            colorByPoint: false,
+            point: {
+                events: {
+                    click: function(e) {
+                        getProduitParMois(Fournisseur, enleverEspace(this.name));
+                    }
+                }
+            },
+            data:tableau
+        }]
+    });
+
+}
+
+function getQuantiteVenteFournisseur(id){
+    var quantite = 0;
+    $.ajax({
+        url:"ressources/json/produitStat.json",
+        dataType :"json",
+        async:false,
+        success:function(data){
+            $.each(data,function(i,element){
+                if (id == parseInt(element.FOURNISSEUR_ID)) {
+                    quantite += parseInt(element.LIGNE_QUANTITE);
+                }
+            })
+        }
+    });
+    return quantite;
+}
+
+function enleverEspace(name){
+    var i = 0;
+    while(i != name.length) {
+        name = name.replace(" ", "");
+        i++
     }
-    addGraphique();
+    return name;
+}
 
+function choixProduit() {
+    let rechercherSelect = $('<select>');
+    rechercherSelect.attr('id',"rechercher");
 
-});
+    let categorie = $('<p>');
+    categorie.text("Produit : ");
+
+    let ligne = $('<select>');
+    ligne.attr('id', "ChoixProduit");
+    ligne.attr('onchange', "getProduitParMois(this.value)");
+
+    categorie.append(ligne);
+
+    $('#select').append(categorie);
+
+};
+
+function chargerStatistiqueProduit(Fournisseur, type) {
+    $.ajax({
+        url: "ressources/json/listeDe"+type+"De"+Fournisseur+".json",
+        dataType: "json",
+        success: function (data) {
+            data.forEach(function (element) {
+                $('#ChoixProduit').append("<option>" + element.produit + "</option>")
+            })
+        }
+    });
+};
