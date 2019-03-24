@@ -1,0 +1,17 @@
+[
+  {
+    "produit": "jus d'orange",
+    "PrixParMois": 40,
+    "MOIS": "MARS"
+  },
+  {
+    "produit": "jus d'orange",
+    "PrixParMois": 60,
+    "MOIS": "AVRIL"
+  },
+  {
+    "produit": "jus d'orange",
+    "PrixParMois": 10,
+    "MOIS": "MAI"
+  }
+]
