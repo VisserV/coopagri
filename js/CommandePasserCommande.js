@@ -324,5 +324,5 @@ function slider() {
         " - $" + $( "#slider-range" ).slider( "values", 1 ) );
 }
 }else{
-    window.location.replace("http://localhost/coopagri/index.php?page=1");
+    window.location.replace("index.php?page=1");
 }
