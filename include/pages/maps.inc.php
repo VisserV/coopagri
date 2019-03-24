@@ -1,3 +1,16 @@
+<script type="text/javascript">
+  if ((sessionStorage.CategorieId == 1)||(sessionStorage.User=="Admin")) {
+  }else{
+    window.location.replace("http://localhost/coopagri/index.php?page=1");
+  }
+</script>
+<script src='./js/lib/moment.min.js'></script>
+<script src='./js/lib/jquery.min.js'></script>
+<script src='./js/lib/jquery-ui.min.js'></script>
+<script src='./js/fullcalendar.min.js'></script>
+<script src='./js/scheduler.js'></script>
+<script src='./js/calendrier.js'></script>
+<script src='./js/locale/fr.js'></script> 
 <div id="floating-panel">
   <strong>Itinéraire :</strong>
   <select id="iti">

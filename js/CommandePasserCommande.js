@@ -1,28 +1,29 @@
-var mesProduits = new Array();
+if(sessionStorage.CategorieId=="2"){
+    var mesProduits = new Array();
 
-$(document).ready(function () {
-    init();
-    chargerTableau();
-    chargerCategorie();
-    chargerProd(0);
-    slider();
-});
+    $(document).ready(function () {
+        init();
+        chargerTableau();
+        chargerCategorie();
+        chargerProd(0);
+        slider();
+    });
 
-function init() {
+    function init() {
 
 
-    let rechercherSelect = $('<select>');
-    rechercherSelect.attr('id',"rechercher");
+        let rechercherSelect = $('<select>');
+        rechercherSelect.attr('id',"rechercher");
 
-    let categorie = $('<p>');
-    categorie.attr('id', 'idCategorie');
-    categorie.text("Catégorie : ");
+        let categorie = $('<p>');
+        categorie.attr('id', 'idCategorie');
+        categorie.text("Catégorie : ");
 
-    let ligne = $('<select>');
-    ligne.attr('id', "LSTCATEG");
-    ligne.attr('onchange', "chargerProd(this.value)");
+        let ligne = $('<select>');
+        ligne.attr('id', "LSTCATEG");
+        ligne.attr('onchange', "chargerProd(this.value)");
 
-    categorie.append(ligne);
+        categorie.append(ligne);
     //var text = document.createTextNode("  Rechercher par : ");
     //categorie.append(text);
 
@@ -139,11 +140,11 @@ function chargerProd(categorie_id) {
                     var url = produit[4];
                 }
                 $("#liste").append("<tr class='ligne' scope='row'>" +
-                '<td  id = "'+i+'">' + produit[1] + '</td>' +
-                '<td><img width="auto" height="50px" src='+url+'></td>' +
-                '<td>' + produit[5] + '</td>' +
-                '<td id="prix'+i+'">' + produit[2] + '</td>' +
-                '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="updatePrice('+i+')" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
+                    '<td  id = "'+i+'">' + produit[1] + '</td>' +
+                    '<td><img width="auto" height="50px" src='+url+'></td>' +
+                    '<td>' + produit[5] + '</td>' +
+                    '<td id="prix'+i+'">' + produit[2] + '</td>' +
+                    '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="updatePrice('+i+')" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
             }
         }
     }
@@ -157,11 +158,11 @@ function chargerProd(categorie_id) {
                 var url = produit[4];
             }
             $("#liste").append("<tr class='ligne' scope='row'>" +
-            '<td  id = "'+i+'">' + produit[1] + '</td>' +
-            '<td><img width="auto" height="50px" src='+url+'></td>' +
-            '<td>' + produit[5] + '</td>' +
-            '<td id="prix'+i+'">' + produit[2] + '</td>' +
-            '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="updatePrice('+i+')" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
+                '<td  id = "'+i+'">' + produit[1] + '</td>' +
+                '<td><img width="auto" height="50px" src='+url+'></td>' +
+                '<td>' + produit[5] + '</td>' +
+                '<td id="prix'+i+'">' + produit[2] + '</td>' +
+                '<td><button class="value-button" id="decrease" onclick="decreaseValue('+i+')" value="Decrease Value">-</button><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="updatePrice('+i+')" /><button class="value-button" id="increase" onclick="increaseValue('+i+')" value="Increase Value">+</button></td>'+'</tr>')
         }
 
     }
@@ -296,11 +297,11 @@ function recapitulatifCommande(){
                 var url = produit[4];
             }
             $("#liste").append("<tr class='ligne' scope='row'>" +
-            '<td  id = "'+i+'">' + produit[1] + '</td>' +
-            '<td><img width="auto" height="50px" src='+url+'></td>' +
-            '<td>' + produit[5] + '</td>' +
-            '<td id="prix'+i+'">' + produit[2] + '</td>' +
-            '<td class="input_RecapCommande"><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="calculPrixTotal()" disabled="disabled"/></td>'+'</tr>')
+                '<td  id = "'+i+'">' + produit[1] + '</td>' +
+                '<td><img width="auto" height="50px" src='+url+'></td>' +
+                '<td>' + produit[5] + '</td>' +
+                '<td id="prix'+i+'">' + produit[2] + '</td>' +
+                '<td class="input_RecapCommande"><input type="number" id="number'+i+'" value="'+produit[3]+'"  onchange="calculPrixTotal()" disabled="disabled"/></td>'+'</tr>')
 
         }
     }
@@ -320,5 +321,8 @@ function slider() {
         }
     });
     $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-    " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+        " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+}
+}else{
+    window.location.replace("http://localhost/coopagri/index.php?page=1");
 }

@@ -98,24 +98,25 @@ function VerifierCompte(id,mdp){
                     let userId = element.id;
                     let userNom = element.personne['nom'];
                     let userConges = element.personne['conges'];
-                    let userObject = JSON.stringify(element);
                     let categorieId = element.personne.categorie['id'];
+                    let userCategorie = element.personne.categorie.libelle;
+                    let userObject = JSON.stringify(element);
 
                     sessionStorage.setItem("User",user);
+                    sessionStorage.setItem("UserCategorie",userCategorie);
                     sessionStorage.setItem("UserId",userId);
                     sessionStorage.setItem("UserNom",userNom);
                     sessionStorage.setItem("UserConges",userConges);
                     sessionStorage.setItem("UserObject",userObject);
                     sessionStorage.setItem("CategorieId",categorieId);
                 }else{
-                    console.log("Entreprise");
                     let user = element.societe['raisonSociale'];
                     let userId = element.id;
                     let userFactAddr = element.societe['facturationAdresse'];
                     let userLivAddr = element.societe['livraisonAdresses'];
                     let userObject = JSON.stringify(element);
 
-                    sessionStorage.setItem("Entreprise", "Entreprise");
+                    sessionStorage.setItem("User", "Entreprise");
                     sessionStorage.setItem("User",user);
                     sessionStorage.setItem("UserId",userId);
                     sessionStorage.setItem("UserFactAddr",userFactAddr);

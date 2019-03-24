@@ -1,3 +1,18 @@
+<script type="text/javascript">
+  if((sessionStorage.User=="Admin") || (sessionStorage.CategorieId==1)){
+  }else{
+    window.location.replace("http://localhost/coopagri/index.php?page=1");
+  }
+  
+
+</script>
+<script src='./js/lib/moment.min.js'></script>
+<script src='./js/lib/jquery.min.js'></script>
+<script src='./js/lib/jquery-ui.min.js'></script>
+<script src='./js/fullcalendar.min.js'></script>
+<script src='./js/scheduler.js'></script>
+<script src='./js/calendrier.js'></script>
+<script src='./js/locale/fr.js'></script> 
 <div id='wrap'>
 
   <div id='external-events'>
