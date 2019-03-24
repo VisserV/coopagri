@@ -15,7 +15,7 @@ function init(){
 
 
 	setTimeout(function(){
-		window.location.replace("http://localhost/coopagri/index.php?page=0");
+		window.location.replace("index.php?page=0");
 	}, 4000);
 	
 

@@ -256,6 +256,6 @@ function estDansleTab(tab,id,taille){
 
 }
 }else{
-    window.location.replace("http://localhost/coopagri/index.php?page=1");
+    window.location.replace("index.php?page=1");
 }
 

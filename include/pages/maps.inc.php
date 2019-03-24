@@ -1,7 +1,7 @@
 <script type="text/javascript">
   if ((sessionStorage.CategorieId == 1)||(sessionStorage.User=="Admin")) {
   }else{
-    window.location.replace("http://localhost/coopagri/index.php?page=1");
+    window.location.replace("index.php?page=1");
   }
 </script>
 <script src='./js/lib/moment.min.js'></script>
