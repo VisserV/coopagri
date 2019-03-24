@@ -38,12 +38,7 @@ function menuconnexion(){
 
         let sousmenu = $("<a class='nav-link' href='#'> Déconnexion </a>");
         sousmenu.on('click',function(){
-            sessionStorage.removeItem("User");
-            sessionStorage.removeItem("UserId");
-            sessionStorage.removeItem("UserNom");
-            sessionStorage.removeItem("UserConges");
-            sessionStorage.removeItem("UserLivAddr");
-            sessionStorage.removeItem("UserFactAddr");
+            sessionStorage.clear();
             $('#jsonHideWrite').val(""+sessionStorage.nombreCLientConnectes);
             $('#formulaireHide').submit();
             session_destroy();
