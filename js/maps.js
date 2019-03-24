@@ -206,3 +206,6 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         }
     });
 }
+}else{
+    window.location.replace("http://localhost/coopagri/index.php?page=1");
+}
