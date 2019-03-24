@@ -23,7 +23,7 @@ Facturation :
   - PERRUCHAUD Lucie 
   - TRICARD Aurélien
 
-Il y a 3 types de comptes : 
+Il y a 4 types de comptes : 
    - administrateur (id : root, mdp : root)
    - livreur (id : liv1, mdp : liv1)
    - client (id : cli1, mdp : cli1)
