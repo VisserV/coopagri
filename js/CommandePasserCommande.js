@@ -175,8 +175,8 @@ function chargerProdParPrix(categorie_id,prix_min, prix_max) {
     $("#title_recap").remove();
     $("#btn_return_commande").remove();
 
-    $("#idCategorie").css("display", "inline");
-    $(".wrap_range").css("display", "inline");
+    $("#idCategorie").css("display", "block");
+    $(".wrap_range").css("display", "block");
 
     var produit;
     $("#liste").append("<thead><th scope='col'>Id</th><th scope='col'>Image</th><th scope='col'> Nom</th><th scope='col'>Prix Unitaire</th><th scope='col'>Quantité</th></thead>");
@@ -359,6 +359,7 @@ function recapitulatifCommande(){
         }
     }
     $('#btn_val').html("Valider Commande");
+    envoiJson();
 }
 
 
@@ -381,4 +382,55 @@ function slider() {
 }
 }else{
     window.location.replace("index.php?page=1");
+}
+
+function envoiJson() {
+
+    var produit;
+    var bool = true;
+    var commande = new Array();
+    for(var i = 1; i < mesProduits.length;i ++) {
+        produit = mesProduits[i];
+        if (bool){
+            bool = false;
+            if (produit[3] > 0) {
+                commande = [{
+                    "VENTE_ID" : 1,
+                    "COMMANDE_ID" : 1,
+                    "PRODUIT_ID" : produit[1],
+                    "VENTE_QUANTITE" : produit[3],
+                }];
+            }
+        }
+        else{
+            if (produit[3] > 0) {
+                var commande2 = [{
+                    "VENTE_ID" : 1,
+                    "COMMANDE_ID" : 1,
+                    "PRODUIT_ID" : produit[1],
+                    "VENTE_QUANTITE" : produit[3],
+                }];
+                commande = commande.concat(commande2);
+            }
+        }
+
+
+    }
+
+    console.log(commande);
+    var param = JSON.stringify(commande);
+
+    $.ajax({
+        url: "include/vente.php",
+        method : "post",
+        data :  {'VENTE_ID' : param},
+        async : false,
+        success: function (response) {
+            console.log("CA MARCHE"+param, response);
+        },
+        error:function (request, response, statut) {
+            console.log("Erreur :"+request.responseText);
+        }
+    });
+
 }
