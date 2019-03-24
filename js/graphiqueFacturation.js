@@ -166,19 +166,7 @@ function creerGrapheProduit(Fournisseur, produit, tableau){
 
     let retour = $('<button>');
     retour.click(function(){
-            tableau = new Array();
-            $.ajax({
-                url:"ressources/json/statistiqueProduit"+Fournisseur+".json",
-                dataType :"json",
-                async:false,
-                success:function(data){
-                    $.each(data,function(i,element){
-                        tableau[i] = {name : element.produit ,y : element.prix};
-
-                    })
-                    creerGrapheTypesDeProduit(Fournisseur,tableau);
-                }
-            });
+        getTypesDeProduit(Fournisseur)
         }
     );
     retour.text("Retour");
