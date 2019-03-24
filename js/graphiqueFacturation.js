@@ -32,7 +32,7 @@ function getTypesDeProduit(Fournisseur){
     });
 }
 
-function getProduitParMois(produit){
+function getProduitParMois(Fournisseur, produit){
     tableau = new Array();
     MOIS = new Array();
     $.ajax({
@@ -44,7 +44,7 @@ function getProduitParMois(produit){
                 tableau[i] = {name : element.MOIS ,y : element.PrixParMois};
                 MOIS[i] = element.MOIS;
             })
-            creerGrapheProduit(produit, tableau);
+            creerGrapheProduit(Fournisseur, produit, tableau);
         }
     });
 }
@@ -90,7 +90,6 @@ function creerGraphe(tableau){
             data:tableau
         }]
     });
-
 }
 
 function creerGrapheTypesDeProduit(Fournisseur, tableau){
@@ -126,7 +125,7 @@ function creerGrapheTypesDeProduit(Fournisseur, tableau){
             point: {
                 events: {
                     click: function(e) {
-                        getProduitParMois(enleverEspace(this.name));
+                        getProduitParMois(Fournisseur,enleverEspace(this.name));
                     }
                 }
             },
@@ -134,9 +133,13 @@ function creerGrapheTypesDeProduit(Fournisseur, tableau){
         }]
     });
 
+    let retour = $('<button>');
+    retour.attr('onclick',"getFournisseur()");
+    retour.text("Retour");
+    $("#container").append(retour);
 }
 
-function creerGrapheProduit(produit, tableau){
+function creerGrapheProduit(Fournisseur, produit, tableau){
 
     Highcharts.chart('container', {
         chart: {
@@ -161,6 +164,25 @@ function creerGrapheProduit(produit, tableau){
         }]
     });
 
+    let retour = $('<button>');
+    retour.click(function(){
+            tableau = new Array();
+            $.ajax({
+                url:"ressources/json/statistiqueProduit"+Fournisseur+".json",
+                dataType :"json",
+                async:false,
+                success:function(data){
+                    $.each(data,function(i,element){
+                        tableau[i] = {name : element.produit ,y : element.prix};
+
+                    })
+                    creerGrapheTypesDeProduit(Fournisseur,tableau);
+                }
+            });
+        }
+    );
+    retour.text("Retour");
+    $("#container").append(retour);
 }
 
 function getPrixVenteFournisseur(id){
