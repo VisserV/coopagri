@@ -10,5 +10,5 @@
 </div>
 
 <?php
-$_SESSION["id_vente"]= 1;
+$_SESSION["id_vente"];
 ?>
