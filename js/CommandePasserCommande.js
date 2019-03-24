@@ -315,7 +315,7 @@ function slider() {
         min: 0,
         max: 10,
         step: 0.5,
-        values: [ 0, 2 ],
+        values: [ 0, 5 ],
         slide: function( event, ui ) {
             $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
         }
