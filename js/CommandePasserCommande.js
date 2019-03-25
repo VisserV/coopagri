@@ -371,13 +371,13 @@ if(sessionStorage.CategorieId=="2"){
         $('#btn_val').html("Valider Commande");
 }
 
-function saisirAdresse() {
+    function saisirAdresse() {
 
     $("#liste").css("display","none");
     $("#infoLivraison").css("display","none");
     $("#btn_val_pdt").remove();
 
-    $("#title_recap").text("Adresse de livraison");
+        $("#title_recap").text("Adresse de livraison");
 
     let btn_val_ad = $('<button>');
     btn_val_ad.attr('id', "btn_ad");
@@ -430,7 +430,16 @@ function saisirAdresse() {
     p2.appendTo(form);
     p3.appendTo(form);
     p4.appendTo(form);
-
+    let dateLivraison = $('<input>');
+    let p5 = $('<p>')
+    p5.text("Date de livraison :");
+    dateLivraison.attr('type',"date");
+    dateLivraison.attr('class',"form-control");
+    dateLivraison.attr('placeholder',"2019-04-01");
+    dateLivraison.attr('id',"dateLivraison");
+    dateLivraison.appendTo(p5);
+    p5.appendTo(form);
+    btn_val_ad.addClass("btn btn-dark");
     form.appendTo($("#container"));
 
     btn_val_ad.insertAfter(form);
@@ -509,7 +518,7 @@ function recapTotal() {
     btn_val_tot.appendTo(infoLivraison);
 
     infoLivraison.appendTo($("#container"));
-
+    infoLivraison.prependTo($("#container"));
     infoLivraison.css("text-align", "center");
 
     $("#btn_ad").css("display", "block");
@@ -521,23 +530,23 @@ function recapTotal() {
     }
 
 
-    function slider() {
-        $( "#slider-range" ).slider({
-            range: true,
-            min: 0,
-            max: 10,
-            step: 0.5,
-            values: [ 0, 5 ],
-            slide: function( event, ui ) {
-                $( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
-                categorie = $("#LSTCATEG").val();
-                console.log(categorie);
-                chargerProdParPrix(categorie,ui.values[ 0 ],ui.values[ 1 ]);
-            }
-        });
-        $( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) +
-            " - €" + $( "#slider-range" ).slider( "values", 1 ) );
-    }
+function slider() {
+    $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 10,
+        step: 0.5,
+        values: [ 0, 5 ],
+        slide: function( event, ui ) {
+            $( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
+            categorie = $("#LSTCATEG").val();
+            console.log(categorie);
+            chargerProdParPrix(categorie,ui.values[ 0 ],ui.values[ 1 ]);
+        }
+    });
+    $( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) +
+        " - €" + $( "#slider-range" ).slider( "values", 1 ) );
+}
 }else{
     window.location.replace("index.php?page=1");
 }
@@ -600,7 +609,7 @@ function envoiJson() {
         }
     });
 
-    alert("Votre commande est validé ! ");
+    window.location.replace("index.php?page=36");
     chargerTableau();
     chargerProd(0);
     $("#btn_ad").css("display", "none");
