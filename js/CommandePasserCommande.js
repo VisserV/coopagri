@@ -71,7 +71,7 @@ if(sessionStorage.CategorieId=="2"){
         bouton_valider.attr('id',"btn_val");
         bouton_valider.attr('type','button');
         bouton_valider.html("Passer commande");
-        bouton_valider.attr('onclick',"btn_commande()");
+        bouton_valider.attr('onclick',"recapitulatifCommande()");
 
         prixTotal.append(inputPrixTotal);
         prixTotal.append("€");
@@ -166,8 +166,8 @@ if(sessionStorage.CategorieId=="2"){
             }
 
         }
-
-
+        $(".divPrixTotal").css("display","block");
+        $("#btn_val").css("display","block");
     }
 
     function chargerProdParPrix(categorie_id,prix_min, prix_max) {
@@ -318,10 +318,18 @@ if(sessionStorage.CategorieId=="2"){
         $("#liste").css("display", "");
         $("#idCategorie").css("display","none");
         $(".wrap_range").css("display","none");
+        $("#btn_val").css("display","none");
 
         let btn_return = $('<button>');
         btn_return.attr('id', "btn_return_commande");
-        btn_return.attr('onclick',"chargerProd(0)");
+        btn_return.attr('onclick',"retour1()");
+
+        let bouton_valider_produit = $('<button>');
+        bouton_valider_produit.attr('id',"btn_val_pdt");
+        bouton_valider_produit.attr('type','button');
+        bouton_valider_produit.html("Passer à l'étape suivante");
+        bouton_valider_produit.attr('onclick',"saisirAdresse()");
+        $("#container").append(bouton_valider_produit);
 
         let arrow_left = $('<i>');
         arrow_left.addClass("fas fa-arrow-left fa-2x");
@@ -361,13 +369,13 @@ if(sessionStorage.CategorieId=="2"){
             }
         }
         $('#btn_val').html("Valider Commande");
-        //$('#btn_val').attr('onclick', "saisirAdresse()");
 }
 
 function saisirAdresse() {
 
     $("#liste").css("display","none");
     $("#infoLivraison").css("display","none");
+    $("#btn_val_pdt").remove();
 
     $("#title_recap").text("Adresse de livraison");
 
@@ -375,9 +383,8 @@ function saisirAdresse() {
     btn_val_ad.attr('id', "btn_ad");
     btn_val_ad.html("Valider Adresse");
     btn_val_ad.attr('onclick',"recapTotal()");
-    //$("#btn_val").attr('onclick',"btn_commande()");
 
-    $("#btn_return_commande").attr('onclick',"recapitulatifCommande()");
+    $("#btn_return_commande").attr('onclick',"retour2()");
 
     let p1 = $("<p>");
     let p2 = $("<p>");
@@ -433,9 +440,12 @@ function saisirAdresse() {
 }
 
 function recapTotal() {
+    $("#adr").remove();
+
     $("#idCategorie").css("display","none");
     $(".wrap_range").css("display","none");
     $("#form_ad").css("display", "none");
+    $("#btn_ad").remove();
 
 
 
@@ -471,6 +481,7 @@ function recapTotal() {
     infoLivraison.attr("id", "infoLivraison");
 
     let titreAdresse = $("<h4>");
+    titreAdresse.attr('id',"adr");
     titreAdresse.text("Adresse de livraison");
 
     let infoPays = $("<p>");
@@ -485,11 +496,17 @@ function recapTotal() {
     let infoAdresse = $("<p>");
     infoAdresse.text($("#adresseClient").val());
 
+    let btn_val_tot = $('<button>');
+    btn_val_tot.attr('id', "btn_tot");
+    btn_val_tot.html("Valider Commande");
+    btn_val_tot.attr('onclick',"envoiJson()");
+
     titreAdresse.appendTo(infoLivraison);
     infoPays.appendTo(infoLivraison);
     infoCodePos.appendTo(infoLivraison);
     infoVille.appendTo(infoLivraison);
     infoAdresse.appendTo(infoLivraison);
+    btn_val_tot.appendTo(infoLivraison);
 
     infoLivraison.appendTo($("#container"));
 
@@ -498,6 +515,9 @@ function recapTotal() {
     $("#btn_ad").css("display", "block");
     $("#btn_ad").attr("onclick","envoiJson()");
     $("#title_recap").css("display", "none");
+
+    $("#form_ad").remove();
+    $("#title_recap").remove();
     }
 
 
@@ -585,30 +605,24 @@ function envoiJson() {
     chargerProd(0);
     $("#btn_ad").css("display", "none");
     infoLivraison.remove();
+    $("#form_ad").remove();
+    $("#btn_ad").remove();
+    document.getElementById('prixTotal').value =0 ;
+    $("#btn_tot").remove();
 
 }
-var int = 1;
-function btn_commande(){
 
-    switch (int)
-    {
-    case 1:
-        {
-            recapitulatifCommande();
-            int = 2;
-            break;
-        }
-    case 2 :
-        {
-            saisirAdresse();
-            int = 3;
-            break;
-        }
-        default :
-        {
-            alert("erreur");
-            int = 1;
-        }
+function retour1(){
 
-    }
+    chargerProd(0);
+    slider();
+    $("#btn_val_pdt").remove();
+}
+
+function  retour2() {
+    recapitulatifCommande();
+    $("#btn_ad").remove();
+    $("#title_recap").remove();
+    $("#title_recap").text("Récapitulatif de la commande");
+    $("#form_ad").remove();
 }
